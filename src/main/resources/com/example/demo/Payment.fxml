@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="266.0" layoutY="64.0" prefHeight="622.0" prefWidth="661.0" styleClass="colorBackCenter">
+         <children>
+            <AnchorPane layoutX="26.0" layoutY="68.0" prefHeight="231.0" prefWidth="435.0" styleClass="gradientDarkBackgroundText" />
+            <AnchorPane layoutX="26.0" layoutY="25.0" prefHeight="43.0" prefWidth="435.0" styleClass="gradientDarkBackgroundText">
+               <children>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DAY LIST" textAlignment="CENTER">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="480.0" layoutY="199.0" prefHeight="43.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText">
+               <children>
+                  <Text fill="WHITE" layoutX="39.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL" textAlignment="CENTER">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="480.0" layoutY="249.0" prefHeight="50.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText">
+               <children>
+                  <Text fill="WHITE" layoutX="124.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" textAlignment="CENTER">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000.00" textAlignment="RIGHT" wrappingWidth="99.46875">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Button layoutX="480.0" layoutY="26.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CASH" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="480.0" layoutY="317.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CARD" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
+         <image>
+            <Image url="@../../../../../../image/Logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="748.0" layoutY="610.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="PAY" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="293.0" layoutY="381.0" prefHeight="214.0" prefWidth="153.0" styleClass="gradientGreyField">
+         <children>
+            <Text fill="#0f5169" layoutX="8.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#0f5169" layoutX="8.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE EXP." textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#0f5169" layoutX="8.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCV" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#0f5169" layoutX="8.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAY " textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#0f5169" layoutX="8.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAY + TIPS" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="459.0" layoutY="381.0" prefHeight="35.0" prefWidth="272.0" promptText="CARD NUMBER" styleClass="textFild">
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+      </TextField>
+      <AnchorPane layoutX="448.0" layoutY="615.0" prefHeight="41.0" prefWidth="297.0" styleClass="gradientGreyField">
+         <children>
+            <Text fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <TextField layoutX="459.0" layoutY="424.0" prefHeight="35.0" prefWidth="160.0" promptText="DATE EXP." styleClass="textFild">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="459.0" layoutY="470.0" prefHeight="35.0" prefWidth="160.0" promptText="CCV" styleClass="textFild">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="459.0" layoutY="513.0" prefHeight="35.0" prefWidth="160.0" promptText="PAY " styleClass="textFild">
+         <font>
+            <Font name="Trebuchet MS" size="18.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="459.0" layoutY="559.0" prefHeight="35.0" prefWidth="160.0" promptText="PAY + TIPS" styleClass="textFild">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

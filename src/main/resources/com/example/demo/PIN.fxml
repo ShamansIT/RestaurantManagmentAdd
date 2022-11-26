@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="panelBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.PinController">
+   <children>
+      <AnchorPane layoutX="448.0" layoutY="86.0" prefHeight="578.0" prefWidth="297.0" styleClass="colorBackCenter">
+         <children>
+            <PasswordField id="enterPinFildAuthorization" fx:id="passwordPinField" alignment="CENTER" layoutX="63.0" layoutY="163.0" prefHeight="36.0" prefWidth="175.0" promptText="PIN" styleClass="textFild">
+               <font>
+                  <Font name="Trebuchet MS" size="18.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="buttonPinAuthorization1" layoutX="64.0" layoutY="302.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization2" layoutX="125.0" layoutY="302.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="2" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization3" layoutX="185.0" layoutY="302.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="3" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization4" layoutX="65.0" layoutY="360.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="4" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization5" layoutX="126.0" layoutY="360.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="5" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization6" layoutX="186.0" layoutY="360.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="6" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization7" layoutX="64.0" layoutY="421.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="7" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization8" layoutX="125.0" layoutY="421.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="8" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization9" layoutX="185.0" layoutY="421.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="9" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorizationClear" layoutX="64.0" layoutY="481.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="C" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorization0" layoutX="125.0" layoutY="481.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="0" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonPinAuthorizationEnter" layoutX="185.0" layoutY="481.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonOrange" text="→" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="24.0" />
+               </font>
+            </Button>
+            <AnchorPane fx:id="textErrorFiledPinAuthorization" layoutY="231.0" prefHeight="41.0" prefWidth="297.0" styleClass="gradientGreyField" visible="false">
+               <children>
+                  <Text id="textErrorAuthorization" fx:id="textErrorPinAuthorization" fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="textPinFieldAuthorization" layoutY="52.0" prefHeight="77.0" prefWidth="297.0" styleClass="gradientGreyField">
+               <children>
+                  <Text id="textPinOneAuthorization" fx:id="textPinAuthorization" fill="#0f5169" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter 4 digit authorisation PIN-number" textAlignment="CENTER" wrappingWidth="216.791015625">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+      <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
+         <image>
+            <Image url="@../../../../../../image/Logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
