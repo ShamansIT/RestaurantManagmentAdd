@@ -3,16 +3,17 @@ package com.example.demo.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.example.demo.exeption.ModelException;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PinController extends SceneSwitchController{
+public class PinController {
 
     @FXML
     private AnchorPane panelBack;
@@ -85,6 +86,8 @@ public class PinController extends SceneSwitchController{
 
     @FXML
     void initialize() {
+
+
         panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 
         buttonPinAuthorizationEnter.setOnAction(actionEvent -> {
@@ -115,9 +118,11 @@ public class PinController extends SceneSwitchController{
                     throw new RuntimeException(e);}
                 }
 
-            //check hashmap access
+            //check PIN access
+            //set isManager
+            SceneSwitchController switchController = new SceneSwitchController();
             try {
-                switchToSceneBreakfast(actionEvent);
+                switchController.switchToSceneMenuBreakfast(actionEvent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -137,4 +142,5 @@ public class PinController extends SceneSwitchController{
         buttonPinAuthorization0.setOnAction(actionEvent -> passwordPinField.appendText("0"));
         buttonPinAuthorizationClear.setOnAction(actionEvent -> passwordPinField.setText(""));
     }
+
 }

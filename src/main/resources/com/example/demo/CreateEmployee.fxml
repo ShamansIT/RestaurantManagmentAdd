@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,13 +11,48 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="262.0" layoutY="64.0" prefHeight="666.0" prefWidth="663.0" styleClass="colorBackCenter" />
+      <AnchorPane layoutX="262.0" layoutY="64.0" prefHeight="666.0" prefWidth="663.0" styleClass="colorBackCenter">
+         <children>
+            <Button layoutX="64.0" layoutY="590.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane layoutX="246.0" layoutY="588.0" prefHeight="53.0" prefWidth="212.0" styleClass="gradientGreyField">
+               <children>
+                  <Text fill="#0f5169" layoutX="37.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER" wrappingWidth="139.94525146484375">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="62.0" layoutY="23.0" prefHeight="44.0" prefWidth="548.0" styleClass="gradientGreyField">
+               <children>
+                  <Text fill="#0f5169" layoutX="102.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter new employee information" textAlignment="CENTER">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <CheckBox layoutX="243.0" layoutY="266.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="MALE" textFill="#0f5169">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="395.0" layoutY="266.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="112.0" text="FEMALE" textFill="#0f5169">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </CheckBox>
+         </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="748.0" layoutY="654.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="PAY" textAlignment="CENTER" textFill="WHITE">
+      <Button layoutX="748.0" layoutY="654.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CREATE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
@@ -58,7 +94,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Text>
-            <Text fill="#0f5169" layoutX="11.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="County" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+            <Text fill="#0f5169" layoutX="11.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -85,15 +121,6 @@
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <AnchorPane layoutX="445.0" layoutY="659.0" prefHeight="41.0" prefWidth="297.0" styleClass="gradientGreyField">
-         <children>
-            <Text fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
       <TextField layoutX="491.0" layoutY="195.0" prefHeight="36.0" prefWidth="258.0" promptText="FIRST NAME" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
@@ -105,11 +132,6 @@
          </font>
       </TextField>
       <TextField layoutX="492.0" layoutY="285.0" prefHeight="36.0" prefWidth="130.0" promptText="AGE" styleClass="textFild">
-         <font>
-            <Font name="Trebuchet MS Bold" size="18.0" />
-         </font>
-      </TextField>
-      <TextField layoutX="492.0" layoutY="329.0" prefHeight="36.0" prefWidth="130.0" promptText="GENDER" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
@@ -129,7 +151,7 @@
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="493.0" layoutY="507.0" prefHeight="36.0" prefWidth="258.0" promptText="COUNTY" styleClass="textFild">
+      <TextField layoutX="493.0" layoutY="507.0" prefHeight="36.0" prefWidth="258.0" promptText="CITY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
@@ -144,14 +166,5 @@
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <AnchorPane layoutX="323.0" layoutY="88.0" prefHeight="41.0" prefWidth="541.0" styleClass="gradientGreyField">
-         <children>
-            <Text fill="#0f5169" layoutX="102.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter new employee information" textAlignment="CENTER">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>
