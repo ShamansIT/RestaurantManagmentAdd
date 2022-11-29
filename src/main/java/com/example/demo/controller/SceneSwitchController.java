@@ -87,7 +87,4 @@ public class SceneSwitchController {
         stage.show();
     }
 
-
-
-
 }

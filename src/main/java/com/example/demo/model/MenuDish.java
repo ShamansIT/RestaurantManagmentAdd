@@ -1,6 +1,10 @@
 package com.example.demo.model;
 
 
+import com.example.demo.controller.SceneSwitchController;
+import javafx.scene.control.Button;
+
+import java.io.IOException;
 
 public class MenuDish {
 
@@ -43,6 +47,80 @@ public class MenuDish {
 
     public void closeTable(){}
     public void printOrderDetail(){}
+
+
+    public void SwitchButtonSceneManager(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneManager(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void SwitchButtonSceneBreakfast(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuBreakfast(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void SwitchButtonSceneLunch(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuLunch(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void SwitchButtonSceneDinner(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuDinner(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void SwitchButtonSceneDrinks(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuDrinks(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void SwitchButtonSceneCloseTable(Button button) {
+        SceneSwitchController switchController = new SceneSwitchController();
+        button.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToScenePayment(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+
+
+
+
+
+
 
 
 }

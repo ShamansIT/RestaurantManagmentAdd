@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.demo.model.MenuDish;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -79,6 +82,9 @@ public class MenuDrinksController {
     private Button radioButtonTable39;
 
     @FXML
+    private Button switchToBreakfast;
+
+    @FXML
     private Button switchToDinner;
 
     @FXML
@@ -98,6 +104,30 @@ public class MenuDrinksController {
 
     @FXML
     void initialize() {
+
+        MenuDish menuDish = new MenuDish();
+
+        buttonCloseTable.setOnAction(actionEvent -> {
+            menuDish.SwitchButtonSceneManager(buttonCloseTable);
+        });
+
+        buttonManager.setOnAction(actionEvent -> {
+            menuDish.SwitchButtonSceneManager(buttonManager);
+        });
+
+        switchToBreakfast.setOnAction(actionEvent -> {
+            menuDish. SwitchButtonSceneBreakfast(switchToBreakfast);
+        });
+
+        switchToLunch.setOnAction(actionEvent -> {
+            menuDish.SwitchButtonSceneLunch(switchToLunch);
+        });
+
+        switchToDinner.setOnAction(actionEvent -> {
+            menuDish.SwitchButtonSceneDinner(switchToDinner);
+        });
+
+
 
 
     }

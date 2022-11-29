@@ -103,7 +103,6 @@ public class MenuBreakfastController extends MenuDish{
     void initialize() {
 
 
-
         buttonAddDish1.setOnAction(actionEvent -> addDishToArray((short) 1));
         buttonAddDish2.setOnAction(actionEvent -> addDishToArray((short) 2));
         buttonAddDish3.setOnAction(actionEvent -> addDishToArray((short) 3));
@@ -113,44 +112,40 @@ public class MenuBreakfastController extends MenuDish{
 
 
 
-//        buttonCloseTable.setOnAction();
+
 //        buttonCompleteOrder.setOnAction();
 //        buttonRadioMoreThanSixPerson.fire();
 //        buttonRemoveLastFromList.setOnAction();
 
 
-        SceneSwitchController switchController = new SceneSwitchController();
+
+        MenuDish menuDish = new MenuDish();
+
+        buttonCloseTable.setOnAction(actionEvent -> {
+        menuDish.SwitchButtonSceneManager(buttonCloseTable);
+        });
+
         buttonManager.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneManager(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        menuDish.SwitchButtonSceneManager(buttonManager);
+        });
+
+//        switchToBreakfast.setOnAction(actionEvent -> {
+//        menuDish. SwitchButtonSceneBreakfast(switchToBreakfast);
+//        });
+
+        switchToLunch.setOnAction(actionEvent -> {
+        menuDish.SwitchButtonSceneLunch(switchToLunch);
         });
 
         switchToDinner.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuDinner(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        switchToLunch.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuLunch(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        menuDish.SwitchButtonSceneDinner(switchToDinner);
         });
 
         switchToDrinks.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuDrinks(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        menuDish.SwitchButtonSceneDrinks(switchToDrinks);
         });
+
+
     }
 
 }
