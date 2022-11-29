@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,18 +9,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.CreateEmployeeController">
    <children>
       <AnchorPane layoutX="262.0" layoutY="64.0" prefHeight="666.0" prefWidth="663.0" styleClass="colorBackCenter">
          <children>
-            <Button layoutX="64.0" layoutY="590.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonCancelCreateEmployee" layoutX="64.0" layoutY="590.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <AnchorPane layoutX="246.0" layoutY="588.0" prefHeight="53.0" prefWidth="212.0" styleClass="gradientGreyField">
+            <AnchorPane fx:id="fieldErrorCreateEmployee" layoutX="246.0" layoutY="588.0" prefHeight="53.0" prefWidth="212.0" styleClass="gradientGreyField">
                <children>
-                  <Text fill="#0f5169" layoutX="37.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER" wrappingWidth="139.94525146484375">
+                  <Text fx:id="textErrorCreateEmployee" fill="#0f5169" layoutX="36.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Error enter. Pleace try again" textAlignment="CENTER" wrappingWidth="139.94525146484375">
                      <font>
                         <Font name="Trebuchet MS Bold" size="18.0" />
                      </font>
@@ -36,23 +36,23 @@
                   </Text>
                </children>
             </AnchorPane>
-            <CheckBox layoutX="243.0" layoutY="266.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0" text="MALE" textFill="#0f5169">
+            <RadioButton fx:id="radioButtonMale" layoutX="293.0" layoutY="271.0" mnemonicParsing="false" selected="true" text="MALE" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </CheckBox>
-            <CheckBox layoutX="395.0" layoutY="266.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="112.0" text="FEMALE" textFill="#0f5169">
+            </RadioButton>
+            <RadioButton fx:id="radioButtonFemale" layoutX="458.0" layoutY="271.0" mnemonicParsing="false" text="FEMALE" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </CheckBox>
+            </RadioButton>
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="748.0" layoutY="654.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CREATE" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="buttonCreate" layoutX="748.0" layoutY="654.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CREATE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
@@ -116,52 +116,52 @@
             </Text>
          </children>
       </AnchorPane>
-      <TextField layoutX="491.0" layoutY="151.0" prefHeight="36.0" prefWidth="130.0" promptText="PIN" styleClass="textFild">
+      <TextField fx:id="fieldPin" layoutX="491.0" layoutY="151.0" prefHeight="36.0" prefWidth="130.0" promptText="PIN" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="195.0" prefHeight="36.0" prefWidth="258.0" promptText="FIRST NAME" styleClass="textFild">
+      <TextField fx:id="fieldFirstName" layoutX="491.0" layoutY="195.0" prefHeight="36.0" prefWidth="258.0" promptText="FIRST NAME" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="240.0" prefHeight="36.0" prefWidth="258.0" promptText="LAST NAME" styleClass="textFild">
+      <TextField fx:id="fieldLastName" layoutX="491.0" layoutY="240.0" prefHeight="36.0" prefWidth="258.0" promptText="LAST NAME" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="492.0" layoutY="285.0" prefHeight="36.0" prefWidth="130.0" promptText="AGE" styleClass="textFild">
+      <TextField fx:id="fieldAge" layoutX="492.0" layoutY="285.0" prefHeight="36.0" prefWidth="130.0" promptText="AGE" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="373.0" prefHeight="36.0" prefWidth="375.0" promptText="EMAIL" styleClass="textFild">
+      <TextField fx:id="fieldEmail" layoutX="491.0" layoutY="373.0" prefHeight="36.0" prefWidth="375.0" promptText="EMAIL" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="492.0" layoutY="417.0" prefHeight="36.0" prefWidth="258.0" promptText="PHONE" styleClass="textFild">
+      <TextField fx:id="fieldPhone" layoutX="492.0" layoutY="417.0" prefHeight="36.0" prefWidth="258.0" promptText="PHONE" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="461.0" prefHeight="36.0" prefWidth="375.0" promptText="ADDRESS" styleClass="textFild">
+      <TextField fx:id="fieldAddress" layoutX="491.0" layoutY="461.0" prefHeight="36.0" prefWidth="375.0" promptText="ADDRESS" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="493.0" layoutY="507.0" prefHeight="36.0" prefWidth="258.0" promptText="CITY" styleClass="textFild">
+      <TextField fx:id="fieldCity" layoutX="492.0" layoutY="507.0" prefHeight="36.0" prefWidth="258.0" promptText="CITY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="551.0" prefHeight="36.0" prefWidth="258.0" promptText="COUNTRY" styleClass="textFild">
+      <TextField fx:id="fieldCountry" layoutX="491.0" layoutY="551.0" prefHeight="36.0" prefWidth="258.0" promptText="COUNTRY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="491.0" layoutY="597.0" prefHeight="36.0" prefWidth="258.0" promptText="PPS" styleClass="textFild">
+      <TextField fx:id="fieldPPS" layoutX="491.0" layoutY="597.0" prefHeight="36.0" prefWidth="258.0" promptText="PPS" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>

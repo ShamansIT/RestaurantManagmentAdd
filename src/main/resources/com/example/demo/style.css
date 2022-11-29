@@ -28,14 +28,14 @@
 	-fx-background-color:#BADDE7;	
 }
 
-
-
 .textFild{
 	-fx-background-color: linear-gradient(#3F87AB, #1A6286);
 	-fx-border-color: #FFFFFF;
 	-fx-background-radius: 7;
 	-fx-border-radius: 7;
 	-fx-text-fill:#FFFFFF;	
+	-fx-font-size:18;
+	
 }
 
 .buttonMenuFoodActive:hover{
@@ -64,7 +64,7 @@
 	-fx-border-radius: 7;	
 	-fx-border-color: #FFFFFF;
 	-fx-text-fill:#FFFFFF;
-	-fx-font-size:18;;
+	-fx-font-size:18;
 }
 
 .buttonGreen:hover{

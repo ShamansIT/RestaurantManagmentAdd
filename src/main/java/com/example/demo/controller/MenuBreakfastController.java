@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import com.example.demo.model.MenuDish;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -86,16 +87,45 @@ public class MenuBreakfastController extends MenuDish{
 
 
 
-//        buttonManager.setOnAction(actionEvent -> );
+
 //        buttonCloseTable.setOnAction();
 //        buttonCompleteOrder.setOnAction();
 //        buttonRadioMoreThanSixPerson.fire();
 //        buttonRemoveLastFromList.setOnAction();
 
 
+        SceneSwitchController switchController = new SceneSwitchController();
+        buttonManager.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneManager(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
+        switchToDinner.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuDinner(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
+        switchToLunch.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuLunch(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
+        switchToDrinks.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenuDrinks(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
 }

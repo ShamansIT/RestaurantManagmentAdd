@@ -45,7 +45,8 @@ public class DataBaseHandler extends Configs{
             prSt.setString(8,address);
             prSt.setString(9,city);
             prSt.setString(10,country);
-            prSt.setString(11,pps);
+            prSt.setString(11,ismanager);
+            prSt.setString(12,pps);
             prSt.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

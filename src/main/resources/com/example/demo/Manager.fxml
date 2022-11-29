@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.ManagementController">
    <children>
       <AnchorPane layoutX="266.0" layoutY="64.0" prefHeight="622.0" prefWidth="661.0" styleClass="colorBackCenter">
          <children>
@@ -20,12 +20,12 @@
                   </Text>
                </children>
             </AnchorPane>
-            <Button layoutX="137.0" layoutY="101.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="DAILY REPORT" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonDayliReport" layoutX="137.0" layoutY="101.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="DAILY REPORT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="137.0" layoutY="176.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="CREATE NEW EMPLOYEE" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonGoToCreateNewEmployeer" layoutX="137.0" layoutY="176.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="CREATE NEW EMPLOYEE" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -36,7 +36,7 @@
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="758.0" layoutY="620.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="buttonCloseManagment" layoutX="758.0" layoutY="620.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
