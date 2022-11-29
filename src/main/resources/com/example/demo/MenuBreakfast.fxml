@@ -48,15 +48,11 @@
             </Button>
             <AnchorPane layoutX="12.0" layoutY="277.0" prefHeight="397.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <AnchorPane fx:id="checkOrderField" layoutY="280.0" prefHeight="120.0" prefWidth="195.0" styleClass="buttonOrange">
-                     <children>
-                        <Text fx:id="checkOrderText" fill="WHITE" layoutX="50.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECK AMOUNT IN ORDER" textAlignment="CENTER" wrappingWidth="94.47116088867188">
-                           <font>
-                              <Font name="Trebuchet MS Bold" size="21.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
+                  <Button fx:id="buttonCheckOrderField" layoutY="282.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="195.0" styleClass="buttonOrange" text="CHECK AMOUNT IN ORDER" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
             <AnchorPane layoutX="12.0" layoutY="237.0" prefHeight="40.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
@@ -70,7 +66,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="219.0" layoutY="63.0" prefHeight="623.0" prefWidth="756.0" styleClass="colorBackCenter">
          <children>
-            <Button fx:id="buttonAddDishBreakfast1" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish1" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -78,7 +74,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAddDishBreakfast2" layoutX="206.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHEESE" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish2" layoutX="206.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHEESE" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -86,7 +82,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAddDishBreakfast3" layoutX="389.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="TOAST" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish3" layoutX="389.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="TOAST" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -94,7 +90,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonAddDishBreakfast4" layoutX="572.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SCONES" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish4" layoutX="572.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SCONES" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>

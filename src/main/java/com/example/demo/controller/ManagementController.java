@@ -15,13 +15,13 @@ public class ManagementController {
     private URL location;
 
     @FXML
-    private Button buttonCloseManagment;
+    private Button buttonCloseManagement;
 
     @FXML
-    private Button buttonDayliReport;
+    private Button buttonDailyReport;
 
     @FXML
-    private Button buttonGoToCreateNewEmployeer;
+    private Button buttonGoToCreateNewEmployee;
 
     @FXML
     void initialize() {
@@ -31,7 +31,7 @@ public class ManagementController {
 
 
         SceneSwitchController switchController = new SceneSwitchController();
-        buttonCloseManagment.setOnAction(actionEvent -> {
+        buttonCloseManagement.setOnAction(actionEvent -> {
             try {
                 switchController.switchToSceneMenuBreakfast(actionEvent);
             } catch (IOException e) {
@@ -39,7 +39,7 @@ public class ManagementController {
             }
         });
 
-        buttonDayliReport.setOnAction(actionEvent -> {
+        buttonDailyReport.setOnAction(actionEvent -> {
             try {
                 switchController.switchToSceneDayList(actionEvent);
             } catch (IOException e) {
@@ -47,7 +47,7 @@ public class ManagementController {
             }
         });
 
-       buttonGoToCreateNewEmployeer.setOnAction(actionEvent -> {
+       buttonGoToCreateNewEmployee.setOnAction(actionEvent -> {
             try {
                 switchController.switchToSceneCreateEmployee(actionEvent);
             } catch (IOException e) {

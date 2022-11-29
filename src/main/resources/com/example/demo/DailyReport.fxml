@@ -28,7 +28,7 @@
                         <Font name="Trebuchet MS Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="262.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000.00" textAlignment="CENTER">
+                  <Text fx:id="textDailyTotalProfit" fill="WHITE" layoutX="262.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000.00" textAlignment="CENTER">
                      <font>
                         <Font name="Trebuchet MS Bold" size="24.0" />
                      </font>
@@ -46,7 +46,7 @@
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="748.0" layoutY="610.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="buttonDailyReportClose" layoutX="748.0" layoutY="610.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>

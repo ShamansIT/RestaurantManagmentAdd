@@ -14,7 +14,7 @@
    <children>
       <AnchorPane layoutX="-1.0" layoutY="63.0" prefHeight="689.0" prefWidth="220.0" styleClass="gradientSideMenu" stylesheets="@style.css">
          <children>
-            <Button layoutX="12.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="BREAKFAST" textAlignment="CENTER">
+            <Button fx:id="switchToBreakfast" layoutX="12.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="BREAKFAST" textAlignment="CENTER">
                <effect>
                   <Blend />
                </effect>
@@ -22,7 +22,7 @@
                   <Font name="Trebuchet MS Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="62.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="LUNCH" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="switchToLunch" layoutX="12.0" layoutY="62.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="LUNCH" textAlignment="CENTER" textFill="WHITE">
                <effect>
                   <Blend />
                </effect>
@@ -38,7 +38,7 @@
                   <Font name="Trebuchet MS Bold" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="DRINKS" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="switchToDrinks" layoutX="12.0" layoutY="160.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" styleClass="buttonNavigationDeactive" text="DRINKS" textAlignment="CENTER" textFill="WHITE">
                <effect>
                   <Blend />
                </effect>
@@ -48,29 +48,15 @@
             </Button>
             <AnchorPane layoutX="12.0" layoutY="277.0" prefHeight="397.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <AnchorPane layoutY="280.0" prefHeight="120.0" prefWidth="195.0" styleClass="buttonOrange">
-                     <children>
-                        <Text fill="WHITE" layoutX="62.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHECK " textAlignment="CENTER" wrappingWidth="71.80453491210938">
-                           <font>
-                              <Font name="Trebuchet MS Bold" size="21.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="50.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AMOUNT" textAlignment="CENTER" wrappingWidth="94.47116088867188">
-                           <font>
-                              <Font name="Trebuchet MS Bold" size="21.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="50.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IN ORDER" textAlignment="CENTER" wrappingWidth="94.47116088867188">
-                           <font>
-                              <Font name="Trebuchet MS Bold" size="21.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
+                  <Button fx:id="buttonCheckOrderField" layoutY="282.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="195.0" styleClass="buttonOrange" text="CHECK AMOUNT IN ORDER" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
             <AnchorPane layoutX="12.0" layoutY="237.0" prefHeight="40.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <Text fill="WHITE" layoutX="18.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER INFORMATION">
+                  <Text fx:id="textOrderInfo" fill="WHITE" layoutX="18.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER INFORMATION">
                      <font>
                         <Font name="Trebuchet MS Bold" size="16.0" />
                      </font>
@@ -80,7 +66,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="219.0" layoutY="63.0" prefHeight="623.0" prefWidth="756.0" styleClass="colorBackCenter">
          <children>
-            <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="MET BBQ" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish1" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="MET BBQ" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -88,7 +74,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="206.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="FRIED LAMB" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish2" layoutX="206.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="FRIED LAMB" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -96,7 +82,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="389.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="MET FISH" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish3" layoutX="389.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="MET FISH" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -104,7 +90,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="571.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="GRILLED SEA " textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish4" layoutX="571.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="GRILLED SEA " textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -112,7 +98,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="22.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="BEEF BURGER" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish5" layoutX="22.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="BEEF BURGER" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -120,7 +106,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="206.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="GREEN SPINACH " textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish6" layoutX="206.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="GREEN SPINACH " textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -128,7 +114,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="389.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SIDES" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish7" layoutX="389.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SIDES" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -136,7 +122,7 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="571.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHICKEN CURRY" textAlignment="CENTER" textFill="#0f5169">
+            <Button fx:id="buttonAddDish8" layoutX="571.0" layoutY="122.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHICKEN CURRY" textAlignment="CENTER" textFill="#0f5169">
                <effect>
                   <Blend />
                </effect>
@@ -144,12 +130,12 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="21.0" layoutY="559.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="ADD TO ORDER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonRemoveLastFromList" layoutX="21.0" layoutY="559.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="REMOVE LAST FROM LIST" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="388.0" layoutY="559.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="COMPLETE ORDER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonCompleteOrder" layoutX="388.0" layoutY="559.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="COMPLETE ORDER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -159,7 +145,7 @@
          <children>
             <AnchorPane layoutX="10.0" layoutY="428.0" prefHeight="40.0" prefWidth="205.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <Text fill="WHITE" layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMBER OF CLIENTS" textAlignment="CENTER">
+                  <Text fx:id="textNumOfClient" fill="WHITE" layoutX="26.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMBER OF CLIENTS" textAlignment="CENTER">
                      <font>
                         <Font name="Trebuchet MS Bold" size="16.0" />
                      </font>
@@ -168,14 +154,14 @@
             </AnchorPane>
             <AnchorPane layoutX="10.0" layoutY="14.0" prefHeight="40.0" prefWidth="205.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <Text fill="WHITE" layoutX="45.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLE NUMBER" textAlignment="CENTER">
+                  <Text fx:id="textTableNumber" fill="WHITE" layoutX="45.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TABLE NUMBER" textAlignment="CENTER">
                      <font>
                         <Font name="Trebuchet MS Bold" size="16.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <RadioButton contentDisplay="CENTER" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="205.0" styleClass="buttonGreen" text="more than 6 persons" textAlignment="CENTER" textFill="WHITE">
+            <RadioButton fx:id="buttonRadioMoreThanSixPerson" contentDisplay="CENTER" layoutX="10.0" layoutY="481.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="205.0" styleClass="buttonGreen" text="more than 6 persons" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="14.0" />
                </font>
@@ -183,67 +169,67 @@
                   <Insets />
                </opaqueInsets>
             </RadioButton>
-            <Button layoutX="14.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="11" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable11" layoutX="14.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="11" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="86.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="12" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable12" layoutX="86.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="12" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="158.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="13" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable13" layoutX="158.0" layoutY="66.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="13" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="14" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable14" layoutX="14.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="14" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="86.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="15" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable15" layoutX="86.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="15" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="158.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="16" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable16" layoutX="158.0" layoutY="133.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="buttonGreen" text="16" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="200.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="195.0" styleClass="buttonGreen" text="20" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable20" layoutX="14.0" layoutY="200.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="195.0" styleClass="buttonGreen" text="20" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="264.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="36" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable36" layoutX="14.0" layoutY="264.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="36" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="124.0" layoutY="264.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="37" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable37" layoutX="124.0" layoutY="264.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="37" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="332.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="38" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable38" layoutX="14.0" layoutY="332.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="38" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="124.0" layoutY="332.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="39" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="radioButtonTable39" layoutX="124.0" layoutY="332.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="88.0" styleClass="buttonGreen" text="39" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="9.0" layoutY="558.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="205.0" styleClass="buttonOrange" text="CLOSE TABLE" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonCloseTable" layoutX="9.0" layoutY="558.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="205.0" styleClass="buttonOrange" text="CLOSE TABLE" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="625.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="205.0" styleClass="buttonOrange" text="MANAGER" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonManager" layoutX="10.0" layoutY="625.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="205.0" styleClass="buttonOrange" text="MANAGER" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>

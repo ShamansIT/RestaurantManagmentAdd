@@ -20,12 +20,12 @@
                   </Text>
                </children>
             </AnchorPane>
-            <Button fx:id="buttonDayliReport" layoutX="137.0" layoutY="101.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="DAILY REPORT" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonDailyReport" layoutX="137.0" layoutY="101.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="DAILY REPORT" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonGoToCreateNewEmployeer" layoutX="137.0" layoutY="176.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="CREATE NEW EMPLOYEE" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonGoToCreateNewEmployee" layoutX="137.0" layoutY="176.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="387.0" styleClass="buttonOrange" text="CREATE NEW EMPLOYEE" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
@@ -36,7 +36,7 @@
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonCloseManagment" layoutX="758.0" layoutY="620.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="buttonCloseManagement" layoutX="758.0" layoutY="620.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>

@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -88,27 +87,7 @@ public class SceneSwitchController {
         stage.show();
     }
 
-//    public void switchScene() throws IOException {
-//        FXMLLoader fxmlLoader = new FXMLLoader(RestaurantMainServesApplication.class.getResource("MenuBreakfast.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
-//        stage.setTitle("RESTAURANT MANAGE APP");
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
-//    public void switchTo( ) throws IOException {
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("MenuBreakfast.fxml"));
-//        try {
-//            loader.load();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Parent root = loader.getRoot();
-//        Stage stage = new Stage();
-//        stage.setScene(new Scene(root));
-//        stage.showAndWait();
-//    }
 
 
 }

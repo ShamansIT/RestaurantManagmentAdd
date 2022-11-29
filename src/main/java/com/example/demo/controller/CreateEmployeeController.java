@@ -73,8 +73,6 @@ public class CreateEmployeeController {
 
 
 
-
-
         SceneSwitchController switchController = new SceneSwitchController();
         buttonCreate.setOnAction(actionEvent -> {
             try {
@@ -83,6 +81,8 @@ public class CreateEmployeeController {
                 throw new RuntimeException(e);
             }
         });
+
+
 
         buttonCancelCreateEmployee.setOnAction(actionEvent -> {
             try {
