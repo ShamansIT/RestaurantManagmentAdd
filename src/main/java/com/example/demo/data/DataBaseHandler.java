@@ -11,6 +11,7 @@ public class DataBaseHandler extends Configs{
         String connectionString  = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/" + dbName;
         Class.forName("com.mysql.jdbc.Driver");
+
         dbConnection = DriverManager.getConnection(connectionString,
                 dbUser, dbPass);
         return dbConnection;
@@ -31,7 +32,7 @@ public class DataBaseHandler extends Configs{
                 + Const.USER_COUNTRY + ","
                 + Const.USER_ISMANAGER + ","
                 + Const.USER_PPS + ")" +
-                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,)";
+                "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
@@ -51,8 +52,29 @@ public class DataBaseHandler extends Configs{
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+    public void orderUp(String number, String table, String dish, String prise, String amount){
+        String insert = "INSERT INTO " + Const.USER_ORDERS + "("
+                + Const.ORDER_NUMBER + ","
+                + Const.ORDER_TABLE + ","
+                + Const.ORDER_DISH + ","
+                + Const.ORDER_PRICE + ","
+                + Const.ORDER_AMOUNT + ")" +
+                "VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setString(1,number);
+            prSt.setString(2,table);
+            prSt.setString(3,dish);
+            prSt.setString(4,prise);
+            prSt.setString(5,amount);
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
 

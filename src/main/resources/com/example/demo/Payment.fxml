@@ -105,26 +105,26 @@
             </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="fieldCardNumberPayment" disable="true" layoutX="459.0" layoutY="381.0" prefHeight="35.0" prefWidth="272.0" promptText="CARD NUMBER" styleClass="textFild">
+      <TextField fx:id="fieldCardNumberPayment" disable="true" layoutX="459.0" layoutY="381.0" prefHeight="35.0" prefWidth="272.0" promptText="16 DIGITS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
       <AnchorPane fx:id="errorPaymentField" layoutX="454.0" layoutY="615.0" prefHeight="41.0" prefWidth="291.0" styleClass="gradientGreyField">
          <children>
-            <Text fx:id="errorPaymentText" fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Pleace try again" textAlignment="CENTER">
+            <Text fx:id="errorPaymentText" fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Please try again" textAlignment="CENTER">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="fieldDataExpPayment" disable="true" layoutX="459.0" layoutY="424.0" prefHeight="35.0" prefWidth="160.0" promptText="DATE EXP." styleClass="textFild">
+      <TextField fx:id="fieldDataExpPayment" disable="true" layoutX="459.0" layoutY="424.0" prefHeight="35.0" prefWidth="160.0" promptText="MM/YY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="fieldCcvPayment" disable="true" layoutX="459.0" layoutY="470.0" prefHeight="35.0" prefWidth="160.0" promptText="CCV" styleClass="textFild">
+      <TextField fx:id="fieldCcvPayment" disable="true" layoutX="459.0" layoutY="470.0" prefHeight="35.0" prefWidth="160.0" promptText="3 DIGITS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS" size="18.0" />
          </font>

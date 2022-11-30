@@ -115,6 +115,7 @@ public class MenuDinnerController {
     void initialize() {
 
 
+
         MenuDish menuDish = new MenuDish();
 
         buttonCloseTable.setOnAction(actionEvent -> {

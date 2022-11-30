@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.CreateEmployeeController">
+<AnchorPane fx:id="panelBack" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.CreateEmployeeController">
    <children>
       <AnchorPane layoutX="262.0" layoutY="64.0" prefHeight="666.0" prefWidth="663.0" styleClass="colorBackCenter">
          <children>
@@ -20,7 +20,7 @@
             </Button>
             <AnchorPane fx:id="fieldErrorCreateEmployee" layoutX="246.0" layoutY="588.0" prefHeight="53.0" prefWidth="212.0" styleClass="gradientGreyField">
                <children>
-                  <Text fx:id="textErrorCreateEmployee" fill="#0f5169" layoutX="36.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Error enter. Pleace try again" textAlignment="CENTER" wrappingWidth="139.94525146484375">
+                  <Text fx:id="textErrorCreateEmployee" fill="#0f5169" layoutX="8.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Error enter Please try again" textAlignment="CENTER" wrappingWidth="200.00000000000023">
                      <font>
                         <Font name="Trebuchet MS Bold" size="18.0" />
                      </font>
@@ -116,22 +116,22 @@
             </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="fieldPin" layoutX="491.0" layoutY="151.0" prefHeight="36.0" prefWidth="130.0" promptText="PIN" styleClass="textFild">
+      <TextField fx:id="fieldPin" layoutX="491.0" layoutY="151.0" prefHeight="36.0" prefWidth="143.0" promptText="4 DIGITS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="fieldFirstName" layoutX="491.0" layoutY="195.0" prefHeight="36.0" prefWidth="258.0" promptText="FIRST NAME" styleClass="textFild">
+      <TextField fx:id="fieldFirstName" layoutX="491.0" layoutY="195.0" prefHeight="36.0" prefWidth="258.0" promptText="LETTERS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="fieldLastName" layoutX="491.0" layoutY="240.0" prefHeight="36.0" prefWidth="258.0" promptText="LAST NAME" styleClass="textFild">
+      <TextField fx:id="fieldLastName" layoutX="491.0" layoutY="240.0" prefHeight="36.0" prefWidth="258.0" promptText="LETTERS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="fieldAge" layoutX="492.0" layoutY="285.0" prefHeight="36.0" prefWidth="130.0" promptText="AGE" styleClass="textFild">
+      <TextField fx:id="fieldAge" layoutX="492.0" layoutY="285.0" prefHeight="36.0" prefWidth="143.0" promptText="4 DIGITS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
@@ -161,7 +161,7 @@
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="fieldPPS" layoutX="491.0" layoutY="597.0" prefHeight="36.0" prefWidth="258.0" promptText="PPS" styleClass="textFild">
+      <TextField fx:id="fieldPPS" layoutX="491.0" layoutY="597.0" prefHeight="36.0" prefWidth="258.0" promptText="8 CHARS ONLY" styleClass="textFild">
          <font>
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>

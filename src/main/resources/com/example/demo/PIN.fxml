@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="448.0" layoutY="86.0" prefHeight="578.0" prefWidth="297.0" styleClass="colorBackCenter">
          <children>
-            <PasswordField id="enterPinFildAuthorization" fx:id="passwordPinField" alignment="CENTER" layoutX="63.0" layoutY="163.0" prefHeight="36.0" prefWidth="175.0" promptText="PIN" styleClass="textFild">
+            <PasswordField id="enterPinFildAuthorization" fx:id="passwordPinField" alignment="CENTER" layoutX="63.0" layoutY="163.0" prefHeight="36.0" prefWidth="175.0" promptText="4 DIGITS ONLY" styleClass="textFild">
                <font>
                   <Font name="Trebuchet MS" size="18.0" />
                </font>

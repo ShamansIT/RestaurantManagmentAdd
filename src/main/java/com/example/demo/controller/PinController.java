@@ -86,7 +86,7 @@ public class PinController {
     void initialize() {
 
 
-        panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
+        panelBack.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> hideError());
 
         buttonPinAuthorizationEnter.setOnAction(actionEvent -> {
 

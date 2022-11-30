@@ -148,6 +148,8 @@ public class MenuBreakfastController extends MenuDish{
 
 
 
+
+
         MenuDish menuDish = new MenuDish();
         buttonCloseTable.setOnAction(actionEvent -> menuDish.SwitchButtonSceneCloseTable(buttonCloseTable));
         buttonManager.setOnAction(actionEvent -> menuDish.SwitchButtonSceneManager(buttonManager));
@@ -157,6 +159,7 @@ public class MenuBreakfastController extends MenuDish{
         switchToDrinks.setOnAction(actionEvent -> menuDish.SwitchButtonSceneDrinks(switchToDrinks));
 
     }
+    //tips call like Service charge
 
 }
 
