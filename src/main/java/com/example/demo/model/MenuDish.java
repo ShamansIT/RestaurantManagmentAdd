@@ -13,6 +13,25 @@ public class MenuDish {
     private double dishPrise;
     private double totalCountTable;
 
+    public String getAmountDish() {
+        return amountDish;
+    }
+
+    public void setAmountDish(String amountDish) {
+        this.amountDish = amountDish;
+    }
+
+    public int getNumberAmount() {
+        return numberAmount;
+    }
+
+    public void setNumberAmount(int numberAmount) {
+        this.numberAmount = numberAmount;
+    }
+
+    private String amountDish;
+    private int numberAmount;
+
 
     public short getTableNumber() {
         return tableNumber;
@@ -47,6 +66,24 @@ public class MenuDish {
 
     public void closeTable(){}
     public void printOrderDetail(){}
+
+    public void addToOrder(){
+
+        setAmountDish("1");
+    }
+
+    public void setAmountDishPlus(String menuFieldAmountDish){
+            numberAmount = Integer.parseInt(menuFieldAmountDish);
+            numberAmount ++;
+            amountDish = Integer.toString(numberAmount);
+            setAmountDish(String.valueOf(numberAmount));
+    }
+    public void setAmountDishMinus(String menuFieldAmountDish){
+        numberAmount = Integer.parseInt(menuFieldAmountDish);
+        if (numberAmount > 1) numberAmount --;
+        amountDish = Integer.toString(numberAmount);
+        setAmountDish(String.valueOf(numberAmount));
+    }
 
 
     public void SwitchButtonSceneManager(Button button) {
