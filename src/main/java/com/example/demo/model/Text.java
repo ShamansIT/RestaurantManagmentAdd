@@ -4,7 +4,6 @@ import java.util.HashMap;
 
 final public class Text {
     private static final HashMap<String, String> data = new HashMap<>();
-
     public static String get(String key) {
         return data.get(key);
     }
