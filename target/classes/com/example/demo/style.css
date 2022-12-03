@@ -1,0 +1,86 @@
+
+.backgroundColor{
+	-fx-background-color: linear-gradient(#0E516B, #30758F);
+}
+.gradientSideMenu{
+	-fx-background-color: linear-gradient(#5AA1BA, #0E516B);
+}
+
+.gradientDarkBackgroundText{
+	-fx-background-color: linear-gradient(#3F6276, #0F3447);
+}
+
+.gradientGreyField{
+	-fx-background-color: linear-gradient(#BBDEE9, #8EB4C1);
+}
+
+
+.colorDarkBlueFront{
+	-fx-text-fill:#0f5169;
+}
+
+.colorBackCenter{
+	-fx-background-color: #70B1CC;
+}
+
+
+.buttonMenuFoodActive:hover{
+	-fx-background-color:#BADDE7;	
+}
+
+.textFild{
+	-fx-background-color: linear-gradient(#3F87AB, #1A6286);
+	-fx-border-color: #FFFFFF;
+	-fx-background-radius: 7;
+	-fx-border-radius: 7;
+	-fx-text-fill:#FFFFFF;	
+	-fx-font-size:18;
+	
+}
+
+.buttonMenuFoodActive:hover{
+	-fx-background-color:#BADDE7;	
+}
+
+.buttonNavigationActive{
+	-fx-background-color: linear-gradient(#DAE2E1, #F9FAFA);
+	-fx-text-fill:#0f5169;
+}
+.buttonNavigationActive:hover{
+	-fx-background-color:#DAE2E1;
+}
+
+.buttonNavigationDeactive{
+	-fx-background-color: linear-gradient(#8EB4C1, #BADDE7);
+	-fx-text-fill:#FFFFFF;
+}
+.buttonNavigationDeactive:hover{
+	-fx-background-color:#DAE2E1;	
+}
+
+.buttonGreen{
+	-fx-background-color: linear-gradient(#76994E, #4D7025);
+	-fx-background-radius: 7;
+	-fx-border-radius: 7;	
+	-fx-border-color: #FFFFFF;
+	-fx-text-fill:#FFFFFF;
+	-fx-font-size:18;
+}
+
+.buttonGreen:hover{
+	-fx-background-color:#33CC66;	
+}
+
+.buttonOrange{
+	-fx-background-color:#FF6600;
+	-fx-border-color: #FFFFFF;
+	-fx-background-radius: 7;
+	-fx-border-radius: 7;
+	-fx-text-fill:#FFFFFF;
+	-fx-font-size:21;
+
+}
+
+.buttonOrange:hover{
+	-fx-background-color:#33CC66;
+}

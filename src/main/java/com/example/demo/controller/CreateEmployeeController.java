@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
-
 import com.example.demo.data.DataBaseHandler;
 import com.example.demo.exeption.ModelException;
 import javafx.fxml.FXML;
@@ -87,6 +86,8 @@ public class CreateEmployeeController {
 
     @FXML
     void initialize() {
+        DataBaseHandler dataBaseHandler = new DataBaseHandler();
+        dataBaseHandler.DataBaseOrderConnection();
 
         panelBack.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> hideError());
 

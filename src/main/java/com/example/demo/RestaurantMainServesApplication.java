@@ -13,7 +13,7 @@ public class RestaurantMainServesApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initText();
-        FXMLLoader fxmlLoader = new FXMLLoader(RestaurantMainServesApplication.class.getResource("PIN.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RestaurantMainServesApplication.class.getResource("CreateEmployee.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
         stage.setTitle("RESTAURANT MANAGE APP");
         stage.setScene(scene);
