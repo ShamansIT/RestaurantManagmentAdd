@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
-
 import com.example.demo.controller.SceneSwitchController;
 import javafx.scene.control.Button;
-
 import java.io.IOException;
 
 public class MenuDish {

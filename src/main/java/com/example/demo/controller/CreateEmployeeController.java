@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -91,13 +92,14 @@ public class CreateEmployeeController {
 
         DataBaseHandler dbHandler = new DataBaseHandler();
 
+        ToggleGroup buttonGender = new ToggleGroup();
+        radioButtonFemale.setToggleGroup(buttonGender);
+        radioButtonMale.setToggleGroup(buttonGender);
+        radioButtonMale.setUserData("male");
+        radioButtonFemale.setUserData("female");
 
+        String loginismanager = "no";
 
-
-        String loginGender = "E";
-        radioButtonMale.fire(); //radio control to String
-        radioButtonFemale.fire();
-        String loginismanager = "333";
 
 
 
@@ -205,22 +207,22 @@ public class CreateEmployeeController {
                 }
             }
 
-            {
-                dbHandler.signUpUser(
-                        fieldPin.getText().trim(),
-                        fieldFirstName.getText().trim(),
-                        fieldLastName.getText().trim(),
-                        fieldAge.getText().trim(),
-                        radioButtonMale.getText(),//fix it
-                        fieldEmail.getText().trim(),
-                        fieldPhone.getText().trim(),
-                        fieldAddress.getText().trim(),
-                        fieldCity.getText().trim(),
-                        fieldCountry.getText().trim(),
-                        loginismanager.trim(),
-                        fieldPPS.getText().trim()
-                        );
-            }
+//            {
+//                dbHandler.signUpUser(
+//                        fieldPin.getText().trim(),
+//                        fieldFirstName.getText().trim(),
+//                        fieldLastName.getText().trim(),
+//                        fieldAge.getText().trim(),
+//                        radioButtonMale.getText(),//fix it
+//                        fieldEmail.getText().trim(),
+//                        fieldPhone.getText().trim(),
+//                        fieldAddress.getText().trim(),
+//                        fieldCity.getText().trim(),
+//                        fieldCountry.getText().trim(),
+//                        loginismanager.trim(),
+//                        fieldPPS.getText().trim()
+//                        );
+//            }
 
         });
 
