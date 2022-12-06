@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.data.DataBaseProcessor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class RestaurantMainServesApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initText();
-        FXMLLoader fxmlLoader = new FXMLLoader(RestaurantMainServesApplication.class.getResource("CreateEmployee.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(RestaurantMainServesApplication.class.getResource("PIN.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 750);
         stage.setTitle("RESTAURANT MANAGE APP");
         stage.setScene(scene);

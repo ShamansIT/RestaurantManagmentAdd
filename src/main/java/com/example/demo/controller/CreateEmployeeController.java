@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 import com.example.demo.data.DataBaseHandler;
@@ -85,9 +86,10 @@ public class CreateEmployeeController {
     }
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
-        dataBaseHandler.DataBaseOrderConnection();
+        dataBaseHandler.loadOrderDataSQL();
+//        dataBaseHandler.DataBaseOrderConnection();
 
         panelBack.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> hideError());
 
@@ -98,11 +100,6 @@ public class CreateEmployeeController {
         radioButtonMale.setToggleGroup(buttonGender);
         radioButtonMale.setUserData("male");
         radioButtonFemale.setUserData("female");
-
-        String loginismanager = "no";
-
-
-
 
         buttonCreate.setOnAction(event -> {
             try {
@@ -207,24 +204,6 @@ public class CreateEmployeeController {
                     throw new RuntimeException(e);
                 }
             }
-
-//            {
-//                dbHandler.signUpUser(
-//                        fieldPin.getText().trim(),
-//                        fieldFirstName.getText().trim(),
-//                        fieldLastName.getText().trim(),
-//                        fieldAge.getText().trim(),
-//                        radioButtonMale.getText(),//fix it
-//                        fieldEmail.getText().trim(),
-//                        fieldPhone.getText().trim(),
-//                        fieldAddress.getText().trim(),
-//                        fieldCity.getText().trim(),
-//                        fieldCountry.getText().trim(),
-//                        loginismanager.trim(),
-//                        fieldPPS.getText().trim()
-//                        );
-//            }
-
         });
 
         SceneSwitchController switchController = new SceneSwitchController();

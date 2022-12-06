@@ -1,8 +1,6 @@
 package com.example.demo.controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.example.demo.data.DataBaseHandler;
 import com.example.demo.exeption.ModelException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +8,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class PinController {
 
@@ -85,11 +88,9 @@ public class PinController {
     @FXML
     void initialize() {
 
-
-        panelBack.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> hideError());
+        panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 
         buttonPinAuthorizationEnter.setOnAction(actionEvent -> {
-
             try {
                 Integer.parseInt(passwordPinField.getText());
             } catch (NumberFormatException e) {
@@ -101,15 +102,9 @@ public class PinController {
                 }
             }
 
-            if (passwordPinField.getText().length() == 0) try {
-                throw new ModelException(ModelException.EMPTY_FIELD);
-            } catch (ModelException e) {
-                showError();
-                throw new RuntimeException(e);
-            }
-
-            if(passwordPinField.getText().length() != 4) {
+            if((passwordPinField.getText().length() != 4) || (passwordPinField.getText().length() == 0)) {
                 try {
+
                     throw new ModelException(ModelException.INCORRECT_PIN);
                 } catch (ModelException e) {
                     showError();
@@ -117,15 +112,31 @@ public class PinController {
                 }
 
             //check PIN access
-            //set isManager
+            String loginPIN = passwordPinField.getText().trim();
+            int loginSendPin;
+            DataBaseHandler dataBaseHandler = new DataBaseHandler();
+            try {
+
+                loginSendPin = dataBaseHandler.checkUserPin(Integer.parseInt(loginPIN));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            if(loginSendPin == 0) {
+                try {
+                    throw new ModelException(ModelException.INCORRECT_PIN);
+                } catch (ModelException e) {
+                    showError();
+                    throw new RuntimeException(e);}
+            }
+            //set isManager in DataBaseHandler.checkUserPin
+
+            //point enter in program
             SceneSwitchController switchController = new SceneSwitchController();
             try {
                 switchController.switchToSceneMenuBreakfast(actionEvent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         });
 
         buttonPinAuthorization1.setOnAction(actionEvent -> passwordPinField.appendText("1"));
@@ -140,5 +151,4 @@ public class PinController {
         buttonPinAuthorization0.setOnAction(actionEvent -> passwordPinField.appendText("0"));
         buttonPinAuthorizationClear.setOnAction(actionEvent -> passwordPinField.setText(""));
     }
-
 }

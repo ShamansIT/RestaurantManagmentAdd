@@ -2,129 +2,149 @@ package com.example.demo.model;
 
 public class User {
 
-    private String pin;
-    private String firstname;
-    private String lastname;
-    private String age;
-    private String gender;
-    private String email;
-    private String phone;
-    private String address;
-    private String city;
+    private int user_pin;
+    private String user_firstname;
+    private String user_lastname;
+    private short user_age;
+    private String user_gender;
+    private String user_email;
+    private String user_phone;
+    private String user_address;
+    private String user_city;
+    private String user_country;
+    private String user_pps;
+    private String user_ismanager;
 
-    public User(String pin, String firstname, String lastname, String age, String gender, String email, String phone, String address, String city, String country, String ismanager, String pps) {
-        this.pin = pin;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.age = age;
-        this.gender = gender;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.city = city;
-        this.country = country;
-        this.ismanager = ismanager;
-        this.pps = pps;
+    public User(int user_pin, String user_firstname, String user_lastname, short user_age, String user_gender,
+                String user_email, String user_phone, String user_address, String user_city, String user_country,
+                String user_pps, String user_ismanager) {
+        this.user_pin = user_pin;
+        this.user_firstname = user_firstname;
+        this.user_lastname = user_lastname;
+        this.user_age = user_age;
+        this.user_gender = user_gender;
+        this.user_email = user_email;
+        this.user_phone = user_phone;
+        this.user_address = user_address;
+        this.user_city = user_city;
+        this.user_country = user_country;
+        this.user_pps = user_pps;
+        this.user_ismanager = user_ismanager;
     }
 
-    public String getPin() {
-        return pin;
+    public User() {}
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_pin=" + user_pin +
+                ", user_firstname='" + user_firstname +
+                ", user_lastname='" + user_lastname +
+                ", user_age=" + user_age +
+                ", user_gender='" + user_gender +
+                ", user_email='" + user_email +
+                ", user_phone='" + user_phone +
+                ", user_address='" + user_address +
+                ", user_city='" + user_city +
+                ", user_country='" + user_country +
+                ", user_pps='" + user_pps +
+                ", user_ismanager='" + user_ismanager +
+                '}';
     }
 
-    public void setPin(String pin) {
-        this.pin = pin;
+    public int getUser_pin() {
+        return user_pin;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public void setUser_pin(int user_pin) {
+        this.user_pin = user_pin;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public String getUser_firstname() {
+        return user_firstname;
     }
 
-    public String getLastname() {
-        return lastname;
+    public void setUser_firstname(String user_firstname) {
+        this.user_firstname = user_firstname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public String getUser_lastname() {
+        return user_lastname;
     }
 
-    public String getAge() {
-        return age;
+    public void setUser_lastname(String user_lastname) {
+        this.user_lastname = user_lastname;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public short getUser_age() {
+        return user_age;
     }
 
-    public String getGender() {
-        return gender;
+    public void setUser_age(short user_age) {
+        this.user_age = user_age;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public String getUser_gender() {
+        return user_gender;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUser_gender(String user_gender) {
+        this.user_gender = user_gender;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUser_email() {
+        return user_email;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setUser_email(String user_email) {
+        this.user_email = user_email;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public String getUser_phone() {
+        return user_phone;
     }
 
-    public String getAddress() {
-        return address;
+    public void setUser_phone(String user_phone) {
+        this.user_phone = user_phone;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getUser_address() {
+        return user_address;
     }
 
-    public String getCity() {
-        return city;
+    public void setUser_address(String user_address) {
+        this.user_address = user_address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getUser_city() {
+        return user_city;
     }
 
-    public String getCountry() {
-        return country;
+    public void setUser_city(String user_city) {
+        this.user_city = user_city;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public String getUser_country() {
+        return user_country;
     }
 
-    public String getIsmanager() {
-        return ismanager;
+    public void setUser_country(String user_country) {
+        this.user_country = user_country;
     }
 
-    public void setIsmanager(String ismanager) {
-        this.ismanager = ismanager;
+    public String getUser_pps() {
+        return user_pps;
     }
 
-    public String getPps() {
-        return pps;
+    public void setUser_pps(String user_pps) {
+        this.user_pps = user_pps;
     }
 
-    public void setPps(String pps) {
-        this.pps = pps;
+    public String getUser_ismanager() {
+        return user_ismanager;
     }
 
-    private String country;
-    private String ismanager;
-    private String pps;
-
+    public void setUser_ismanager(String user_ismanager) {
+        this.user_ismanager = user_ismanager;
+    }
 }

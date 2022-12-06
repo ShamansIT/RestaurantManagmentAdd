@@ -1,75 +1,108 @@
 package com.example.demo.data;
 
-import java.sql.*;
-import java.util.Properties;
-import java.util.logging.Logger;
+import com.example.demo.model.User;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import static com.example.demo.data.Const.*;
+
 
 
 public class DataBaseHandler extends Configs{
+    public boolean globalIsManager;
 
-    public void DataBaseOrderConnection() {
-        Connection connection = null;
-        Statement statement;
-        Driver driver;
+    public boolean getGlobalIsManager() {
+        return globalIsManager;
+    }
 
-        try {
-            driver = new Driver() {
-                @Override
-                public Connection connect(String url, Properties info) throws SQLException {
-                    return null;
-                }
-                @Override
-                public boolean acceptsURL(String url) throws SQLException {
-                    return false;
-                }
-                @Override
-                public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-                    return new DriverPropertyInfo[0];
-                }
-                @Override
-                public int getMajorVersion() {
-                    return 0;
-                }
-                @Override
-                public int getMinorVersion() {
-                    return 0;
-                }
-                @Override
-                public boolean jdbcCompliant() {
-                    return false;
-                }
-                @Override
-                public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-                    return null;
-                }
-            };
-        } catch (Exception e) {
-            System.out.println("DRIVER ERROR");
-            throw new RuntimeException(e);
-        }
+    public void setGlobalIsManager(boolean globalIsManager) {
+        this.globalIsManager = globalIsManager;
+    }
 
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            statement = connection.createStatement();
-            {
-                statement.execute("INSERT INTO `demodata`.orders (orders_number, orders_table, orders_dish, orders_prise, orders_amount) VALUES ('2','2', 'dish', 2 , 2);");
+    public int checkUserPin(int loginPin) throws SQLException{
+        int checkPin = 0;
+
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+
+        String select = "SELECT * FROM demodata.userdata";
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            int pin = resultSet.getInt(1);
+            String isManager = resultSet.getString(11);
+            if (pin == loginPin){
+                checkPin = 1;
+                setGlobalIsManager(Boolean.parseBoolean(isManager));
             }
-            System.out.println("code........");
+        }
+        preparedStatement.close();
+        connection.close();
+        return checkPin;
+    }
 
+    public ResultSet loadUserDataSQL(User user) throws SQLException {
+         ResultSet resultSet = null;
+         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+         PreparedStatement preparedStatement = connection.prepareStatement(USER_QUERY);
+
+
+
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//        while(resultSet.next()){
+//            System.out.println(resultSet.getInt(ORDER_NUMBER) +  " " +
+//                    resultSet.getString(ORDER_DISH));
+//        }
+//        preparedStatement.close();
+//        connection.close();
+//        return resultSet;
+        return resultSet;
+    }
+
+    public void loadOrderDataSQL() throws SQLException {
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(ORDER_QUERY);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            System.out.println(resultSet.getInt(ORDER_NUMBER) +  " " +
+                    resultSet.getString(ORDER_DISH));
+        }
+        preparedStatement.close();
+        connection.close();
+    }
+
+    public void dumpOrderDataSQL(int orders_id, int orders_number, short orders_table, String orders_dish,
+                        double orders_prise, short orders_amount) throws SQLException {
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+
+        String orderQuery = "INSERT INTO " + Const.ORDER_ID + "("
+                + Const.ORDER_ID + ","
+                + Const.ORDER_NUMBER + ","
+                + Const.ORDER_TABLE + ","
+                + Const.ORDER_DISH + ","
+                + Const.ORDER_PRICE + ","
+                + Const.ORDER_AMOUNT + ")" +
+                "VALUES(?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+            ResultSet resultSet = preparedStatement.executeQuery(orderQuery);
+            preparedStatement.setInt(2, 50);
+            preparedStatement.setInt(3,55);
+            preparedStatement.setString(4,"Wash dish");
+            preparedStatement.setDouble(5,55.5);
+            preparedStatement.setInt(6,60);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
-            System.out.println("SQL ERROR");
             throw new RuntimeException(e);
         }
-//        finally {
-//            if (connection != null) {
-//                try {
-//                    connection.close();
-//                } catch (SQLException e) {
-//                    System.out.println("connection = null");
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//        }
+        connection.close();
     }
 
 
@@ -79,6 +112,18 @@ public class DataBaseHandler extends Configs{
 
 
 
+
+
+
+
+//        while(resultSet.next()){
+//
+//            int id = resultSet.getInt("Id");
+//            String name = resultSet.getString("ProductName");
+//            int price = resultSet.getInt("Price");
+//
+//            System.out.printf("%d. %s - %d \n", id, name, price);
+//        }
 
 
 //    public void signUpUser(String pin, String firstname, String lastname, String age, String gender,
