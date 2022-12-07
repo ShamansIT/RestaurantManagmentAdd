@@ -59,10 +59,6 @@ public class MenuDish {
         setAmountDish("1");
     }
 
-    public void showPreviewOrder(){
-
-    }
-
     public void setAmountDishPlus(String menuFieldAmountDish){
             numberAmount = Integer.parseInt(menuFieldAmountDish);
             numberAmount ++;
