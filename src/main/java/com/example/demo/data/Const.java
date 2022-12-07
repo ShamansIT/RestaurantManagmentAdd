@@ -2,16 +2,11 @@ package com.example.demo.data;
 
 public class Const {
 
-
-
-
     public static final String SQL_TABLE_USER = "demodata.userdata";
     public static final String SQL_TABLE_DISH = "demodata.dish";
     public static final String SQL_TABLE_ORDER = "demodata.dish";
     public static final String SQL_TABLE_REPORT = "demodata.report";
     public static final String SQL_TABLE_DAILY = "demodata.daily";
-
-
 
     public static final String USER_QUERY = "SELECT * FROM demodata.userdata";
     public static final String USER_PIN = "user_pin";

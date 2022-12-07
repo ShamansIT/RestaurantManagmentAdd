@@ -89,11 +89,8 @@ public class CreateEmployeeController {
     void initialize() throws SQLException {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
         dataBaseHandler.loadOrderDataSQL();
-//        dataBaseHandler.DataBaseOrderConnection();
 
-        panelBack.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent -> hideError());
-
-        DataBaseHandler dbHandler = new DataBaseHandler();
+        panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 
         ToggleGroup buttonGender = new ToggleGroup();
         radioButtonFemale.setToggleGroup(buttonGender);
@@ -156,15 +153,6 @@ public class CreateEmployeeController {
                     throw new ModelException(ModelException.EMPTY_FIELD);
                 } catch (ModelException e) {
                     showError("Empty phone field\t Please try again");
-                    throw new RuntimeException(e);
-                }
-            }
-
-            if (fieldAddress.getText().trim().length() == 0){
-                try {
-                    throw new ModelException(ModelException.EMPTY_FIELD);
-                } catch (ModelException e) {
-                    showError("Empty address field\t Please try again");
                     throw new RuntimeException(e);
                 }
             }

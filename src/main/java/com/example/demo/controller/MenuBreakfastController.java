@@ -1,16 +1,17 @@
 package com.example.demo.controller;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import com.example.demo.data.DataBaseHandler;
 import com.example.demo.model.MenuDish;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-public class MenuBreakfastController extends MenuDish{
+public class MenuBreakfastController{
 
     @FXML
     private ResourceBundle resources;
@@ -19,16 +20,28 @@ public class MenuBreakfastController extends MenuDish{
     private URL location;
 
     @FXML
-    private Button buttonAddDish1;
+    private ToggleButton addDish1;
 
     @FXML
-    private Button buttonAddDish2;
+    private ToggleButton addDish2;
 
     @FXML
-    private Button buttonAddDish3;
+    private ToggleButton addDish3;
 
     @FXML
-    private Button buttonAddDish4;
+    private ToggleButton addDish4;
+
+    @FXML
+    private ToggleButton addDish5;
+
+    @FXML
+    private ToggleButton addDish6;
+
+    @FXML
+    private ToggleButton addDish7;
+
+    @FXML
+    private ToggleButton addDish8;
 
     @FXML
     private Button buttonAddToOrder;
@@ -59,6 +72,9 @@ public class MenuBreakfastController extends MenuDish{
 
     @FXML
     private TextField menuFieldAmountDish;
+
+    @FXML
+    private TextField menuPreviewOrder;
 
     @FXML
     private Button switchToBreakfast;
@@ -113,30 +129,89 @@ public class MenuBreakfastController extends MenuDish{
 
     @FXML
     private ToggleButton toggleTable39;
+    private void showError(String error){
+        buttonCheckOrderField.setVisible(true);
+        buttonCheckOrderField.setText(error);
+        buttonCheckOrderField.setVisible(true);
+    }
+    private void hideError(){
+        buttonCheckOrderField.setVisible(false);
+        buttonCheckOrderField.setVisible(false);
+    }
+
+    public double getCountDishPrise() {
+        return countDishPrise;
+    }
+
+    public void setCountDishPrise(double countDishPrise) {
+        this.countDishPrise = countDishPrise;
+    }
+
+    private MenuDish menuDish;
+    private double countDishPrise;
+    protected String dishPreviewText = "";
+    @Override
+    public String toString() {
+        return "MenuBreakfastController{" +
+                "dishPreviewText='" + dishPreviewText + '\'' +
+                ", countDishPrise=" + countDishPrise +
+                '}';
+    }
 
     @FXML
     void initialize() {
 
+        DataBaseHandler dataBaseHandler = new DataBaseHandler();
 
-        buttonAddDish1.setOnAction(actionEvent -> addDishToArray((short) 1));
-        buttonAddDish2.setOnAction(actionEvent -> addDishToArray((short) 2));
-        buttonAddDish3.setOnAction(actionEvent -> addDishToArray((short) 3));
-        buttonAddDish4.setOnAction(actionEvent -> addDishToArray((short) 4));
+        ToggleGroup toggleTable = new ToggleGroup();
+        toggleTable11.setToggleGroup(toggleTable);
+        toggleTable12.setToggleGroup(toggleTable);
+        toggleTable13.setToggleGroup(toggleTable);
+        toggleTable14.setToggleGroup(toggleTable);
+        toggleTable15.setToggleGroup(toggleTable);
+        toggleTable16.setToggleGroup(toggleTable);
+        toggleTable20.setToggleGroup(toggleTable);
+        toggleTable36.setToggleGroup(toggleTable);
+        toggleTable37.setToggleGroup(toggleTable);
+        toggleTable38.setToggleGroup(toggleTable);
+        toggleTable39.setToggleGroup(toggleTable);
 
-        buttonAmountPlus.setOnAction(actionEvent -> {
-            setAmountDishPlus(menuFieldAmountDish.getText());
-            menuFieldAmountDish.setText(getAmountDish());
+        toggleTable11.setOnAction(actionEvent ->{ menuDish.setTableNumber(11); });
+        toggleTable12.setOnAction(actionEvent ->{ menuDish.setTableNumber(12); });
+        toggleTable13.setOnAction(actionEvent ->{ menuDish.setTableNumber(13); });
+        toggleTable14.setOnAction(actionEvent ->{ menuDish.setTableNumber(14); });
+        toggleTable15.setOnAction(actionEvent ->{ menuDish.setTableNumber(15); });
+        toggleTable16.setOnAction(actionEvent ->{ menuDish.setTableNumber(16); });
+        toggleTable20.setOnAction(actionEvent ->{ menuDish.setTableNumber(20); });
+        toggleTable36.setOnAction(actionEvent ->{ menuDish.setTableNumber(36); });
+        toggleTable37.setOnAction(actionEvent ->{ menuDish.setTableNumber(37); });
+        toggleTable38.setOnAction(actionEvent ->{ menuDish.setTableNumber(38); });
+        toggleTable39.setOnAction(actionEvent ->{ menuDish.setTableNumber(39); });
+
+        ToggleGroup addDish = new ToggleGroup();
+        addDish1.setToggleGroup(addDish);
+        addDish2.setToggleGroup(addDish);
+        addDish3.setToggleGroup(addDish);
+        addDish4.setToggleGroup(addDish);
+        addDish5.setToggleGroup(addDish);
+        addDish6.setToggleGroup(addDish);
+        addDish7.setToggleGroup(addDish);
+        addDish8.setToggleGroup(addDish);
+
+        addDish1.setOnAction(actionEvent ->{
+            try { menuDish=dataBaseHandler.addDish(1,"breakfast");
+            } catch (SQLException e) { throw new RuntimeException(e); }
+            showPreviewOrderText();
+        });
+        addDish2.setOnAction(actionEvent ->{
+
         });
 
-        buttonAmountMinus.setOnAction(actionEvent -> {
-            setAmountDishMinus(menuFieldAmountDish.getText());
-            menuFieldAmountDish.setText(getAmountDish());
-        });
 
         buttonAddToOrder.setOnAction(actionEvent ->{
 
-            addToOrder();
-            menuFieldAmountDish.setText(getAmountDish());
+            menuPreviewOrder.setVisible(false);
+            menuFieldAmountDish.setText("1");
         });
 
 //        buttonCompleteOrder.setOnAction();
@@ -149,14 +224,38 @@ public class MenuBreakfastController extends MenuDish{
 
         MenuDish menuDish = new MenuDish();
         buttonCloseTable.setOnAction(actionEvent -> menuDish.SwitchButtonSceneCloseTable(buttonCloseTable));
-        buttonManager.setOnAction(actionEvent -> menuDish.SwitchButtonSceneManager(buttonManager));
+
+        buttonManager.setOnAction(actionEvent -> {
+            
+
+
+            menuDish.SwitchButtonSceneManager(buttonManager);
+        });
+
+
+        buttonAmountPlus.setOnAction(actionEvent -> {
+            menuDish.setAmountDishPlus(menuFieldAmountDish.getText());
+            menuFieldAmountDish.setText(menuDish.getAmountDish());
+        });
+
+        buttonAmountMinus.setOnAction(actionEvent -> {
+            menuDish.setAmountDishMinus(menuFieldAmountDish.getText());
+            menuFieldAmountDish.setText(menuDish.getAmountDish());
+        });
+
         switchToBreakfast.setOnAction(actionEvent -> menuDish. SwitchButtonSceneBreakfast(switchToBreakfast));
         switchToLunch.setOnAction(actionEvent -> menuDish.SwitchButtonSceneLunch(switchToLunch));
         switchToDinner.setOnAction(actionEvent -> menuDish.SwitchButtonSceneDinner(switchToDinner));
         switchToDrinks.setOnAction(actionEvent -> menuDish.SwitchButtonSceneDrinks(switchToDrinks));
-
     }
     //tips call like Service charge
+    public void showPreviewOrderText(){
+        String text = "";
+        text = menuDish.getDishName() +  "  - - >  " + menuDish.getDishPrise() + "€" + " x " + menuDish.getAmountDish()
+                + " qt. = " + Double.parseDouble(menuDish.getAmountDish())*menuDish.getDishPrise() + "€";
+        menuPreviewOrder.setVisible(true);
+    }
+
 
 }
 

@@ -1,21 +1,21 @@
 package com.example.demo.data;
 
-import com.example.demo.model.User;
+import com.example.demo.model.MenuDish;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import static com.example.demo.data.Const.*;
 
 
 
 public class DataBaseHandler extends Configs{
-    public boolean globalIsManager;
-
+    private boolean globalIsManager;
     public boolean getGlobalIsManager() {
         return globalIsManager;
     }
-
     public void setGlobalIsManager(boolean globalIsManager) {
         this.globalIsManager = globalIsManager;
     }
@@ -43,26 +43,32 @@ public class DataBaseHandler extends Configs{
         return checkPin;
     }
 
-    public ResultSet loadUserDataSQL(User user) throws SQLException {
-         ResultSet resultSet = null;
-         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
-         PreparedStatement preparedStatement = connection.prepareStatement(USER_QUERY);
 
+    public MenuDish addDish(int buttonGet, String groupDish) throws SQLException{
+        MenuDish menuDish = new MenuDish();
+        String dishName = "";
+        double dishPrice = 0;
 
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        String select = "SELECT * FROM demodata.dish WHERE id = "+ buttonGet +" AND typedish = " + "\'"+ groupDish + "\'";
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+        ResultSet resultSet = preparedStatement.executeQuery();
 
-//        ResultSet resultSet = preparedStatement.executeQuery();
-//        while(resultSet.next()){
-//            System.out.println(resultSet.getInt(ORDER_NUMBER) +  " " +
-//                    resultSet.getString(ORDER_DISH));
-//        }
-//        preparedStatement.close();
-//        connection.close();
-//        return resultSet;
-        return resultSet;
+        while(resultSet.next()) {
+            dishName = resultSet.getString(2);
+            dishPrice = resultSet.getDouble(3);
+        }
+        
+        menuDish.setDishName(dishName);
+        menuDish.setDishPrise(dishPrice);
+        preparedStatement.close();
+        connection.close();
+        return menuDish;
     }
 
-    public void loadOrderDataSQL() throws SQLException {
+
+    public void loadOrderDataSQL() throws SQLException {//rebuild
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(ORDER_QUERY);

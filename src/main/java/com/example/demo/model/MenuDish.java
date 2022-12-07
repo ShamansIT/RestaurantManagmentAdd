@@ -1,73 +1,66 @@
 package com.example.demo.model;
 
+import com.example.demo.controller.MenuBreakfastController;
 import com.example.demo.controller.SceneSwitchController;
+import com.example.demo.data.DataBaseHandler;
 import javafx.scene.control.Button;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class MenuDish {
 
-    private short tableNumber;
-    private short dishNumber;
+    private String amountDish;
+    private String dishName;
+    private int numberAmount;
+    private int tableNumber;
     private double dishPrise;
-    private double totalCountTable;
-
+    private double countLineDishPrice;
     public String getAmountDish() {
         return amountDish;
     }
-
     public void setAmountDish(String amountDish) {
         this.amountDish = amountDish;
     }
-
+    public String getDishName() {
+        return dishName;
+    }
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
+    }
     public int getNumberAmount() {
         return numberAmount;
     }
-
     public void setNumberAmount(int numberAmount) {
         this.numberAmount = numberAmount;
     }
-
-    private String amountDish;
-    private int numberAmount;
-
-
-    public short getTableNumber() {
+    public int getTableNumber() {
         return tableNumber;
     }
+    public double getDishPrise() {
+        return dishPrise;
+    }
+    public void setDishPrise(double dishPrise) {
+        this.dishPrise = dishPrise;
+    }
 
-    public void setTableNumber(short tableNumber) {
+    public double getCountLineDishPrice() { return countLineDishPrice;}
+    public void setCountLineDishPrice(double countLineDishPrice) {
+        this.countLineDishPrice = countLineDishPrice;
+    }
+
+    public void setTableNumber(int tableNumber){
         this.tableNumber = tableNumber;
     }
 
-    public short getDishNumber() {
-        return dishNumber;
-    }
 
-    public void setDishNumber(short dishNumber) {
-        this.dishNumber = dishNumber;
-    }
-
-    private void totalOrderCount(){ }
-    public void addDishToArray(short dishNumber){
-        System.out.println(dishNumber);
-    }
-
-    public void removeLastDishFromArray(){}
-
-    public void loadToList(){}
-
-    public void loadTableInfo(){}
-
-    public void addTipsOverSexPerson(){
-
-    }
-
-    public void closeTable(){}
-    public void printOrderDetail(){}
 
     public void addToOrder(){
 
         setAmountDish("1");
+    }
+
+    public void showPreviewOrder(){
+
     }
 
     public void setAmountDishPlus(String menuFieldAmountDish){
@@ -82,7 +75,6 @@ public class MenuDish {
         amountDish = Integer.toString(numberAmount);
         setAmountDish(String.valueOf(numberAmount));
     }
-
 
     public void SwitchButtonSceneManager(Button button) {
         SceneSwitchController switchController = new SceneSwitchController();
@@ -149,13 +141,4 @@ public class MenuDish {
             }
         });
     }
-
-
-
-
-
-
-
-
-
 }

@@ -90,6 +90,7 @@ public class PinController {
 
         panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 
+        //need enter button to action too
         buttonPinAuthorizationEnter.setOnAction(actionEvent -> {
             try {
                 Integer.parseInt(passwordPinField.getText());
@@ -104,7 +105,6 @@ public class PinController {
 
             if((passwordPinField.getText().length() != 4) || (passwordPinField.getText().length() == 0)) {
                 try {
-
                     throw new ModelException(ModelException.INCORRECT_PIN);
                 } catch (ModelException e) {
                     showError();
@@ -116,7 +116,6 @@ public class PinController {
             int loginSendPin;
             DataBaseHandler dataBaseHandler = new DataBaseHandler();
             try {
-
                 loginSendPin = dataBaseHandler.checkUserPin(Integer.parseInt(loginPIN));
             } catch (SQLException e) {
                 throw new RuntimeException(e);

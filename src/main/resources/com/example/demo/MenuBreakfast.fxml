@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MenuBreakfastController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.MenuBreakfastController">
    <children>
       <AnchorPane layoutX="-1.0" layoutY="63.0" prefHeight="689.0" prefWidth="220.0" styleClass="gradientSideMenu" stylesheets="@style.css">
          <children>
@@ -49,11 +49,16 @@
             </Button>
             <AnchorPane layoutX="12.0" layoutY="277.0" prefHeight="397.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <Button fx:id="buttonCheckOrderField" layoutY="282.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="195.0" styleClass="buttonOrange" text="CHECK AMOUNT IN ORDER" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="buttonCheckOrderField" layoutY="282.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="115.0" prefWidth="195.0" styleClass="buttonOrange" text="CHECK AMOUNT IN ORDER" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
                      <font>
                         <Font name="Trebuchet MS Bold" size="18.0" />
                      </font>
                   </Button>
+                  <Text fx:id="textOrderInfo" fill="WHITE" layoutX="4.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="186.13671493530273">
+                     <font>
+                        <Font name="Trebuchet MS" size="14.0" />
+                     </font>
+                  </Text>
                </children></AnchorPane>
             <AnchorPane layoutX="12.0" layoutY="237.0" prefHeight="40.0" prefWidth="195.0" styleClass="gradientDarkBackgroundText">
                <children>
@@ -67,38 +72,46 @@
          </children></AnchorPane>
       <AnchorPane layoutX="219.0" layoutY="63.0" prefHeight="623.0" prefWidth="756.0" styleClass="colorBackCenter">
          <children>
-            <Button fx:id="buttonAddDish1" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textAlignment="CENTER" textFill="#0f5169">
-               <effect>
-                  <Blend />
-               </effect>
+            <ToggleButton fx:id="addDish1" layoutX="22.0" layoutY="15.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </Button>
-            <Button fx:id="buttonAddDish2" layoutX="206.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHEESE" textAlignment="CENTER" textFill="#0f5169">
-               <effect>
-                  <Blend />
-               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish2" layoutX="205.0" layoutY="15.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="CHEESE" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </Button>
-            <Button fx:id="buttonAddDish3" layoutX="389.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="TOAST" textAlignment="CENTER" textFill="#0f5169">
-               <effect>
-                  <Blend />
-               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish3" layoutX="388.0" layoutY="15.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="TOAST" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </Button>
-            <Button fx:id="buttonAddDish4" layoutX="572.0" layoutY="14.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SCONES" textAlignment="CENTER" textFill="#0f5169">
-               <effect>
-                  <Blend />
-               </effect>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish4" layoutX="571.0" layoutY="15.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="SCONES" textFill="#0f5169">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
-            </Button>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish5" layoutX="22.0" layoutY="126.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textFill="#0f5169" visible="false">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish6" layoutX="205.0" layoutY="126.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textFill="#0f5169" visible="false">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish8" layoutX="571.0" layoutY="126.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textFill="#0f5169" visible="false">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="addDish7" layoutX="388.0" layoutY="126.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="163.0" styleClass="buttonMenuFoodActive" text="EGGS" textFill="#0f5169" visible="false">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </ToggleButton>
             <Button fx:id="buttonRemoveLastFromList" layoutX="21.0" layoutY="558.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="REMOVE LAST FROM LIST" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
@@ -227,5 +240,10 @@
             <Image url="@../../../../../../image/Logo.png" />
          </image>
       </ImageView>
+      <TextField fx:id="menuPreviewOrder" alignment="CENTER" layoutX="240.0" layoutY="697.0" prefHeight="40.0" prefWidth="716.0" styleClass="textFild" text="1" visible="false">
+         <font>
+            <Font name="Trebuchet MS Bold" size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
