@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.text.Text;
 
-public class MenuLunchController {
+public class MenuLunchController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -115,23 +115,23 @@ public class MenuLunchController {
         MenuDish menuDish = new MenuDish();
 
         buttonCloseTable.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneManager(buttonCloseTable);
+            SwitchButtonSceneManager(buttonCloseTable);
         });
 
         buttonManager.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneManager(buttonManager);
+            SwitchButtonSceneManager(buttonManager);
         });
 
         switchToBreakfast.setOnAction(actionEvent -> {
-            menuDish. SwitchButtonSceneBreakfast(switchToBreakfast);
+            SwitchButtonSceneBreakfast(switchToBreakfast);
         });
 
         switchToDinner.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneDinner(switchToDinner);
+            SwitchButtonSceneDinner(switchToDinner);
         });
 
         switchToDrinks.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneDrinks(switchToDrinks);
+           SwitchButtonSceneDrinks(switchToDrinks);
         });
 
 

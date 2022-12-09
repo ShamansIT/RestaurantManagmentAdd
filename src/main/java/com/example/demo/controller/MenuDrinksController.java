@@ -2,13 +2,13 @@ package com.example.demo.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import com.example.demo.model.MenuDish;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.text.Text;
 
-public class MenuDrinksController {
+public class MenuDrinksController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -103,31 +103,15 @@ public class MenuDrinksController {
     @FXML
     void initialize() {
 
-        MenuDish menuDish = new MenuDish();
-
-        buttonCloseTable.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneManager(buttonCloseTable);
-        });
-
-        buttonManager.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneManager(buttonManager);
-        });
-
-        switchToBreakfast.setOnAction(actionEvent -> {
-            menuDish. SwitchButtonSceneBreakfast(switchToBreakfast);
-        });
-
-        switchToLunch.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneLunch(switchToLunch);
-        });
-
-        switchToDinner.setOnAction(actionEvent -> {
-            menuDish.SwitchButtonSceneDinner(switchToDinner);
-        });
 
 
 
 
+        buttonCloseTable.setOnAction(actionEvent -> { SwitchButtonSceneManager(buttonCloseTable) ;});
+        buttonManager.setOnAction(actionEvent -> { SwitchButtonSceneManager(buttonManager); });
+        switchToBreakfast.setOnAction(actionEvent -> { SwitchButtonSceneBreakfast(switchToBreakfast); });
+        switchToLunch.setOnAction(actionEvent -> { SwitchButtonSceneLunch(switchToLunch); });
+        switchToDinner.setOnAction(actionEvent -> { SwitchButtonSceneDinner(switchToDinner); });
     }
 
 }

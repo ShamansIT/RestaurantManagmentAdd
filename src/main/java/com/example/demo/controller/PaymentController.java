@@ -1,15 +1,15 @@
 package com.example.demo.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PaymentController {
+public class PaymentController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -61,23 +61,11 @@ public class PaymentController {
 
 
 
-        SceneSwitchController switchController = new SceneSwitchController();
-        buttonCancelPayment.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuBreakfast(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
-        buttonPayPayment.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuBreakfast(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
+        buttonCancelPayment.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(buttonCancelPayment));
+
+        buttonPayPayment.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(buttonPayPayment));
     }
 
 }

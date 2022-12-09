@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
@@ -16,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class CreateEmployeeController {
+public class CreateEmployeeController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -194,22 +193,11 @@ public class CreateEmployeeController {
             }
         });
 
-        SceneSwitchController switchController = new SceneSwitchController();
-        buttonCreate.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneManager(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
 
-        buttonCancelCreateEmployee.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneManager(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        buttonCreate.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonCreate));
+        //set export to SQL table
+        buttonCancelCreateEmployee.setOnAction(actionEvent -> SwitchButtonSceneManager( buttonCancelCreateEmployee));
+
     }
 
 }

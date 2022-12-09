@@ -8,10 +8,9 @@ import com.example.demo.data.DataBaseHandler;
 import com.example.demo.model.MenuDish;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-public class MenuBreakfastController{
+public class MenuBreakfastController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -201,7 +200,7 @@ public class MenuBreakfastController{
         addDish1.setOnAction(actionEvent ->{
             try { menuDish=dataBaseHandler.addDish(1,"breakfast");
             } catch (SQLException e) { throw new RuntimeException(e); }
-            showPreviewOrderText();
+            //showPreviewOrderText();
         });
         addDish2.setOnAction(actionEvent ->{
 
@@ -210,8 +209,8 @@ public class MenuBreakfastController{
 
         buttonAddToOrder.setOnAction(actionEvent ->{
 
-            menuPreviewOrder.setVisible(false);
-            menuFieldAmountDish.setText("1");
+//            menuPreviewOrder.setVisible(false);
+//            menuFieldAmountDish.setText("1");
         });
 
 //        buttonCompleteOrder.setOnAction();
@@ -222,15 +221,6 @@ public class MenuBreakfastController{
 
 
 
-        MenuDish menuDish = new MenuDish();
-        buttonCloseTable.setOnAction(actionEvent -> menuDish.SwitchButtonSceneCloseTable(buttonCloseTable));
-
-        buttonManager.setOnAction(actionEvent -> {
-            
-
-
-            menuDish.SwitchButtonSceneManager(buttonManager);
-        });
 
 
         buttonAmountPlus.setOnAction(actionEvent -> {
@@ -243,18 +233,15 @@ public class MenuBreakfastController{
             menuFieldAmountDish.setText(menuDish.getAmountDish());
         });
 
-        switchToBreakfast.setOnAction(actionEvent -> menuDish. SwitchButtonSceneBreakfast(switchToBreakfast));
-        switchToLunch.setOnAction(actionEvent -> menuDish.SwitchButtonSceneLunch(switchToLunch));
-        switchToDinner.setOnAction(actionEvent -> menuDish.SwitchButtonSceneDinner(switchToDinner));
-        switchToDrinks.setOnAction(actionEvent -> menuDish.SwitchButtonSceneDrinks(switchToDrinks));
+        buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
+        buttonManager.setOnAction(actionEvent -> { SwitchButtonSceneManager(buttonManager); });
+        switchToBreakfast.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(switchToBreakfast));
+        switchToLunch.setOnAction(actionEvent -> SwitchButtonSceneLunch(switchToLunch));
+        switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));
+        switchToDrinks.setOnAction(actionEvent -> SwitchButtonSceneDrinks(switchToDrinks));
     }
     //tips call like Service charge
-    public void showPreviewOrderText(){
-        String text = "";
-        text = menuDish.getDishName() +  "  - - >  " + menuDish.getDishPrise() + "€" + " x " + menuDish.getAmountDish()
-                + " qt. = " + Double.parseDouble(menuDish.getAmountDish())*menuDish.getDishPrise() + "€";
-        menuPreviewOrder.setVisible(true);
-    }
+
 
 
 }

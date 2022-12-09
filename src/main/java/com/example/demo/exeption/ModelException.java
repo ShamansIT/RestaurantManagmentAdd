@@ -21,19 +21,6 @@ public class ModelException extends Throwable {
 
             default -> "";
         };
-//        return switch (code) {
-//            case TITLE_EMPTY -> Text.get("ERROR_TITLE_EMPTY");
-//            case IS_EXIST -> Text.get("ERROR_IS_EXIST");
-//            case DATE_FORMAT -> Text.get("ERROR_DATE_FORMAT");
-//            case CODE_EMPTY -> Text.get("ERROR_CODE_EMPTY");
-//            case CURRENCY_EMPTY -> Text.get("ERROR_CURRENCY_EMPTY");
-//            case ARTICLE_EMPTY -> Text.get("ERROR_ARTICLE_EMPTY");
-//            case ACCOUNT_EMPTY -> Text.get("ERROR_ACCOUNT_EMPTY");
-//            case RATE_INCORRECT -> Text.get("ERROR_RATE_INCORRECT");
-//            case AMOUNT_FORMAT -> Text.get("ERROR_AMOUNT_FORMAT");
-//            case NO_BASE_CURRENCY -> Text.get("ERROR_NO_BASE_CURRENCY");
-//            default -> "";
-//        };
 
     }
 

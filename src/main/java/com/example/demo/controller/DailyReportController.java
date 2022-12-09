@@ -1,14 +1,14 @@
 package com.example.demo.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 
-public class DailyReportController {
+public class DailyReportController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -26,14 +26,10 @@ public class DailyReportController {
     void initialize() {
 
 
-        SceneSwitchController switchController = new SceneSwitchController();
-        buttonDailyReportClose.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneManager(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+
+
+
+        buttonDailyReportClose.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonDailyReportClose));
 
     }
 

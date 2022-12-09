@@ -1,15 +1,11 @@
 package com.example.demo.data;
 
 import com.example.demo.model.MenuDish;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import static com.example.demo.data.Const.*;
-
-
 
 public class DataBaseHandler extends Configs{
     private boolean globalIsManager;

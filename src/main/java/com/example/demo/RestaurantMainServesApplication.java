@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.data.DataBaseProcessor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
