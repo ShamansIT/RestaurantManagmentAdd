@@ -87,7 +87,7 @@ public class CreateEmployeeController implements SceneSwitch {
     @FXML
     void initialize() throws SQLException {
         DataBaseHandler dataBaseHandler = new DataBaseHandler();
-        dataBaseHandler.loadOrderDataSQL();
+        //dataBaseHandler.loadOrderDataSQL();
 
         panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 

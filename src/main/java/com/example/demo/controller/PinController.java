@@ -14,7 +14,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PinController {
+public class PinController implements SceneSwitch{
 
     @FXML
     private AnchorPane panelBack;
@@ -111,7 +111,7 @@ public class PinController {
                     throw new RuntimeException(e);}
                 }
 
-            //check PIN access
+            //check PIN access. Change it to boolean
             String loginPIN = passwordPinField.getText().trim();
             int loginSendPin;
             DataBaseHandler dataBaseHandler = new DataBaseHandler();

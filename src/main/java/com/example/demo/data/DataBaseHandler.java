@@ -1,6 +1,5 @@
 package com.example.demo.data;
 
-import com.example.demo.model.MenuDish;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,30 +7,32 @@ import java.sql.SQLException;
 import static com.example.demo.data.Const.*;
 
 public class DataBaseHandler extends Configs{
-    private boolean globalIsManager;
-    public boolean getGlobalIsManager() {
-        return globalIsManager;
-    }
-    public void setGlobalIsManager(boolean globalIsManager) {
-        this.globalIsManager = globalIsManager;
-    }
+
+
+
+
+
+
+
+
+
 
     public int checkUserPin(int loginPin) throws SQLException{
         int checkPin = 0;
 
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
-
         String select = "SELECT * FROM demodata.userdata";
         PreparedStatement preparedStatement = connection.prepareStatement(select);
-
         ResultSet resultSet = preparedStatement.executeQuery();
+
         while(resultSet.next()){
             int pin = resultSet.getInt(1);
             String isManager = resultSet.getString(11);
             if (pin == loginPin){
                 checkPin = 1;
-                setGlobalIsManager(Boolean.parseBoolean(isManager));
+                //setGlobalIsManager(Boolean.parseBoolean(isManager));
+                //rope to class
             }
         }
         preparedStatement.close();
@@ -40,28 +41,28 @@ public class DataBaseHandler extends Configs{
     }
 
 
-    public MenuDish addDish(int buttonGet, String groupDish) throws SQLException{
-        MenuDish menuDish = new MenuDish();
-        String dishName = "";
-        double dishPrice = 0;
+//    public OrderControl checkIsManager( ) throws SQLException{
+//        OrderControl oc = new OrderControl();
+//        boolean isManager = false;
+//        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+//        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+//        String select = "SELECT * FROM demodata.userdata";
+//        PreparedStatement preparedStatement = connection.prepareStatement(select);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()){
+//           isManager = Boolean.parseBoolean(resultSet.getString(11));
+//        }
+//        oc.setIsManager(isManager);
+//        preparedStatement.close();
+//        connection.close();
+//        return oc;
+//    }
 
-        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
-        String select = "SELECT * FROM demodata.dish WHERE id = "+ buttonGet +" AND typedish = " + "\'"+ groupDish + "\'";
-        PreparedStatement preparedStatement = connection.prepareStatement(select);
-        ResultSet resultSet = preparedStatement.executeQuery();
 
-        while(resultSet.next()) {
-            dishName = resultSet.getString(2);
-            dishPrice = resultSet.getDouble(3);
-        }
-        
-        menuDish.setDishName(dishName);
-        menuDish.setDishPrise(dishPrice);
-        preparedStatement.close();
-        connection.close();
-        return menuDish;
-    }
+
+
+
 
 
     public void loadOrderDataSQL() throws SQLException {//rebuild

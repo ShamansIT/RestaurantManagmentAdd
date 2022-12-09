@@ -4,12 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 import static com.example.demo.model.Text.initText;
 
 public class RestaurantMainServesApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
         initText();
@@ -23,5 +23,6 @@ public class RestaurantMainServesApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
 
 }
