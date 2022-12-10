@@ -191,8 +191,8 @@ public class MenuBreakfastController implements SceneSwitch {
     public String setPreviewWindowText(){
         DecimalFormat dF = new DecimalFormat( "##.##" );
         String text = "";
-        text =  dish.getName() + "\t    "
-                + dish.getPrice() + " €" + "  x  " +getAmountDish() + " qt.\nPrice: - - - - - - - - - - "
+        text =  dish.getName() + "\n"
+                + dish.getPrice() + " €" + "  x  " +getAmountDish() + " qt.    ->    "
                 + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €" + "\n\n";
         return text;
     }
@@ -292,13 +292,23 @@ public class MenuBreakfastController implements SceneSwitch {
             setOrderWindowText(getOrderWindowText() + setPreviewWindowText());
             texrOrderLeft.setText(getOrderWindowText());
             showOffLineText();
+            if(getNumberAmount()>10) {
+                buttonCheckOrderField.setText("CHECK QUANTITY");
+                buttonCheckOrderField.setVisible(true);
+            }
             addDishGroup.selectToggle(null);
             setAmountRefresh();
         });
 
+        buttonCheckOrderField.setOnAction(actionEvent ->{
+            buttonCheckOrderField.setVisible(false);
+        });
+
+
         clearList.setOnAction(actionEvent -> {
             setOrderWindowText("");
             texrOrderLeft.setText(getOrderWindowText());
+            buttonCheckOrderField.setVisible(false);
             setAmountRefresh();
         });
 
