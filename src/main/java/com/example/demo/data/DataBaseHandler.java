@@ -8,15 +8,6 @@ import static com.example.demo.data.Const.*;
 
 public class DataBaseHandler extends Configs{
 
-
-
-
-
-
-
-
-
-
     public int checkUserPin(int loginPin) throws SQLException{
         int checkPin = 0;
 
@@ -41,8 +32,8 @@ public class DataBaseHandler extends Configs{
     }
 
 
-//    public OrderControl checkIsManager( ) throws SQLException{
-//        OrderControl oc = new OrderControl();
+//    public void checkIsManager( ) throws SQLException{
+//
 //        boolean isManager = false;
 //        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
 //        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
@@ -53,7 +44,7 @@ public class DataBaseHandler extends Configs{
 //        while(resultSet.next()){
 //           isManager = Boolean.parseBoolean(resultSet.getString(11));
 //        }
-//        oc.setIsManager(isManager);
+//        setIsManager(isManager);
 //        preparedStatement.close();
 //        connection.close();
 //        return oc;

@@ -1,0 +1,65 @@
+EGGS   - - >   2.5€   x  2 qt.  =  5.00 €
+
+    public void setPreviewOrderText(){
+        System.out.println("call setPreviewOrderText");
+        String text = "";
+        text = getDishName() +  "  - - >  " + getDishPrise() + "€" + " x " + getAmountDish()
+                + " qt. = " + Double.parseDouble(getAmountDish())*getDishPrise() + "€";
+        setLineOrderText(text);
+    }
+
+
+        public void addToOrder(){
+
+            setAmountDish("1");
+        }
+
+
+
+    public void setAmountDishPlus(String menuFieldAmountDish){
+            numberAmount = Integer.parseInt(menuFieldAmountDish);
+            numberAmount ++;
+            amountDish = Integer.toString(numberAmount);
+            setAmountDish(String.valueOf(numberAmount));
+    }
+    public void setAmountDishMinus(String menuFieldAmountDish){
+        numberAmount = Integer.parseInt(menuFieldAmountDish);
+        if (numberAmount > 1) numberAmount --;
+        amountDish = Integer.toString(numberAmount);
+        setAmountDish(String.valueOf(numberAmount));
+    }
+
+
+
+        buttonAmountPlus.setOnAction(actionEvent -> {
+            orderControl.setAmountDishPlus(menuFieldAmountDish.getText());
+            menuFieldAmountDish.setText(orderControl.getAmountDish());
+        });
+
+        buttonAmountMinus.setOnAction(actionEvent -> {
+            orderControl.setAmountDishMinus(menuFieldAmountDish.getText());
+            menuFieldAmountDish.setText(orderControl.getAmountDish());
+        });
+
+
+//    private void loadDishLine(int dishNum, String groupDish) throws SQLException {
+//        String dishName = "";
+//        double dishPrice = 0;
+//
+//
+//        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+//        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+//        String select = "SELECT * FROM demodata.dish WHERE id = "+ dishNum +
+//                " AND typedish = " + "\'"+ groupDish + "\'";
+//        PreparedStatement preparedStatement = connection.prepareStatement(select);
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//
+//        while(resultSet.next()) {
+//            dishName = resultSet.getString(2);
+//            dishPrice = resultSet.getDouble(3);
+//        }
+//        setDishName(dishName);
+//        setDishPrice(dishPrice);
+//        preparedStatement.close();
+//        connection.close();
+//    }

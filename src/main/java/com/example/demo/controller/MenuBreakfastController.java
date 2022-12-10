@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import com.example.demo.data.DataBaseService;
-import com.example.demo.data.DishLoader;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class MenuBreakfastController implements SceneSwitch {
@@ -64,10 +64,13 @@ public class MenuBreakfastController implements SceneSwitch {
     private Button buttonManager;
 
     @FXML
-    private Button buttonRemoveLastFromList;
+    private CheckBox checkLessFivePerson;
 
     @FXML
-    private CheckBox checkLessFivePerson;
+    private Button clearList;
+
+    @FXML
+    private AnchorPane leftFieldOrder;
 
     @FXML
     private TextField menuFieldAmountDish;
@@ -88,10 +91,16 @@ public class MenuBreakfastController implements SceneSwitch {
     private Button switchToLunch;
 
     @FXML
+    private Text texrOrderLeft;
+
+    @FXML
     private Text textNumOfClient;
 
     @FXML
     private Text textOrderInfo;
+
+    @FXML
+    private Text textOrerLeft;
 
     @FXML
     private Text textTableNumber;
@@ -128,13 +137,17 @@ public class MenuBreakfastController implements SceneSwitch {
 
     @FXML
     private ToggleButton toggleTable39;
-
     private int numberAmount=1;
     private String amountDish = "1";
+    private String orderWindowText = "";
+
+
+    public String getOrderWindowText() { return orderWindowText; }
+    public void setOrderWindowText(String orderWindowText) { this.orderWindowText = orderWindowText; }
+
     public int getNumberAmount() {
         return numberAmount;
     }
-
     public void setNumberAmount(int numberAmount) {
         this.numberAmount = numberAmount;
     }
@@ -142,7 +155,6 @@ public class MenuBreakfastController implements SceneSwitch {
     public String getAmountDish() {
         return amountDish;
     }
-
     public void setAmountDish(String amountDish) {
         this.amountDish = amountDish;
     }
@@ -171,10 +183,20 @@ public class MenuBreakfastController implements SceneSwitch {
         DecimalFormat dF = new DecimalFormat( "##.##" );
 
         String text = "";
-        text = dish.getName() +  "  - - >  " + dish.getPrice() + " €" + " x " +getAmountDish()
-                + " qt. = " + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €";
+        text = dish.getName() +  "   >>>   " + dish.getPrice() + " €" + " x " +getAmountDish()
+                + " qt.   >>>   Total: " + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €";
         return text;
     }
+
+    public String setPreviewWindowText(){
+        DecimalFormat dF = new DecimalFormat( "##.##" );
+        String text = "";
+        text =  dish.getName() + "\t    "
+                + dish.getPrice() + " €" + "  x  " +getAmountDish() + " qt.\nPrice: - - - - - - - - - - "
+                + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €" + "\n\n";
+        return text;
+    }
+
 
     public void setAmountRefresh(){
         setAmountDish(Integer.toString(1));
@@ -195,7 +217,7 @@ public class MenuBreakfastController implements SceneSwitch {
     }
 
     DataBaseService dataBaseService = new DataBaseService();
-    DishLoader dish = dataBaseService.getDish();
+    DishHeadController dish = dataBaseService.getDish();
 
     @FXML
     void initialize() {
@@ -266,12 +288,20 @@ public class MenuBreakfastController implements SceneSwitch {
             showLineText();
         });
 
-
         buttonAddToOrder.setOnAction(actionEvent ->{
-            setAmountRefresh();
-
+            setOrderWindowText(getOrderWindowText() + setPreviewWindowText());
+            texrOrderLeft.setText(getOrderWindowText());
             showOffLineText();
+            addDishGroup.selectToggle(null);
+            setAmountRefresh();
         });
+
+        clearList.setOnAction(actionEvent -> {
+            setOrderWindowText("");
+            texrOrderLeft.setText(getOrderWindowText());
+            setAmountRefresh();
+        });
+
 
         buttonAmountPlus.setOnAction(actionEvent -> {
             setAmountDishPlus();
@@ -282,8 +312,6 @@ public class MenuBreakfastController implements SceneSwitch {
             setAmountDishMinus();
             menuPreviewOrder.setText(setPreviewOrderText());
         });
-
-
 
         buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
         buttonManager.setOnAction(actionEvent -> { SwitchButtonSceneManager(buttonManager); });

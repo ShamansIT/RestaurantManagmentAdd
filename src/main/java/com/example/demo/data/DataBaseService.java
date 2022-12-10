@@ -1,13 +1,15 @@
 package com.example.demo.data;
 
+import com.example.demo.controller.DishHeadController;
+
 public class DataBaseService {
-    private DishLoader dish;
+    private DishHeadController dish;
 
     public DataBaseService() {
     }
 
-    public DishLoader getDish() {
-        this.dish = new DishLoader();
+    public DishHeadController getDish() {
+        this.dish = new DishHeadController();
         return this.dish;
     }
 

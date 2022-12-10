@@ -1,16 +1,37 @@
-package com.example.demo.data;
+package com.example.demo.controller;
+
+import com.example.demo.data.Configs;
+import com.example.demo.data.DataBaseProcessor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class DishLoader extends Configs {
+public class DishHeadController extends Configs {
     private int id;
     private double price;
     private String name;
+    private boolean isManager;
+    private int tableNumber;
+    public boolean isManager() {
+        return isManager;
+    }
+    public void setManager(boolean manager) {
+        isManager = manager;
+    }
+    public int getTableNumber() {
+        return tableNumber;
+    }
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
+    }
 
-    public DishLoader() {
+
+    public DishHeadController() {
     }
 
     public int getId() {
@@ -59,6 +80,35 @@ public class DishLoader extends Configs {
         setPrice(dishPrice);
         preparedStatement.close();
         connection.close();
+    }
+
+    public void listToOrder(){
+
+        List<Integer> orderTo= new LinkedList<>();
+        orderTo.add(11111);
+        orderTo.add(22222);
+        orderTo.add(33333);
+        orderTo.add(44444);
+        orderTo.add(55555);
+
+        System.out.println(orderTo);
+
+
+
+
+//        addFirst() / offerFirst(): добавляет элемент в начало списка
+//
+//        addLast() / offerLast(): добавляет элемент в конец списка
+//
+//        removeFirst() / pollFirst(): удаляет первый элемент из начала списка
+//
+//        removeLast() / pollLast(): удаляет последний элемент из конца списка
+//
+//        getFirst() / peekFirst(): получает первый элемент
+//
+//        getLast() / peekLast(): получает последний элемент
+
+
     }
 
 }
