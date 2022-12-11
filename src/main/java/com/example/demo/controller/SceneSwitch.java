@@ -67,5 +67,4 @@ public interface SceneSwitch {
             }
         });
     }
-
 }

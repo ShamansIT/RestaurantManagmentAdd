@@ -16,18 +16,12 @@
 	-fx-background-color: linear-gradient(#BBDEE9, #8EB4C1);
 }
 
-
 .colorDarkBlueFront{
 	-fx-text-fill:#0f5169;
 }
 
 .colorBackCenter{
 	-fx-background-color: #70B1CC;
-}
-
-
-.buttonMenuFoodActive:hover{
-	-fx-background-color:#BADDE7;	
 }
 
 .textFild{
@@ -37,11 +31,20 @@
 	-fx-border-radius: 7;
 	-fx-text-fill:#FFFFFF;	
 	-fx-font-size:18;
-	
 }
 
 .buttonMenuFoodActive:hover{
 	-fx-background-color:#BADDE7;	
+}
+
+.buttonMenuFoodActive:hover{
+	-fx-background-color:#BADDE7;	
+}
+
+.buttonMenuFoodActive:pressed
+{
+     -fx-padding: 10 15 13 15;
+     -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
 }
 
 .buttonNavigationActive{
@@ -73,6 +76,14 @@
 	-fx-background-color:#33CC66;	
 }
 
+
+.buttonGreen:pressed
+{
+     -fx-padding: 10 15 13 15;
+     -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+
 .buttonOrange{
 	-fx-background-color:#FF6600;
 	-fx-border-color: #FFFFFF;
@@ -80,9 +91,23 @@
 	-fx-border-radius: 7;
 	-fx-text-fill:#FFFFFF;
 	-fx-font-size:21;
-
 }
 
 .buttonOrange:hover{
 	-fx-background-color:#33CC66;
 }
+
+.buttonOrange:pressed
+{
+     -fx-padding: 10 15 13 15;
+     -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+}
+
+
+
+ 
+
+ 
+
+
+

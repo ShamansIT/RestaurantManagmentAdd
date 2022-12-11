@@ -8,9 +8,11 @@ import com.example.demo.data.DataBaseService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class MenuBreakfastController implements SceneSwitch {
+public class MenuBreakfastController extends DishHeadController implements SceneSwitch {
+
 
     @FXML
     private ResourceBundle resources;
@@ -91,19 +93,22 @@ public class MenuBreakfastController implements SceneSwitch {
     private Button switchToLunch;
 
     @FXML
-    private Text texrOrderLeft;
-
-    @FXML
     private Text textNumOfClient;
 
     @FXML
     private Text textOrderInfo;
 
     @FXML
-    private Text textOrerLeft;
+    private Text textOrderLeft;
 
     @FXML
     private Text textTableNumber;
+
+    @FXML
+    private Text textTotalPrice;
+
+    @FXML
+    private Text tipsService;
 
     @FXML
     private ToggleButton toggleTable11;
@@ -137,78 +142,27 @@ public class MenuBreakfastController implements SceneSwitch {
 
     @FXML
     private ToggleButton toggleTable39;
-    private int numberAmount=1;
-    private String amountDish = "1";
-    private String orderWindowText = "";
-
-
-    public String getOrderWindowText() { return orderWindowText; }
-    public void setOrderWindowText(String orderWindowText) { this.orderWindowText = orderWindowText; }
-
-    public int getNumberAmount() {
-        return numberAmount;
-    }
-    public void setNumberAmount(int numberAmount) {
-        this.numberAmount = numberAmount;
-    }
-
-    public String getAmountDish() {
-        return amountDish;
-    }
-    public void setAmountDish(String amountDish) {
-        this.amountDish = amountDish;
-    }
-
-
-
-    private void showError(String error){
-        buttonCheckOrderField.setVisible(true);
-        buttonCheckOrderField.setText(error);
-        buttonCheckOrderField.setVisible(true);
-    }
-    private void hideError(){
-        buttonCheckOrderField.setVisible(false);
-        buttonCheckOrderField.setVisible(false);
-    }
 
     private void showLineText(){
         menuPreviewOrder.setVisible(true);
     }
-
     private void showOffLineText(){
         menuPreviewOrder.setVisible(false);
     }
 
-    public String setPreviewOrderText(){
-        DecimalFormat dF = new DecimalFormat( "##.##" );
-
-        String text = "";
-        text = dish.getName() +  "   >>>   " + dish.getPrice() + " €" + " x " +getAmountDish()
-                + " qt.   >>>   Total: " + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €";
-        return text;
-    }
-
-    public String setPreviewWindowText(){
-        DecimalFormat dF = new DecimalFormat( "##.##" );
-        String text = "";
-        text =  dish.getName() + "\n"
-                + dish.getPrice() + " €" + "  x  " +getAmountDish() + " qt.    ->    "
-                + dF.format(Double.parseDouble(getAmountDish()) * dish.getPrice()) + " €" + "\n\n";
-        return text;
-    }
-
-
-    public void setAmountRefresh(){
+    private void setAmountRefresh(){
         setAmountDish(Integer.toString(1));
         menuFieldAmountDish.setText("1");
     }
-    public void setAmountDishPlus(){
+
+    private void setAmountDishPlus(){
         setNumberAmount(Integer.parseInt(menuFieldAmountDish.getText()));
         setNumberAmount(getNumberAmount()+1);
         setAmountDish(Integer.toString(getNumberAmount()));
         menuFieldAmountDish.setText(String.valueOf(getNumberAmount()));
     }
-    public void setAmountDishMinus(){
+
+   private void setAmountDishMinus(){
         setNumberAmount(Integer.parseInt(menuFieldAmountDish.getText()));
         if (getNumberAmount() > 1)
             setNumberAmount(getNumberAmount()-1);
@@ -216,11 +170,23 @@ public class MenuBreakfastController implements SceneSwitch {
         menuFieldAmountDish.setText(String.valueOf(getNumberAmount()));
     }
 
-    DataBaseService dataBaseService = new DataBaseService();
-    DishHeadController dish = dataBaseService.getDish();
+    private void refreshTipsInfo(){
+        if (checkLessFivePerson.isSelected()){
+            setTipsOver(0.1);
+            tipsService.setVisible(true);
+            tipsService.setText(setTips());
+            textTotalPrice.setText(setTotalPricePlusTips());
+        } else { setTipsOver(0);
+            tipsService.setVisible(false);
+            textTotalPrice.setText(setTotalPriceText());
+        }
+    }
 
     @FXML
     void initialize() {
+
+        // view list order if it exists
+
         ToggleGroup toggleTable = new ToggleGroup();
         toggleTable11.setToggleGroup(toggleTable);
         toggleTable12.setToggleGroup(toggleTable);
@@ -234,17 +200,21 @@ public class MenuBreakfastController implements SceneSwitch {
         toggleTable38.setToggleGroup(toggleTable);
         toggleTable39.setToggleGroup(toggleTable);
 
-//        toggleTable11.setOnAction(actionEvent ->{ orderControl.setTableNumber(11); });
-//        toggleTable12.setOnAction(actionEvent ->{ orderControl.setTableNumber(12); });
-//        toggleTable13.setOnAction(actionEvent ->{ orderControl.setTableNumber(13); });
-//        toggleTable14.setOnAction(actionEvent ->{ orderControl.setTableNumber(14); });
-//        toggleTable15.setOnAction(actionEvent ->{ orderControl.setTableNumber(15); });
-//        toggleTable16.setOnAction(actionEvent ->{ orderControl.setTableNumber(16); });
-//        toggleTable20.setOnAction(actionEvent ->{ orderControl.setTableNumber(20); });
-//        toggleTable36.setOnAction(actionEvent ->{ orderControl.setTableNumber(36); });
-//        toggleTable37.setOnAction(actionEvent ->{ orderControl.setTableNumber(37); });
-//        toggleTable38.setOnAction(actionEvent ->{ orderControl.setTableNumber(38); });
-//        toggleTable39.setOnAction(actionEvent ->{ orderControl.setTableNumber(39); });
+        // add toggle select light
+
+
+        toggleTable11.setOnAction(actionEvent ->{ setTableNumber(11); });
+
+        toggleTable12.setOnAction(actionEvent ->{ setTableNumber(12); });
+        toggleTable13.setOnAction(actionEvent ->{ setTableNumber(13); });
+        toggleTable14.setOnAction(actionEvent ->{ setTableNumber(14); });
+        toggleTable15.setOnAction(actionEvent ->{ setTableNumber(15); });
+        toggleTable16.setOnAction(actionEvent ->{ setTableNumber(16); });
+        toggleTable20.setOnAction(actionEvent ->{ setTableNumber(20); });
+        toggleTable36.setOnAction(actionEvent ->{ setTableNumber(36); });
+        toggleTable37.setOnAction(actionEvent ->{ setTableNumber(37); });
+        toggleTable38.setOnAction(actionEvent ->{ setTableNumber(38); });
+        toggleTable39.setOnAction(actionEvent ->{ setTableNumber(39); });
 
         ToggleGroup addDishGroup = new ToggleGroup();
         addDish1.setToggleGroup(addDishGroup);
@@ -258,59 +228,86 @@ public class MenuBreakfastController implements SceneSwitch {
 
         addDish1.setOnAction(actionEvent ->{
             setAmountRefresh();
-            try { dish.loadDishLine(1,"breakfast"); } catch (SQLException e) {
+            try { loadDishLine(1,"breakfast"); } catch (SQLException e) {
                 throw new RuntimeException(e); }
+            buttonCheckOrderField.setVisible(false);
             menuPreviewOrder.setText(setPreviewOrderText());
             showLineText();
         });
 
         addDish2.setOnAction(actionEvent ->{
             setAmountRefresh();
-            try { dish.loadDishLine(2,"breakfast"); } catch (SQLException e) {
+            try { loadDishLine(2,"breakfast"); } catch (SQLException e) {
                 throw new RuntimeException(e); }
+            buttonCheckOrderField.setVisible(false);
             menuPreviewOrder.setText(setPreviewOrderText());
             showLineText();
         });
 
         addDish3.setOnAction(actionEvent ->{
             setAmountRefresh();
-            try { dish.loadDishLine(3,"breakfast"); } catch (SQLException e) {
+            try { loadDishLine(3,"breakfast"); } catch (SQLException e) {
                 throw new RuntimeException(e); }
+            buttonCheckOrderField.setVisible(false);
             menuPreviewOrder.setText(setPreviewOrderText());
             showLineText();
         });
 
         addDish4.setOnAction(actionEvent ->{
             setAmountRefresh();
-            try { dish.loadDishLine(4,"breakfast"); } catch (SQLException e) {
+            try { loadDishLine(4,"breakfast"); } catch (SQLException e) {
                 throw new RuntimeException(e); }
+            buttonCheckOrderField.setVisible(false);
             menuPreviewOrder.setText(setPreviewOrderText());
             showLineText();
         });
 
         buttonAddToOrder.setOnAction(actionEvent ->{
-            setOrderWindowText(getOrderWindowText() + setPreviewWindowText());
-            texrOrderLeft.setText(getOrderWindowText());
-            showOffLineText();
-            if(getNumberAmount()>10) {
-                buttonCheckOrderField.setText("CHECK QUANTITY");
+            if(getName() == null) {
+                buttonCheckOrderField.setText("PICK DISH");
                 buttonCheckOrderField.setVisible(true);
             }
-            addDishGroup.selectToggle(null);
-            setAmountRefresh();
+            else{
+                    setOrderWindowText(getOrderWindowText() + setPreviewWindowText());
+                    textOrderLeft.setText(getOrderWindowText());
+                    showOffLineText();
+                    if(getNumberAmount()>10) {
+                        buttonCheckOrderField.setText("CHECK QUANTITY");
+                        buttonCheckOrderField.setVisible(true);
+                    }
+
+                    setTotalPrice(countTotalPrice());
+                    refreshTipsInfo();
+                    textTotalPrice.setVisible(true);
+                    textTotalPrice.setText(setTotalPriceText());
+                    addDishGroup.selectToggle(null);
+                    setAmountRefresh();
+                    prepareStringToList();
+                }
+        });
+
+        checkLessFivePerson.setOnAction(actionEvent -> {
+            refreshTipsInfo();
         });
 
         buttonCheckOrderField.setOnAction(actionEvent ->{
             buttonCheckOrderField.setVisible(false);
         });
 
-
         clearList.setOnAction(actionEvent -> {
             setOrderWindowText("");
-            texrOrderLeft.setText(getOrderWindowText());
+            setTotalPrice(0);
+            textTotalPrice.setText("");
+            textOrderLeft.setText(getOrderWindowText());
+            tipsService.setVisible(false);
             buttonCheckOrderField.setVisible(false);
             setAmountRefresh();
         });
+
+        buttonCompleteOrder.setOnAction(actionEvent -> {
+
+        });
+
 
 
         buttonAmountPlus.setOnAction(actionEvent -> {
@@ -324,24 +321,14 @@ public class MenuBreakfastController implements SceneSwitch {
         });
 
         buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
-        buttonManager.setOnAction(actionEvent -> { SwitchButtonSceneManager(buttonManager); });
+        buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
         switchToBreakfast.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(switchToBreakfast));
         switchToLunch.setOnAction(actionEvent -> SwitchButtonSceneLunch(switchToLunch));
         switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));
         switchToDrinks.setOnAction(actionEvent -> SwitchButtonSceneDrinks(switchToDrinks));
 
-//        buttonCompleteOrder.setOnAction();
-//        buttonRadioMoreThanSixPerson.fire();
-//        buttonRemoveLastFromList.setOnAction();
-
+//
     }
-    //tips call like Service charge
-
-
-
-
-
-
 
 
 }

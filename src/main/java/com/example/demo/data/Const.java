@@ -23,14 +23,16 @@ public class Const {
     public static final String USER_ISMANAGER = "user_ismanager";
 
 
-    public static final String ORDER_ID = "orders_id";
-    public static final String ORDER_QUERY = "SELECT * FROM demodata.orders";
+    public static final String ORDER_NAME = "`demodata`.`orders`";
+    public static final String ORDER_ID = "`orders_id`";
     public static final String ORDER_NUMBER = "orders_number";
-    public static final String ORDER_TABLE = "orders_table";
-    public static final String ORDER_DISH = "orders_dish";
-    public static final String ORDER_PRICE = "orders_prise";
-    public static final String ORDER_AMOUNT = "orders_amount";
-
+    public static final String ORDER_TABLE = "`orders_table`";
+    public static final String ORDER_DISH = "`orders_dish`";
+    public static final String ORDER_PRICE = "`orders_price`";
+    public static final String ORDER_AMOUNT = "`orders_amount`";
+    public static final String ORDER_COUNT = "`orders_total`";
+    public static final String ORDER_SERVICE = "`orders_service`";
+    public static final String ORDER_QUERY = "SELECT * FROM `demodata`.`orders`";
 
 
     public static final String DISH_ID = "dish_id";
