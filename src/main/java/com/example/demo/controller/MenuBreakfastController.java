@@ -321,6 +321,11 @@ public class MenuBreakfastController extends DishHeadController implements Scene
 
         buttonCompleteOrder.setOnAction(actionEvent -> {
             prepareOrderEndStringToList();
+            try {
+                exportReportToSQL();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             try { exportOrderToSQL();
             } catch (SQLException e) { throw new RuntimeException(e);
             }

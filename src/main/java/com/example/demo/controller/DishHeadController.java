@@ -229,7 +229,6 @@ public class DishHeadController extends Configs {
                     + Const.ORDER_AMOUNT + ", "
                     + Const.ORDER_COUNT + ", "
                     + Const.ORDER_SERVICE + ") VALUES"  + s;
-            System.out.println(orderQuery);
             PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
             preparedStatement.executeUpdate(orderQuery);
             preparedStatement.close();
@@ -237,6 +236,27 @@ public class DishHeadController extends Configs {
         connection.close();
         clearOrderStringToList();
         setOrderId(getOrderId()+1);
+    }
+
+    public void exportReportToSQL() throws SQLException {
+        String orderQuery = "";
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        for (String s : orderString) {
+            orderQuery = "INSERT INTO "
+                    + Const.REPORT_NAME +
+                    "(" + Const.REPORT_ID + ", "
+                    + Const.REPORT_TABLE + ", "
+                    + Const.REPORT_DISH + ", "
+                    + Const.REPORT_PRICE + ", "
+                    + Const.REPORT_AMOUNT + ", "
+                    + Const.REPORT_COUNT + ", "
+                    + Const.REPORT_SERVICE + ") VALUES"  + s;
+            PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+            preparedStatement.executeUpdate(orderQuery);
+            preparedStatement.close();
+        }
+        connection.close();
     }
 
 }
