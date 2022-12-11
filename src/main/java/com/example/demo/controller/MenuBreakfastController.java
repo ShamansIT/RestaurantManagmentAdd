@@ -1,18 +1,14 @@
 package com.example.demo.controller;
 
-import java.net.URL;
-import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.util.ResourceBundle;
-import com.example.demo.data.DataBaseService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class MenuBreakfastController extends DishHeadController implements SceneSwitch {
-
 
     @FXML
     private ResourceBundle resources;
@@ -171,16 +167,37 @@ public class MenuBreakfastController extends DishHeadController implements Scene
     }
 
     private void refreshTipsInfo(){
-        if (checkLessFivePerson.isSelected()){
-            setTipsOver(0.1);
-            tipsService.setVisible(true);
-            tipsService.setText(setTips());
-            textTotalPrice.setText(setTotalPricePlusTips());
-        } else { setTipsOver(0);
+        if(getTotalPrice() == 0){
             tipsService.setVisible(false);
-            textTotalPrice.setText(setTotalPriceText());
+        }
+        else {
+            if (checkLessFivePerson.isSelected()) {
+                setIsService(true);
+                setTipsOver(0.1);
+                tipsService.setText(setTips());
+                tipsService.setVisible(true);
+                textTotalPrice.setText(setTotalPricePlusTips());
+            } else {
+                setIsService(false);
+                setTipsOver(0);
+                tipsService.setVisible(false);
+                textTotalPrice.setText(setTotalPriceText());
+            }
         }
     }
+
+
+//    private double menuTotalPrice = getTotalPrice();
+//    private void initFieldOnStart(){
+//        if(getOrderWindowText() != null){
+//            textTotalPrice.setText(setTotalPriceText());
+//            textOrderLeft.setText(getOrderWindowText());
+//            refreshTipsInfo();
+//            setAmountRefresh();
+//            textTotalPrice.setVisible(true);
+//            textOrderLeft.setVisible(true);
+//        }
+//    }
 
     @FXML
     void initialize() {
@@ -202,9 +219,7 @@ public class MenuBreakfastController extends DishHeadController implements Scene
 
         // add toggle select light
 
-
         toggleTable11.setOnAction(actionEvent ->{ setTableNumber(11); });
-
         toggleTable12.setOnAction(actionEvent ->{ setTableNumber(12); });
         toggleTable13.setOnAction(actionEvent ->{ setTableNumber(13); });
         toggleTable14.setOnAction(actionEvent ->{ setTableNumber(14); });
@@ -275,14 +290,13 @@ public class MenuBreakfastController extends DishHeadController implements Scene
                         buttonCheckOrderField.setText("CHECK QUANTITY");
                         buttonCheckOrderField.setVisible(true);
                     }
-
                     setTotalPrice(countTotalPrice());
                     refreshTipsInfo();
                     textTotalPrice.setVisible(true);
                     textTotalPrice.setText(setTotalPriceText());
                     addDishGroup.selectToggle(null);
                     setAmountRefresh();
-                    prepareStringToList();
+                    prepareOrderStringToList();
                 }
         });
 
@@ -302,13 +316,16 @@ public class MenuBreakfastController extends DishHeadController implements Scene
             tipsService.setVisible(false);
             buttonCheckOrderField.setVisible(false);
             setAmountRefresh();
+            clearOrderStringToList();
         });
 
         buttonCompleteOrder.setOnAction(actionEvent -> {
-
+            prepareOrderEndStringToList();
+            try { exportOrderToSQL();
+            } catch (SQLException e) { throw new RuntimeException(e);
+            }
+            clearOrderStringToList();
         });
-
-
 
         buttonAmountPlus.setOnAction(actionEvent -> {
             setAmountDishPlus();
@@ -326,10 +343,6 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         switchToLunch.setOnAction(actionEvent -> SwitchButtonSceneLunch(switchToLunch));
         switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));
         switchToDrinks.setOnAction(actionEvent -> SwitchButtonSceneDrinks(switchToDrinks));
-
-//
     }
-
-
 }
 

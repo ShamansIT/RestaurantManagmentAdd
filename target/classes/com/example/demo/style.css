@@ -9,7 +9,7 @@
 .gradientDarkBackgroundText{
 	-fx-background-color: linear-gradient(#3F6276, #0F3447);
 	-fx-text-fill:#FFFFFF;	
-	-fx-font-size:14#;
+	-fx-font-size:14;
 }
 
 .gradientGreyField{

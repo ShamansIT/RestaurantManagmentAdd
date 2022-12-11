@@ -27,10 +27,6 @@ public class ManagementController implements SceneSwitch {
     @FXML
     void initialize() {
 
-
-
-
-
         SceneSwitchController switchController = new SceneSwitchController();
         buttonCloseManagement.setOnAction(actionEvent -> {
             try {

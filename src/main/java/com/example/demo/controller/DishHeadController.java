@@ -21,48 +21,79 @@ public class DishHeadController extends Configs {
     private String orderWindowText = "";
     private double tipsOver = 0;
     private int orderId = 1;
+    private boolean isService = false;
 
-    public int getOrderId() { return orderId; }
-    public void setOrderId(int orderId) { this.orderId = orderId; }
-    public double getTipsOver() { return tipsOver; }
-    public void setTipsOver(double tipsOver) { this.tipsOver = tipsOver; }
-    public double getTotalPrice() { return totalPrice; }
-    public void setTotalPrice(double totalPrice) { this.totalPrice = totalPrice; }
-    public boolean isManager() {
+    public boolean getIsService() {
+        return isService;
+    }
+    public void setIsService(boolean service) {
+        isService = service;
+    }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public double getPrice() {
+        return price;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public boolean getIsManager() {
         return isManager;
     }
-    public void setManager(boolean manager) {
+    public void setIsManager(boolean manager) {
         isManager = manager;
     }
     public int getTableNumber() {
         return tableNumber;
     }
-    public void setTableNumber(int tableNumber) { this.tableNumber = tableNumber; }
-    public int getId() {
-        return this.id;
+    public void setTableNumber(int tableNumber) {
+        this.tableNumber = tableNumber;
     }
-    public void setId(int id) {
-        this.id = id;
+    public double getTotalPrice() {
+        return totalPrice;
     }
-    public double getPrice() { return this.price; }
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
-    public String getName() {
-        return this.name;
+    public int getNumberAmount() {
+        return numberAmount;
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getOrderWindowText() { return orderWindowText; }
-    public void setOrderWindowText(String orderWindowText) { this.orderWindowText = orderWindowText; }
-    public int getNumberAmount() { return numberAmount; }
     public void setNumberAmount(int numberAmount) {
         this.numberAmount = numberAmount;
     }
-    public String getAmountDish() { return amountDish; }
+    public String getAmountDish() {
+        return amountDish;
+    }
     public void setAmountDish(String amountDish) {
         this.amountDish = amountDish;
+    }
+    public String getOrderWindowText() {
+        return orderWindowText;
+    }
+    public void setOrderWindowText(String orderWindowText) {
+        this.orderWindowText = orderWindowText;
+    }
+    public double getTipsOver() {
+        return tipsOver;
+    }
+    public void setTipsOver(double tipsOver) {
+        this.tipsOver = tipsOver;
+    }
+    public int getOrderId() {
+        return orderId;
+    }
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     @Override
@@ -71,8 +102,15 @@ public class DishHeadController extends Configs {
                 "id=" + id +
                 ", price=" + price +
                 ", name='" + name + '\'' +
+                ", isManager=" + isManager +
                 ", tableNumber=" + tableNumber +
                 ", totalPrice=" + totalPrice +
+                ", numberAmount=" + numberAmount +
+                ", amountDish='" + amountDish + '\'' +
+                ", orderWindowText='" + orderWindowText + '\'' +
+                ", tipsOver=" + tipsOver +
+                ", orderId=" + orderId +
+                ", isService=" + isService +
                 '}';
     }
 
@@ -80,13 +118,10 @@ public class DishHeadController extends Configs {
     DecimalFormat dF = new DecimalFormat( "##.##" );
 
     public double countTotalPrice(){
-
         double count = 0;
-        count = Double.parseDouble(dF.format(Double.parseDouble(String.valueOf(getTotalPrice())) +
-                (Double.parseDouble(String.valueOf(getPrice()))*getTipsOver())));
+        count = getTotalPrice() + getPrice()*getNumberAmount() + getPrice()*getNumberAmount()*getTipsOver();
         return count;
     }
-
 
     public String setPreviewOrderText(){
         String text = "";
@@ -144,69 +179,64 @@ public class DishHeadController extends Configs {
     }
 
     ArrayList<String> orderString= new ArrayList<>();
-    public void prepareStringToList(){
-        String format = prepareListToExport();
+    public void prepareOrderStringToList(){
+        String format = prepareOrderListToExport();
         orderString.add(format);
     }
 
-    public String prepareListToExport(){
-        DecimalFormat dF = new DecimalFormat( "##.##" );
-        return "INSERT INTO "
-                + Const.ORDER_NAME + " ("
-                + Const.ORDER_ID + ", "
-                + Const.ORDER_TABLE + ", "
-                + Const.ORDER_DISH + ", "
-                + Const.ORDER_PRICE + ", "
-                + Const.ORDER_AMOUNT + ", "
-                + Const.ORDER_COUNT + ", "
-                + Const.ORDER_SERVICE + ") VALUES (" + "'"
+    public void prepareOrderEndStringToList(){
+        String format = prepareOrderLineCloseOrder();
+        orderString.add(format);
+    }
+
+    public void clearOrderStringToList(){
+        orderString.clear();
+    }
+
+    public String prepareOrderListToExport(){
+        return  "("+ "'"
                 + orderId + "', '"
                 + tableNumber + "', '"
                 + name + "', '"
                 + price + "', '"
                 + amountDish + "', '"
-                + dF.format( Double.parseDouble(getAmountDish()) * getPrice()) + "' ,'"
-                + dF.format(Double.parseDouble(String.valueOf(getTotalPrice()))*getTipsOver()) + "');";
+                + dF.format( Double.parseDouble(getAmountDish()) * getPrice()) + "', '"
+                + "null" + "');";
+    }
+
+    public String prepareOrderLineCloseOrder(){
+        return  " (" + "'"
+                + orderId + "', '"
+                + tableNumber + "', '"
+                + "END" + "', '"
+                + "0"+ "', '"
+                + "0" + "', '"
+                + totalPrice  + "', '"
+                + isService + "');";
     }
 
     public void exportOrderToSQL() throws SQLException {
+        String orderQuery = "";
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
-
+        for (String s : orderString) {
+            orderQuery = "INSERT INTO "
+                    + Const.ORDER_NAME +
+                    "(" + Const.ORDER_ID + ", "
+                    + Const.ORDER_TABLE + ", "
+                    + Const.ORDER_DISH + ", "
+                    + Const.ORDER_PRICE + ", "
+                    + Const.ORDER_AMOUNT + ", "
+                    + Const.ORDER_COUNT + ", "
+                    + Const.ORDER_SERVICE + ") VALUES"  + s;
+            System.out.println(orderQuery);
+            PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+            preparedStatement.executeUpdate(orderQuery);
+            preparedStatement.close();
+        }
         connection.close();
+        clearOrderStringToList();
+        setOrderId(getOrderId()+1);
     }
-
-//    public void dumpOrderDataSQL(int orders_id, int orders_number, short orders_table, String orders_dish,
-//                                 double orders_prise, short orders_amount) throws SQLException {
-//        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-//        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
-//
-//        String orderQuery = "INSERT INTO "
-//                + Const.ORDER_ID + "("
-//                + Const.ORDER_ID + ","
-//                + Const.ORDER_NUMBER + ","
-//                + Const.ORDER_TABLE + ","
-//                + Const.ORDER_DISH + ","
-//                + Const.ORDER_PRICE + ","
-//                + Const.ORDER_AMOUNT + ")" +
-//                "VALUES(?,?,?,?,?,?)";
-//
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
-//            ResultSet resultSet = preparedStatement.executeQuery(orderQuery);
-//            preparedStatement.setInt(2, 50);
-//            preparedStatement.setInt(3,55);
-//            preparedStatement.setString(4,"Wash dish");
-//            preparedStatement.setDouble(5,55.5);
-//            preparedStatement.setInt(6,60);
-//            preparedStatement.executeUpdate();
-//            preparedStatement.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        connection.close();
-//    }
-
-
 
 }

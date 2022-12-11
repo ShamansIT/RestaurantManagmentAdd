@@ -43,11 +43,17 @@ public class Const {
 
 
 
-    public static final String REPORT_NUMBER = "number";
-    public static final String REPORT_TABLE = "table";
-    public static final String REPORT_DISH = "dish";
-    public static final String REPORT_PRICE = "prise";
-    public static final String REPORT_AMOUNT = "amount";
+
+    public static final String REPORT_NAME = "`demodata`.`report`";
+    public static final String REPORT_ID = "`report_id`";
+    public static final String REPORT_NUMBER = "report_number";
+    public static final String REPORT_TABLE = "`report_table`";
+    public static final String REPORT_DISH = "`report_dish`";
+    public static final String REPORT_PRICE = "`report_price`";
+    public static final String REPORT_AMOUNT = "`report_amount`";
+    public static final String REPORT_COUNT = "`report_total`";
+    public static final String REPORT_SERVICE = "`report_service`";
+    public static final String REPORT_QUERY = "SELECT * FROM `demodata`.`report`";
 
 
 
