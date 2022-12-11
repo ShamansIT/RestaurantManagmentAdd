@@ -29,18 +29,6 @@ public class MenuBreakfastController extends DishHeadController implements Scene
     private ToggleButton addDish4;
 
     @FXML
-    private ToggleButton addDish5;
-
-    @FXML
-    private ToggleButton addDish6;
-
-    @FXML
-    private ToggleButton addDish7;
-
-    @FXML
-    private ToggleButton addDish8;
-
-    @FXML
     private Button buttonAddToOrder;
 
     @FXML
@@ -186,23 +174,28 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         }
     }
 
-
-//    private double menuTotalPrice = getTotalPrice();
-//    private void initFieldOnStart(){
-//        if(getOrderWindowText() != null){
-//            textTotalPrice.setText(setTotalPriceText());
-//            textOrderLeft.setText(getOrderWindowText());
-//            refreshTipsInfo();
-//            setAmountRefresh();
-//            textTotalPrice.setVisible(true);
-//            textOrderLeft.setVisible(true);
-//        }
-//    }
-
     @FXML
     void initialize() {
 
         // view list order if it exists
+        {
+            try {
+                loadTransferOrder();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            if (getOrderWindowText() != "" ){
+                textOrderLeft.setText(getOrderWindowText());
+                textOrderLeft.setVisible(true);
+                showOffLineText();
+                setTotalPrice(countTotalPrice());
+                refreshTipsInfo();
+                textTotalPrice.setVisible(true);
+                textTotalPrice.setText(setTotalPriceText());
+                setAmountRefresh();
+                prepareOrderStringToList();
+            }
+        }
 
         ToggleGroup toggleTable = new ToggleGroup();
         toggleTable11.setToggleGroup(toggleTable);
@@ -216,7 +209,6 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         toggleTable37.setToggleGroup(toggleTable);
         toggleTable38.setToggleGroup(toggleTable);
         toggleTable39.setToggleGroup(toggleTable);
-
         // add toggle select light
 
         toggleTable11.setOnAction(actionEvent ->{ setTableNumber(11); });
@@ -236,10 +228,6 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         addDish2.setToggleGroup(addDishGroup);
         addDish3.setToggleGroup(addDishGroup);
         addDish4.setToggleGroup(addDishGroup);
-        addDish5.setToggleGroup(addDishGroup);
-        addDish6.setToggleGroup(addDishGroup);
-        addDish7.setToggleGroup(addDishGroup);
-        addDish8.setToggleGroup(addDishGroup);
 
         addDish1.setOnAction(actionEvent ->{
             setAmountRefresh();
@@ -317,19 +305,29 @@ public class MenuBreakfastController extends DishHeadController implements Scene
             buttonCheckOrderField.setVisible(false);
             setAmountRefresh();
             clearOrderStringToList();
+            checkLessFivePerson.setSelected(false);
+            try { dropTransferSQL();
+            } catch (SQLException e) { throw new RuntimeException(e); }
         });
 
         buttonCompleteOrder.setOnAction(actionEvent -> {
             prepareOrderEndStringToList();
-            try {
-                exportReportToSQL();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            try { exportReportToSQL();
+            } catch (SQLException e) { throw new RuntimeException(e); }
             try { exportOrderToSQL();
-            } catch (SQLException e) { throw new RuntimeException(e);
-            }
+            } catch (SQLException e) { throw new RuntimeException(e); }
+            try { dropTransferSQL();
+            } catch (SQLException e) { throw new RuntimeException(e); }
             clearOrderStringToList();
+            setOrderWindowText("");
+            setTotalPrice(0);
+            textTotalPrice.setText("");
+            textOrderLeft.setText(getOrderWindowText());
+            tipsService.setVisible(false);
+            buttonCheckOrderField.setVisible(false);
+            setAmountRefresh();
+            checkLessFivePerson.setSelected(false);
+
         });
 
         buttonAmountPlus.setOnAction(actionEvent -> {
@@ -345,7 +343,10 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
         buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
         switchToBreakfast.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(switchToBreakfast));
-        switchToLunch.setOnAction(actionEvent -> SwitchButtonSceneLunch(switchToLunch));
+        switchToLunch.setOnAction(actionEvent -> {SwitchButtonSceneLunch(switchToLunch);
+            try { loadTransferToSQL();
+            } catch (SQLException e) { throw new RuntimeException(e); }
+        });
         switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));
         switchToDrinks.setOnAction(actionEvent -> SwitchButtonSceneDrinks(switchToDrinks));
     }

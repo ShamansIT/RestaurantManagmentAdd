@@ -2,12 +2,6 @@ package com.example.demo.data;
 
 public class Const {
 
-    public static final String SQL_TABLE_USER = "demodata.userdata";
-    public static final String SQL_TABLE_DISH = "demodata.dish";
-    public static final String SQL_TABLE_ORDER = "demodata.dish";
-    public static final String SQL_TABLE_REPORT = "demodata.report";
-    public static final String SQL_TABLE_DAILY = "demodata.daily";
-
     public static final String USER_QUERY = "SELECT * FROM demodata.userdata";
     public static final String USER_PIN = "user_pin";
     public static final String USER_FIRSTNAME = "user_firstname";
@@ -42,8 +36,6 @@ public class Const {
     public static final String DISH_DESCRIPTION = "dish_description";
 
 
-
-
     public static final String REPORT_NAME = "`demodata`.`report`";
     public static final String REPORT_ID = "`report_id`";
     public static final String REPORT_NUMBER = "report_number";
@@ -56,5 +48,13 @@ public class Const {
     public static final String REPORT_QUERY = "SELECT * FROM `demodata`.`report`";
 
 
+    public static final String TRANSFER_ORDER_ID = "`transfer_order_id`";
+    public static final String TRANSFER_TABLE = "`transfer_table`";
+    public static final String TRANSFER_TOTAL_ORDER = "`transfer_total_order`";
+    public static final String TRANSFER_NUMBER = "`transfer_number`";
+    public static final String TRANSFER_IS_SERVICE = "`transfer_is_service`";
+    public static final String TRANSFER_ORDER_TEXT = "`transfer_order_text`";
+    public static final String TRANSFER_NAME = "`demodata`.`transfer`";
+    public static final String TRANSFER_QUERY = "SELECT * FROM `demodata`.`transfer`";
 
 }

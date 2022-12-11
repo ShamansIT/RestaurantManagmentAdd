@@ -76,14 +76,6 @@
 	-fx-background-color:#33CC66;	
 }
 
-
-.buttonGreen:pressed
-{
-     -fx-padding: 10 15 13 15;
-     -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
-}
-
-
 .buttonOrange{
 	-fx-background-color:#FF6600;
 	-fx-border-color: #FFFFFF;

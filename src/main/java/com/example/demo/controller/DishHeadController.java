@@ -9,8 +9,7 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public class DishHeadController extends Configs {
-    public DishHeadController() {}
-    private int id;
+
     private double price;
     private String name;
     private boolean isManager;
@@ -22,18 +21,12 @@ public class DishHeadController extends Configs {
     private double tipsOver = 0;
     private int orderId = 1;
     private boolean isService = false;
-
+    public DishHeadController() {}
     public boolean getIsService() {
         return isService;
     }
     public void setIsService(boolean service) {
         isService = service;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
     }
     public double getPrice() {
         return price;
@@ -99,7 +92,6 @@ public class DishHeadController extends Configs {
     @Override
     public String toString() {
         return "DishHeadController{" +
-                "id=" + id +
                 ", price=" + price +
                 ", name='" + name + '\'' +
                 ", isManager=" + isManager +
@@ -174,6 +166,7 @@ public class DishHeadController extends Configs {
         }
         setName(dishName);
         setPrice(dishPrice);
+        System.out.println(dishName);
         preparedStatement.close();
         connection.close();
     }
@@ -211,7 +204,7 @@ public class DishHeadController extends Configs {
                 + "END" + "', '"
                 + "0"+ "', '"
                 + "0" + "', '"
-                + totalPrice  + "', '"
+                + dF.format(totalPrice)  + "', '"
                 + isService + "');";
     }
 
@@ -243,7 +236,8 @@ public class DishHeadController extends Configs {
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
         for (String s : orderString) {
-            orderQuery = "INSERT INTO "
+            orderQuery = "DROP TABLE IF EXISTS `transfer`; "
+                    + "INSERT INTO "
                     + Const.REPORT_NAME +
                     "(" + Const.REPORT_ID + ", "
                     + Const.REPORT_TABLE + ", "
@@ -258,5 +252,89 @@ public class DishHeadController extends Configs {
         }
         connection.close();
     }
+
+
+    public void loadTransferToSQL() throws SQLException {
+        String orderQuery = "";
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        for (String s : orderString) {
+            orderQuery = "INSERT INTO "
+                    + Const.TRANSFER_NAME
+                    + " (" + Const.TRANSFER_ORDER_ID + ", "
+                    + Const.TRANSFER_TABLE + ", "
+                    + Const.TRANSFER_TOTAL_ORDER + ", "
+                    + Const.TRANSFER_NUMBER + ", "
+                    + Const.TRANSFER_IS_SERVICE + ", "
+                    + Const.TRANSFER_ORDER_TEXT + ")"
+                    + " VALUES"
+                    + " (" + "'"
+                    + orderId + "', '"
+                    + tableNumber + "', '"
+                    + dF.format(totalPrice)  + "', '"
+                    + orderId + "', '"
+                    + isService + "', '"
+                    + orderWindowText + "');";
+            PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+            preparedStatement.executeUpdate(orderQuery);
+            preparedStatement.close();
+        }
+        connection.close();
+    }
+
+    public void loadTransferOrder() throws SQLException {
+        int id = 0;
+        int table = 0;
+        double totalOrder = 0;
+        int number = 0;
+        boolean isService = false;
+        String orderText = "";
+
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+
+        String select = "SELECT * FROM " + Const.TRANSFER_NAME;
+
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()) {
+            id = resultSet.getInt(1);
+            table = resultSet.getInt(2);
+            totalOrder = resultSet.getDouble(3);
+            number = resultSet.getInt(4);
+            orderText = resultSet.getString(6);
+        }
+        setOrderId(id);
+        setTableNumber(table);
+        setTotalPrice(totalOrder);
+        setOrderWindowText(orderText);
+        preparedStatement.close();
+        connection.close();
+
+    }
+
+
+    public void dropTransferSQL() throws SQLException {
+        //redesign require
+        String orderQuery = "DROP TABLE IF EXISTS `transfer`;\n" +
+                "CREATE TABLE `demodata`.`transfer` \n" +
+                "(\n" +
+                "  `transfer_order_id` INT NOT NULL,\n" +
+                "  `transfer_table` INT NOT NULL,  \n" +
+                "  `transfer_total_order` DOUBLE NOT NULL,\n" +
+                "  `transfer_number` INT NOT NULL,\n" +
+                "  `transfer_is_service` VARCHAR(5) DEFAULT 'true',\n" +
+                "  `transfer_order_text` VARCHAR(350),\n" +
+                "  CONSTRAINT `transfer_is_service` CHECK ((`transfer_is_service` in ('true','false'))),\n" +
+                "  PRIMARY KEY (`transfer_order_id`)\n" +
+                " );";
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+        preparedStatement.executeUpdate(orderQuery);
+        preparedStatement.close();
+        connection.close();
+        }
 
 }
