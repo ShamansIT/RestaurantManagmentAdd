@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.data.Configs;
 import com.example.demo.data.Const;
 import com.example.demo.data.DataBaseProcessor;
 import com.example.demo.data.DataBaseService;
@@ -8,7 +7,7 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class DishHeadController extends Configs {
+public class DishHeadController implements SceneSwitch {
 
     private double price;
     private String name;
@@ -154,7 +153,7 @@ public class DishHeadController extends Configs {
         String dishName = "";
         double dishPrice = 0;
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
         String select = "SELECT * FROM demodata.dish WHERE id = "+ dishNum +
                 " AND typedish = " + "\'"+ groupDish + "\'";
         PreparedStatement preparedStatement = connection.prepareStatement(select);
@@ -166,7 +165,6 @@ public class DishHeadController extends Configs {
         }
         setName(dishName);
         setPrice(dishPrice);
-        System.out.println(dishName);
         preparedStatement.close();
         connection.close();
     }
@@ -178,7 +176,7 @@ public class DishHeadController extends Configs {
     }
 
     public void prepareOrderEndStringToList(){
-        String format = prepareOrderLineCloseOrder();
+        String format = prepareLineCloseOrder();
         orderString.add(format);
     }
 
@@ -197,7 +195,7 @@ public class DishHeadController extends Configs {
                 + "null" + "');";
     }
 
-    public String prepareOrderLineCloseOrder(){
+    public String prepareLineCloseOrder(){
         return  " (" + "'"
                 + orderId + "', '"
                 + tableNumber + "', '"
@@ -208,36 +206,76 @@ public class DishHeadController extends Configs {
                 + isService + "');";
     }
 
-    public void exportOrderToSQL() throws SQLException {
+    public void exportOrderString() throws SQLException {
         String orderQuery = "";
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME, Const.PASSWORD);
         for (String s : orderString) {
             orderQuery = "INSERT INTO "
-                    + Const.ORDER_NAME +
-                    "(" + Const.ORDER_ID + ", "
-                    + Const.ORDER_TABLE + ", "
-                    + Const.ORDER_DISH + ", "
-                    + Const.ORDER_PRICE + ", "
-                    + Const.ORDER_AMOUNT + ", "
-                    + Const.ORDER_COUNT + ", "
-                    + Const.ORDER_SERVICE + ") VALUES"  + s;
+                    + Const.TRACK_NAME +
+                    "(" + Const.TRACK_ARRAY + ") VALUES (" + s + ");";
+            System.out.println("export" + orderQuery);
             PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
             preparedStatement.executeUpdate(orderQuery);
             preparedStatement.close();
+            }
+            connection.close();
         }
+    public void loadOrderString() throws SQLException {
+        orderString.clear();
+        String orderText = "";
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
+
+        String select = Const.TRACK_QUERY;
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()) {
+            orderText = resultSet.getString(1);
+        }
+        orderString.add(orderText);
+        System.out.println("load" + orderString);
+        preparedStatement.close();
         connection.close();
-        clearOrderStringToList();
-        setOrderId(getOrderId()+1);
+    }
+
+
+
+
+
+
+
+        public void exportOrderToSQL () throws SQLException {
+            String orderQuery = "";
+            DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+            Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME, Const.PASSWORD);
+            for (String s : orderString) {
+                orderQuery = "INSERT INTO "
+                        + Const.ORDER_NAME +
+                        "(" + Const.ORDER_ID + ", "
+                        + Const.ORDER_TABLE + ", "
+                        + Const.ORDER_DISH + ", "
+                        + Const.ORDER_PRICE + ", "
+                        + Const.ORDER_AMOUNT + ", "
+                        + Const.ORDER_COUNT + ", "
+                        + Const.ORDER_SERVICE + ") VALUES" + s;
+                PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+                preparedStatement.executeUpdate(orderQuery);
+                preparedStatement.close();
+            }
+            connection.close();
+            clearOrderStringToList();
+            setOrderId(getOrderId() + 1);
     }
 
     public void exportReportToSQL() throws SQLException {
         String orderQuery = "";
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
         for (String s : orderString) {
-            orderQuery = "DROP TABLE IF EXISTS `transfer`; "
-                    + "INSERT INTO "
+            orderQuery =
+                    "INSERT INTO "
                     + Const.REPORT_NAME +
                     "(" + Const.REPORT_ID + ", "
                     + Const.REPORT_TABLE + ", "
@@ -253,11 +291,10 @@ public class DishHeadController extends Configs {
         connection.close();
     }
 
-
-    public void loadTransferToSQL() throws SQLException {
+    public void exportTransfer() throws SQLException {
         String orderQuery = "";
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
         for (String s : orderString) {
             orderQuery = "INSERT INTO "
                     + Const.TRANSFER_NAME
@@ -276,6 +313,7 @@ public class DishHeadController extends Configs {
                     + isService + "', '"
                     + orderWindowText + "');";
             PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
+
             preparedStatement.executeUpdate(orderQuery);
             preparedStatement.close();
         }
@@ -283,15 +321,15 @@ public class DishHeadController extends Configs {
     }
 
     public void loadTransferOrder() throws SQLException {
+
         int id = 0;
         int table = 0;
         double totalOrder = 0;
-        int number = 0;
         boolean isService = false;
         String orderText = "";
 
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
 
         String select = "SELECT * FROM " + Const.TRANSFER_NAME;
 
@@ -302,39 +340,41 @@ public class DishHeadController extends Configs {
             id = resultSet.getInt(1);
             table = resultSet.getInt(2);
             totalOrder = resultSet.getDouble(3);
-            number = resultSet.getInt(4);
+            isService = resultSet.getBoolean(4);
             orderText = resultSet.getString(6);
         }
         setOrderId(id);
         setTableNumber(table);
         setTotalPrice(totalOrder);
+        setIsService(isService);
         setOrderWindowText(orderText);
         preparedStatement.close();
         connection.close();
-
     }
 
-
     public void dropTransferSQL() throws SQLException {
-        //redesign require
-        String orderQuery = "DROP TABLE IF EXISTS `transfer`;\n" +
-                "CREATE TABLE `demodata`.`transfer` \n" +
-                "(\n" +
-                "  `transfer_order_id` INT NOT NULL,\n" +
-                "  `transfer_table` INT NOT NULL,  \n" +
-                "  `transfer_total_order` DOUBLE NOT NULL,\n" +
-                "  `transfer_number` INT NOT NULL,\n" +
-                "  `transfer_is_service` VARCHAR(5) DEFAULT 'true',\n" +
-                "  `transfer_order_text` VARCHAR(350),\n" +
-                "  CONSTRAINT `transfer_is_service` CHECK ((`transfer_is_service` in ('true','false'))),\n" +
-                "  PRIMARY KEY (`transfer_order_id`)\n" +
-                " );";
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
+        String orderQuery = "DROP TABLE IF EXISTS `transfer`;" +
+                "CREATE TABLE " + Const.TRANSFER_NAME +
+                " ("
+                + Const.TRANSFER_ORDER_ID +  " INT NOT NULL,"
+                + Const.TRANSFER_TABLE + " INT NOT NULL, "
+                + Const.TRANSFER_TOTAL_ORDER + " DOUBLE NOT NULL,"
+                + Const.TRANSFER_NUMBER + " INT NOT NULL,"
+                + Const.TRANSFER_IS_SERVICE + " VARCHAR(5) DEFAULT 'true',"
+                + Const.TRANSFER_ORDER_TEXT + " VARCHAR(350),"
+                + "  CONSTRAINT " +  Const.TRANSFER_IS_SERVICE + " CHECK ((" + Const.TRANSFER_IS_SERVICE + " in ('true','false'))),"
+                + "  PRIMARY KEY (" + Const.TRANSFER_ORDER_ID + "));";
         PreparedStatement preparedStatement = connection.prepareStatement(orderQuery);
         preparedStatement.executeUpdate(orderQuery);
         preparedStatement.close();
         connection.close();
         }
+
+
+
+
+
 
 }

@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import static com.example.demo.data.Const.*;
 
-public class DataBaseHandler extends Configs{
+public class DataBaseHandler {
 
     public int checkUserPin(int loginPin) throws SQLException{
         int checkPin = 0;
 
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
         String select = "SELECT * FROM demodata.userdata";
         PreparedStatement preparedStatement = connection.prepareStatement(select);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,7 +36,7 @@ public class DataBaseHandler extends Configs{
 //
 //        boolean isManager = false;
 //        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-//        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+//        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
 //        String select = "SELECT * FROM demodata.userdata";
 //        PreparedStatement preparedStatement = connection.prepareStatement(select);
 //        ResultSet resultSet = preparedStatement.executeQuery();
@@ -53,7 +53,7 @@ public class DataBaseHandler extends Configs{
 
     public void loadOrderDataSQL() throws SQLException {//rebuild
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(ORDER_QUERY);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){
@@ -67,7 +67,7 @@ public class DataBaseHandler extends Configs{
     public void dumpOrderDataSQL(int orders_id, int orders_number, short orders_table, String orders_dish,
                         double orders_prise, short orders_amount) throws SQLException {
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(URL,USERNAME,PASSWORD);
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
 
         String orderQuery = "INSERT INTO " + Const.ORDER_ID + "("
                 + Const.ORDER_ID + ","
@@ -93,6 +93,8 @@ public class DataBaseHandler extends Configs{
         }
         connection.close();
     }
+
+
 
 }
 

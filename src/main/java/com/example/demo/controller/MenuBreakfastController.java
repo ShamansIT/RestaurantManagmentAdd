@@ -177,13 +177,14 @@ public class MenuBreakfastController extends DishHeadController implements Scene
     @FXML
     void initialize() {
 
-        // view list order if it exists
+        // view isService
         {
             try {
-                loadTransferOrder();
+                loadTransferOrder(); loadOrderString();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
             if (getOrderWindowText() != "" ){
                 textOrderLeft.setText(getOrderWindowText());
                 textOrderLeft.setVisible(true);
@@ -316,8 +317,8 @@ public class MenuBreakfastController extends DishHeadController implements Scene
             } catch (SQLException e) { throw new RuntimeException(e); }
             try { exportOrderToSQL();
             } catch (SQLException e) { throw new RuntimeException(e); }
-            try { dropTransferSQL();
-            } catch (SQLException e) { throw new RuntimeException(e); }
+//            try { dropTransferSQL();
+//            } catch (SQLException e) { throw new RuntimeException(e); }
             clearOrderStringToList();
             setOrderWindowText("");
             setTotalPrice(0);
@@ -344,7 +345,7 @@ public class MenuBreakfastController extends DishHeadController implements Scene
         buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
         switchToBreakfast.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(switchToBreakfast));
         switchToLunch.setOnAction(actionEvent -> {SwitchButtonSceneLunch(switchToLunch);
-            try { loadTransferToSQL();
+            try { exportTransfer(); exportOrderString();
             } catch (SQLException e) { throw new RuntimeException(e); }
         });
         switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));

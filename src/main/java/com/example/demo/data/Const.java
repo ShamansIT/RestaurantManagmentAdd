@@ -2,6 +2,10 @@ package com.example.demo.data;
 
 public class Const {
 
+    public static final String USERNAME = "root";
+    public static final String PASSWORD = "12345";
+    public static final String URL = "jdbc:mysql://localhost:3306/demodata";
+
     public static final String USER_QUERY = "SELECT * FROM demodata.userdata";
     public static final String USER_PIN = "user_pin";
     public static final String USER_FIRSTNAME = "user_firstname";
@@ -47,7 +51,6 @@ public class Const {
     public static final String REPORT_SERVICE = "`report_service`";
     public static final String REPORT_QUERY = "SELECT * FROM `demodata`.`report`";
 
-
     public static final String TRANSFER_ORDER_ID = "`transfer_order_id`";
     public static final String TRANSFER_TABLE = "`transfer_table`";
     public static final String TRANSFER_TOTAL_ORDER = "`transfer_total_order`";
@@ -56,5 +59,10 @@ public class Const {
     public static final String TRANSFER_ORDER_TEXT = "`transfer_order_text`";
     public static final String TRANSFER_NAME = "`demodata`.`transfer`";
     public static final String TRANSFER_QUERY = "SELECT * FROM `demodata`.`transfer`";
+
+    public static final String TRACK_ARRAY = "`track_array`";
+    public static final String TRACK_NAME = "`demodata`.`track`";
+    public static final String TRACK_QUERY = "SELECT * FROM `demodata`.`track`";
+
 
 }

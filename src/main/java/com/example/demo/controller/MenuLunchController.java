@@ -195,7 +195,8 @@ public class MenuLunchController extends DishHeadController implements SceneSwit
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            if (getOrderWindowText() != "" ){
+
+            if (getOrderWindowText() != "") {
                 textOrderLeft.setText(getOrderWindowText());
                 textOrderLeft.setVisible(true);
                 showOffLineText();
@@ -357,7 +358,10 @@ public class MenuLunchController extends DishHeadController implements SceneSwit
 
         buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
         buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
-        switchToBreakfast.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(switchToBreakfast));
+        switchToBreakfast.setOnAction(actionEvent ->{ SwitchButtonSceneBreakfast(switchToBreakfast);
+            try { exportTransfer(); exportOrderString();
+            } catch (SQLException e) { throw new RuntimeException(e); }
+        });
         switchToLunch.setOnAction(actionEvent -> SwitchButtonSceneLunch(switchToLunch));
         switchToDinner.setOnAction(actionEvent -> SwitchButtonSceneDinner(switchToDinner));
         switchToDrinks.setOnAction(actionEvent -> SwitchButtonSceneDrinks(switchToDrinks));
