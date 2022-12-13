@@ -50,7 +50,7 @@
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
-            <Image url="@../../../../../../image/Logo.png" />
+            <Image url="@Logo.png" />
          </image>
       </ImageView>
       <Button fx:id="buttonDailyReportClose" layoutX="748.0" layoutY="610.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CLOSE" textAlignment="CENTER" textFill="WHITE">

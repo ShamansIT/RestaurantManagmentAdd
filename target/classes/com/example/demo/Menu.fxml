@@ -248,7 +248,7 @@
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
-            <Image url="@../../../../../../image/Logo.png" />
+            <Image url="@Logo.png" />
          </image>
       </ImageView>
       <TextField fx:id="menuPreviewOrder" alignment="CENTER" layoutX="240.0" layoutY="697.0" prefHeight="40.0" prefWidth="716.0" styleClass="textFild" text="1" visible="false">
