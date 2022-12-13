@@ -29,7 +29,7 @@ public class ManagementController implements SceneSwitch {
         SceneSwitchController switchController = new SceneSwitchController();
         buttonCloseManagement.setOnAction(actionEvent -> {
             try {
-                switchController.switchToSceneMenuBreakfast(actionEvent);
+                switchController.switchToSceneMenu(actionEvent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

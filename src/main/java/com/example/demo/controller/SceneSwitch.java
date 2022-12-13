@@ -19,7 +19,7 @@ public interface SceneSwitch {
         SceneSwitchController switchController = new SceneSwitchController();
         button.setOnAction(actionEvent -> {
             try {
-                switchController.switchToSceneMenuBreakfast(actionEvent);
+                switchController.switchToSceneMenu(actionEvent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

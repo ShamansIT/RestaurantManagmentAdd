@@ -132,7 +132,7 @@ public class PinController implements SceneSwitch{
             //point enter in program
             SceneSwitchController switchController = new SceneSwitchController();
             try {
-                switchController.switchToSceneMenuBreakfast(actionEvent);
+                switchController.switchToSceneMenu(actionEvent);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

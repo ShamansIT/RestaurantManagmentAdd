@@ -17,9 +17,9 @@ public class SceneSwitchController {
     private Scene scene;
     private Parent root;
 
-    public void switchToSceneMenuBreakfast(ActionEvent event) throws IOException {
+    public void switchToSceneMenu(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull
-                (RestaurantMainServesApplication.class.getResource("MenuBreakfast.fxml")));
+                (RestaurantMainServesApplication.class.getResource("Menu.fxml")));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
