@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.PaymentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" styleClass="backgroundColor" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.PaymentController">
    <children>
       <AnchorPane layoutX="266.0" layoutY="64.0" prefHeight="622.0" prefWidth="661.0" styleClass="colorBackCenter">
          <children>
@@ -68,7 +68,7 @@
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
-            <Image url="@../../../../../../image/Logo.png" />
+            <Image url="@Logo.png" />
          </image>
       </ImageView>
       <Button fx:id="buttonPayPayment" layoutX="748.0" layoutY="611.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="PAY" textAlignment="CENTER" textFill="WHITE">

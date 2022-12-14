@@ -22,30 +22,41 @@ CREATE TABLE `dish` (
                         PRIMARY KEY (`itemnumber`)
 );
 
-INSERT INTO `dish` VALUES ('1','EGGS',2.3,'breakfast',NULL, '1'),
-                          ('2','CHEESE',3,'breakfast',NULL, '2'),
-                          ('3','TOAST',3.2,'breakfast',NULL, '3'),
-                          ('4','SCONES',2.5,'breakfast',NULL, '4'),
-                          ('1','CREAM SOUP',9.6,'lunch',NULL, '5'),
-                          ('2','POTATO SALAD',7.5,'lunch',NULL, '6'),
-                          ('3','PIZZA',12.8,'lunch',NULL, '7'),
-                          ('4','CAESAR SALAD',14.3,'lunch',NULL, '8'),
-                          ('5','RIBES',16.2,'lunch',NULL, '9'),
-                          ('6','CHEF SPECIAL',18,'lunch',NULL, '10'),
-                          ('7','SPICY WINGS',11.2,'lunch',NULL, '11'),
-                          ('8','FRI POTATO',8,'lunch',NULL, '12'),
-                          ('1','MET BBQ',15.5,'dinner',NULL, '13'),
-                          ('2','FRIED LAMB',17.8,'dinner',NULL, '14'),
-                          ('3','MET FISH',15,'dinner',NULL, '15'),
-                          ('4','GRILLED SEA',16.8,'dinner',NULL, '16'),
-                          ('5','BEEF BURGER',12.5,'dinner',NULL, '17'),
-                          ('6','GREEN SPINACH',10,'dinner',NULL, '18'),
-                          ('7','SIDES',8.5,'dinner',NULL, '19'),
-                          ('8','CHICKEN CURRY',13.5,'dinner',NULL, '20'),
-                          ('1','TEA',2,'drinks',NULL, '21'),
-                          ('2','COFFEE',3.2,'drinks',NULL, '22'),
-                          ('3','PEPSI',3.7,'drinks',NULL, '23'),
-                          ('4','WINE',7.5,'drinks',NULL, '24')
+DROP TABLE IF EXISTS `dish`;
+CREATE TABLE `dish` (
+                        `id` INT NOT NULL,
+                        `dishname` varchar(30) NOT NULL,
+                        `price` double NOT NULL,
+                        `typedish` varchar(15) DEFAULT NULL,
+                        `visible` varchar(5) DEFAULT 'true',
+                        `itemnumber`  INT NOT NULL AUTO_INCREMENT,
+                        PRIMARY KEY (`itemnumber`)
+);
+
+INSERT INTO `dish` VALUES ('1','EGGS',2.3,'breakfast', 'true', '1'),
+                          ('2','CHEESE',3,'breakfast', 'true', '2'),
+                          ('3','TOAST',3.2,'breakfast', 'true', '3'),
+                          ('4','SCONES',2.5,'breakfast', 'true', '4'),
+                          ('1','CREAM SOUP',9.6,'lunch', 'true', '5'),
+                          ('2','POTATO SALAD',7.5,'lunch', 'true', '6'),
+                          ('3','PIZZA',12.8,'lunch', 'true', '7'),
+                          ('4','CAESAR SALAD',14.3,'lunch', 'true', '8'),
+                          ('5','RIBS',16.2,'lunch', 'true', '9'),
+                          ('6','CHEF SPECIAL',18,'lunch', 'true', '10'),
+                          ('7','SPICY WINGS',11.2,'lunch', 'true', '11'),
+                          ('8','FRI POTATO',8,'lunch', 'true', '12'),
+                          ('1','MET BBQ',15.5,'dinner', 'true', '13'),
+                          ('2','FRIED LAMB',17.8,'dinner', 'true', '14'),
+                          ('3','MET FISH',15,'dinner', 'true', '15'),
+                          ('4','GRILLED SEA',16.8,'dinner', 'true', '16'),
+                          ('5','BEEF BURGER',12.5,'dinner', 'true', '17'),
+                          ('6','GREEN SPINACH',10,'dinner', 'true', '18'),
+                          ('7','SIDES',8.5,'dinner', 'true', '19'),
+                          ('8','CHICKEN CURRY',13.5,'dinner', 'true', '20'),
+                          ('1','TEA',2,'drinks', 'true', '21'),
+                          ('2','COFFEE',3.2,'drinks', 'true', '22'),
+                          ('3','PEPSI',3.7,'drinks', 'true', '23'),
+                          ('4','WINE',7.5,'drinks', 'true', '24')
 ;
 
 DROP TABLE IF EXISTS `orders`;

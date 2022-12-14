@@ -50,6 +50,7 @@ public class DishHeadController implements SceneSwitch {
     }
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
+        System.out.println(tableNumber);
     }
     public double getTotalPrice() {
         return totalPrice;
@@ -224,6 +225,7 @@ public class DishHeadController implements SceneSwitch {
                 preparedStatement.executeUpdate(orderQuery);
                 preparedStatement.close();
             }
+            exportReportToSQL();
             connection.close();
             clearOrderStringToList();
             setOrderId(getOrderId() + 1);
