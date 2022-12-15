@@ -281,6 +281,15 @@ public class MenuController extends DishHeadController implements SceneSwitch {
                 "-fx-font-size:18;";
     }
 
+    public String darkBlueButtonStyle(){
+        return  "-fx-background-color:#1d228f;" +
+                "-fx-border-color: #FFFFFF;" +
+                "-fx-background-radius: 7;" +
+                "-fx-border-radius: 7;" +
+                "-fx-text-fill:#FFFFFF;" +
+                "-fx-font-size:18;";
+    }
+
     public String deactivatedNavigation(){
         return "-fx-background-color: linear-gradient(#8EB4C1, #BADDE7);" +
                 "-fx-text-fill:#FFFFFF;";
@@ -308,73 +317,83 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         showLineText();
     }
 
-    private void checkSelectTable(int table, ToggleButton button) throws SQLException {
+    public boolean table11 = true;
+    public boolean table12 = true;
+    public boolean table13 = true;
+    public boolean table14 = true;
+    public boolean table15 = true;
+    public boolean table16 = true;
+    public boolean table20 = true;
+    public boolean table36 = true;
+    public boolean table37 = true;
+    public boolean table38 = true;
+    public boolean table39 = true;
+    public void refreshTable(){
+        if(table11){toggleTable11.setStyle(greenButtonStyle());} else{toggleTable11.setStyle(blueButtonStyle());}
+        if(table12){toggleTable12.setStyle(greenButtonStyle());} else{toggleTable12.setStyle(blueButtonStyle());}
+        if(table13){toggleTable13.setStyle(greenButtonStyle());} else{toggleTable13.setStyle(blueButtonStyle());}
+        if(table14){toggleTable14.setStyle(greenButtonStyle());} else{toggleTable14.setStyle(blueButtonStyle());}
+        if(table15){toggleTable15.setStyle(greenButtonStyle());} else{toggleTable15.setStyle(blueButtonStyle());}
+        if(table16){toggleTable16.setStyle(greenButtonStyle());} else{toggleTable16.setStyle(blueButtonStyle());}
+        if(table20){toggleTable20.setStyle(greenButtonStyle());} else{toggleTable20.setStyle(blueButtonStyle());}
+        if(table36){toggleTable36.setStyle(greenButtonStyle());} else{toggleTable36.setStyle(blueButtonStyle());}
+        if(table37){toggleTable37.setStyle(greenButtonStyle());} else{toggleTable37.setStyle(blueButtonStyle());}
+        if(table38){toggleTable38.setStyle(greenButtonStyle());} else{toggleTable38.setStyle(blueButtonStyle());}
+        if(table39){toggleTable39.setStyle(greenButtonStyle());} else{toggleTable39.setStyle(blueButtonStyle());}
+    }
 
-        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
-        String select = Const.ORDER_QUERY;
-        PreparedStatement preparedStatement = connection.prepareStatement(select);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while(resultSet.next()) {
-            table = resultSet.getInt(2);
-        }
-//        toggleRun(table,button);
-        preparedStatement.close();
-        connection.close();
+    public void conditionTable(int table, boolean station, ToggleButton toggleButton){
+        setTableNumber(table);
+        if(station){toggleButton.setStyle(orangeButtonStyle());} else{toggleButton.setStyle(darkBlueButtonStyle());}
     }
-    private void toggleRun(ToggleButton button) {
-       changeToggleStyleRestart();
-       button.setStyle(orangeButtonStyle());
+
+    public void setConditionTable(int table){
+        if(table == 11){table11 = false;}
+        if(table == 12){table12 = false;}
+        if(table == 13){table13 = false;}
+        if(table == 14){table14 = false;}
+        if(table == 15){table15 = false;}
+        if(table == 16){table16 = false;}
+        if(table == 20){table20 = false;}
+        if(table == 36){table36 = false;}
+        if(table == 37){table37 = false;}
+        if(table == 38){table38 = false;}
+        if(table == 39){table39 = false;}
+
+
 
     }
 
-    public void changeToggleStyleRestart(){
-        toggleTable11.setStyle(greenButtonStyle());
-        toggleTable12.setStyle(greenButtonStyle());
-        toggleTable13.setStyle(greenButtonStyle());
-        toggleTable14.setStyle(greenButtonStyle());
-        toggleTable15.setStyle(greenButtonStyle());
-        toggleTable16.setStyle(greenButtonStyle());
-        toggleTable20.setStyle(greenButtonStyle());
-        toggleTable36.setStyle(greenButtonStyle());
-        toggleTable37.setStyle(greenButtonStyle());
-        toggleTable38.setStyle(greenButtonStyle());
-        toggleTable39.setStyle(greenButtonStyle());
-    }
-    private void checkTable(){
-        if(getTableNumber()==0){
-            buttonCheckOrderField.setText("PICK TABLE");
-            buttonCheckOrderField.setVisible(true);
-        }
-    }
+            //toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11);});
+
 
 
     @FXML
     void initialize() {
-        ToggleGroup toggleTable = new ToggleGroup();
-        toggleTable11.setToggleGroup(toggleTable);
-        toggleTable12.setToggleGroup(toggleTable);
-        toggleTable13.setToggleGroup(toggleTable);
-        toggleTable14.setToggleGroup(toggleTable);
-        toggleTable15.setToggleGroup(toggleTable);
-        toggleTable16.setToggleGroup(toggleTable);
-        toggleTable20.setToggleGroup(toggleTable);
-        toggleTable36.setToggleGroup(toggleTable);
-        toggleTable37.setToggleGroup(toggleTable);
-        toggleTable38.setToggleGroup(toggleTable);
-        toggleTable39.setToggleGroup(toggleTable);
-        toggleTable11.setOnAction(actionEvent ->{ setTableNumber(11); toggleRun(toggleTable11);});
-        toggleTable12.setOnAction(actionEvent ->{ setTableNumber(12); toggleRun(toggleTable12);});
-        toggleTable13.setOnAction(actionEvent ->{ setTableNumber(13); toggleRun(toggleTable13);});
-        toggleTable14.setOnAction(actionEvent ->{ setTableNumber(14); toggleRun(toggleTable14);});
-        toggleTable15.setOnAction(actionEvent ->{ setTableNumber(15); toggleRun(toggleTable15);});
-        toggleTable16.setOnAction(actionEvent ->{ setTableNumber(16); toggleRun(toggleTable16);});
-        toggleTable20.setOnAction(actionEvent ->{ setTableNumber(20); toggleRun(toggleTable20);});
-        toggleTable36.setOnAction(actionEvent ->{ setTableNumber(36); toggleRun(toggleTable36);});
-        toggleTable37.setOnAction(actionEvent ->{ setTableNumber(37); toggleRun(toggleTable37);});
-        toggleTable38.setOnAction(actionEvent ->{ setTableNumber(38); toggleRun(toggleTable38);});
-        toggleTable39.setOnAction(actionEvent ->{ setTableNumber(39); toggleRun(toggleTable39);});
+//        ToggleGroup toggleTable = new ToggleGroup();
+//        toggleTable11.setToggleGroup(toggleTable);
+//        toggleTable12.setToggleGroup(toggleTable);
+//        toggleTable13.setToggleGroup(toggleTable);
+//        toggleTable14.setToggleGroup(toggleTable);
+//        toggleTable15.setToggleGroup(toggleTable);
+//        toggleTable16.setToggleGroup(toggleTable);
+//        toggleTable20.setToggleGroup(toggleTable);
+//        toggleTable36.setToggleGroup(toggleTable);
+//        toggleTable37.setToggleGroup(toggleTable);
+//        toggleTable38.setToggleGroup(toggleTable);
+//        toggleTable39.setToggleGroup(toggleTable);
 
+        toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11);});
+        toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12);});
+        toggleTable13.setOnAction(actionEvent ->{refreshTable(); conditionTable(13, table13,toggleTable13);});
+        toggleTable14.setOnAction(actionEvent ->{refreshTable(); conditionTable(14, table14,toggleTable14);});
+        toggleTable15.setOnAction(actionEvent ->{refreshTable(); conditionTable(15, table15,toggleTable15);});
+        toggleTable16.setOnAction(actionEvent ->{refreshTable(); conditionTable(16, table16,toggleTable16);});
+        toggleTable20.setOnAction(actionEvent ->{refreshTable(); conditionTable(20, table20,toggleTable20);});
+        toggleTable36.setOnAction(actionEvent ->{refreshTable(); conditionTable(36, table36,toggleTable36);});
+        toggleTable37.setOnAction(actionEvent ->{refreshTable(); conditionTable(37, table37,toggleTable37);});
+        toggleTable38.setOnAction(actionEvent ->{refreshTable(); conditionTable(38, table38,toggleTable38);});
+        toggleTable39.setOnAction(actionEvent ->{refreshTable(); conditionTable(39, table39,toggleTable39);});
 
 
         ToggleGroup addDishGroup = new ToggleGroup();
@@ -437,7 +456,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
             setAmountRefresh();
             clearOrderStringToList();
             checkLessFivePerson.setSelected(false);
-            changeToggleStyleRestart();
+            refreshTable();
             setTableNumber(0);
         });
 
@@ -456,6 +475,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
+                setConditionTable(getTableNumber());
                 clearOrderStringToList();
                 setOrderWindowText("");
                 setTotalPrice(0);
@@ -465,7 +485,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
                 buttonCheckOrderField.setVisible(false);
                 setAmountRefresh();
                 checkLessFivePerson.setSelected(false);
-                changeToggleStyleRestart();
+                refreshTable();
                 setTableNumber(0);
             }
           }

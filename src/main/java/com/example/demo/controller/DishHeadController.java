@@ -50,7 +50,6 @@ public class DishHeadController implements SceneSwitch {
     }
     public void setTableNumber(int tableNumber) {
         this.tableNumber = tableNumber;
-        System.out.println(tableNumber);
     }
     public double getTotalPrice() {
         return totalPrice;
