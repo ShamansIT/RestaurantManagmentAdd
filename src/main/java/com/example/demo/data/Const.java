@@ -40,7 +40,7 @@ public class Const {
     public static final String DISH_DESCRIPTION = "dish_description";
 
 
-    public static final String REPORT_NAME = "`demodata`.`report`";
+    public static final String REPORT_NAME = "demodata.report";
     public static final String REPORT_ID = "`report_id`";
     public static final String REPORT_NUMBER = "report_number";
     public static final String REPORT_TABLE = "`report_table`";

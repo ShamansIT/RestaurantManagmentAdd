@@ -142,6 +142,19 @@ public class MenuController extends DishHeadController implements SceneSwitch {
     @FXML
     private ToggleButton toggleTable39;
 
+
+    private boolean table11 = true;
+    private boolean table12 = true;
+    private boolean table13 = true;
+    private boolean table14 = true;
+    private boolean table15 = true;
+    private boolean table16 = true;
+    private boolean table20 = true;
+    private boolean table36 = true;
+    private boolean table37 = true;
+    private boolean table38 = true;
+    private boolean table39 = true;
+
     private String buttonIdentity = "breakfast";
     public String getButtonIdentity() {
         return buttonIdentity;
@@ -256,7 +269,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         return visible;
     }
 
-    public void menuNavigationDefaultStyle(){
+    private void menuNavigationDefaultStyle(){
         switchToBreakfast.setStyle(deactivatedNavigation());
         switchToLunch.setStyle(deactivatedNavigation());
         switchToDinner.setStyle(deactivatedNavigation());
@@ -317,17 +330,8 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         showLineText();
     }
 
-    public boolean table11 = true;
-    public boolean table12 = true;
-    public boolean table13 = true;
-    public boolean table14 = true;
-    public boolean table15 = true;
-    public boolean table16 = true;
-    public boolean table20 = true;
-    public boolean table36 = true;
-    public boolean table37 = true;
-    public boolean table38 = true;
-    public boolean table39 = true;
+
+
     public void refreshTable(){
         if(table11){toggleTable11.setStyle(greenButtonStyle());} else{toggleTable11.setStyle(blueButtonStyle());}
         if(table12){toggleTable12.setStyle(greenButtonStyle());} else{toggleTable12.setStyle(blueButtonStyle());}
@@ -359,29 +363,24 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         if(table == 37){table37 = false;}
         if(table == 38){table38 = false;}
         if(table == 39){table39 = false;}
-
-
-
     }
-
-            //toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11);});
 
 
 
     @FXML
     void initialize() {
-//        ToggleGroup toggleTable = new ToggleGroup();
-//        toggleTable11.setToggleGroup(toggleTable);
-//        toggleTable12.setToggleGroup(toggleTable);
-//        toggleTable13.setToggleGroup(toggleTable);
-//        toggleTable14.setToggleGroup(toggleTable);
-//        toggleTable15.setToggleGroup(toggleTable);
-//        toggleTable16.setToggleGroup(toggleTable);
-//        toggleTable20.setToggleGroup(toggleTable);
-//        toggleTable36.setToggleGroup(toggleTable);
-//        toggleTable37.setToggleGroup(toggleTable);
-//        toggleTable38.setToggleGroup(toggleTable);
-//        toggleTable39.setToggleGroup(toggleTable);
+        ToggleGroup toggleTable = new ToggleGroup();
+        toggleTable11.setToggleGroup(toggleTable);
+        toggleTable12.setToggleGroup(toggleTable);
+        toggleTable13.setToggleGroup(toggleTable);
+        toggleTable14.setToggleGroup(toggleTable);
+        toggleTable15.setToggleGroup(toggleTable);
+        toggleTable16.setToggleGroup(toggleTable);
+        toggleTable20.setToggleGroup(toggleTable);
+        toggleTable36.setToggleGroup(toggleTable);
+        toggleTable37.setToggleGroup(toggleTable);
+        toggleTable38.setToggleGroup(toggleTable);
+        toggleTable39.setToggleGroup(toggleTable);
 
         toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11);});
         toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12);});
@@ -394,7 +393,6 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         toggleTable37.setOnAction(actionEvent ->{refreshTable(); conditionTable(37, table37,toggleTable37);});
         toggleTable38.setOnAction(actionEvent ->{refreshTable(); conditionTable(38, table38,toggleTable38);});
         toggleTable39.setOnAction(actionEvent ->{refreshTable(); conditionTable(39, table39,toggleTable39);});
-
 
         ToggleGroup addDishGroup = new ToggleGroup();
         addDish1.setToggleGroup(addDishGroup);

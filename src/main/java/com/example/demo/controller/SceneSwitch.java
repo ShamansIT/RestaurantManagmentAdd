@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public interface SceneSwitch {
-    default public void SwitchButtonSceneManager(Button button) {
+    default void SwitchButtonSceneManager(Button button) {
         SceneSwitchController switchController = new SceneSwitchController();
         button.setOnAction(actionEvent -> {
             try {
@@ -15,7 +15,7 @@ public interface SceneSwitch {
         });
     }
 
-    default void SwitchButtonSceneBreakfast(Button button) {
+    default void SwitchButtonSceneToMenu(Button button) {
         SceneSwitchController switchController = new SceneSwitchController();
         button.setOnAction(actionEvent -> {
             try {
@@ -26,37 +26,6 @@ public interface SceneSwitch {
         });
     }
 
-    default void SwitchButtonSceneLunch(Button button) {
-        SceneSwitchController switchController = new SceneSwitchController();
-        button.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuLunch(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-    default void  SwitchButtonSceneDinner(Button button) {
-        SceneSwitchController switchController = new SceneSwitchController();
-        button.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuDinner(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-    default void  SwitchButtonSceneDrinks(Button button) {
-        SceneSwitchController switchController = new SceneSwitchController();
-        button.setOnAction(actionEvent -> {
-            try {
-                switchController.switchToSceneMenuDrinks(actionEvent);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
     default void SwitchButtonSceneCloseTable(Button button) {
         SceneSwitchController switchController = new SceneSwitchController();
         button.setOnAction(actionEvent -> {

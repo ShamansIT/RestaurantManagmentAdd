@@ -25,32 +25,6 @@ public class SceneSwitchController {
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToSceneMenuLunch(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull
-                (RestaurantMainServesApplication.class.getResource("MenuLunch.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToSceneMenuDinner(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull
-                (RestaurantMainServesApplication.class.getResource("MenuDinner.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void switchToSceneMenuDrinks(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull
-                (RestaurantMainServesApplication.class.getResource("MenuDrinks.fxml")));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void switchToSceneDayList(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull

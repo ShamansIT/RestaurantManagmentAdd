@@ -60,9 +60,9 @@ public class PaymentController implements SceneSwitch {
     void initialize() {
 
 
-        buttonCancelPayment.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(buttonCancelPayment));
+        buttonCancelPayment.setOnAction(actionEvent -> SwitchButtonSceneToMenu(buttonCancelPayment));
 
-        buttonPayPayment.setOnAction(actionEvent -> SwitchButtonSceneBreakfast(buttonPayPayment));
+        buttonPayPayment.setOnAction(actionEvent -> SwitchButtonSceneToMenu(buttonPayPayment));
     }
 
 }
