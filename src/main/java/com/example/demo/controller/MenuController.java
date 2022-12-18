@@ -276,7 +276,6 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         switchToDrinks.setStyle(deactivatedNavigation());
     }
 
-
     public String greenButtonStyle(){
         return "-fx-background-color: linear-gradient(#76994E, #4D7025);" +
                 "-fx-background-radius: 7;" +
@@ -330,8 +329,6 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         showLineText();
     }
 
-
-
     public void refreshTable(){
         if(table11){toggleTable11.setStyle(greenButtonStyle());} else{toggleTable11.setStyle(blueButtonStyle());}
         if(table12){toggleTable12.setStyle(greenButtonStyle());} else{toggleTable12.setStyle(blueButtonStyle());}
@@ -344,6 +341,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         if(table37){toggleTable37.setStyle(greenButtonStyle());} else{toggleTable37.setStyle(blueButtonStyle());}
         if(table38){toggleTable38.setStyle(greenButtonStyle());} else{toggleTable38.setStyle(blueButtonStyle());}
         if(table39){toggleTable39.setStyle(greenButtonStyle());} else{toggleTable39.setStyle(blueButtonStyle());}
+        buttonCheckOrderField.setVisible(false);
     }
 
     public void conditionTable(int table, boolean station, ToggleButton toggleButton){
@@ -364,8 +362,6 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         if(table == 38){table38 = false;}
         if(table == 39){table39 = false;}
     }
-
-
 
     @FXML
     void initialize() {
@@ -417,8 +413,12 @@ public class MenuController extends DishHeadController implements SceneSwitch {
             if(getName() == null) {
                 buttonCheckOrderField.setText("PICK DISH");
                 buttonCheckOrderField.setVisible(true);
-            }
-            else{
+            }else {
+                if(getTableNumber()==0) {
+                    buttonCheckOrderField.setText("PICK TABLE");
+                    buttonCheckOrderField.setVisible(true);
+                }
+                else{
                     setOrderWindowText(getOrderWindowText() + setPreviewWindowText());
                     textOrderLeft.setText(getOrderWindowText());
                     showOffLineText();
@@ -434,6 +434,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
                     setAmountRefresh();
                     prepareOrderStringToList();
                 }
+            }
         });
 
         checkLessFivePerson.setOnAction(actionEvent -> {

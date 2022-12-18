@@ -8,7 +8,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

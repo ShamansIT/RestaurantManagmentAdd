@@ -7,16 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
-
 import com.example.demo.data.Const;
 import com.example.demo.data.DataBaseProcessor;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-
 public class DailyReportController implements SceneSwitch {
-
 
     @FXML
     private ResourceBundle resources;
@@ -32,7 +29,6 @@ public class DailyReportController implements SceneSwitch {
 
     @FXML
     private Text textDailyTotal;
-
     private String dailyReport = "";
     private String dailyTotal = "";
 
@@ -56,14 +52,11 @@ public class DailyReportController implements SceneSwitch {
                 '}';
     }
 
-
     @FXML
     void initialize() throws SQLException {
 
        loadDailyReport();
-
        buttonDailyReportClose.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonDailyReportClose));
-
     }
     public void loadDailyReport() throws SQLException {
         DecimalFormat dF = new DecimalFormat( "####.##" );
@@ -82,12 +75,9 @@ public class DailyReportController implements SceneSwitch {
         double serviceSingle;
         double serviceDaily = 0;
 
-
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
-
-        String select = "SELECT * FROM " + Const.REPORT_NAME;
-
+        String select = Const.REPORT_QUERY;
         PreparedStatement preparedStatement = connection.prepareStatement(select);
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -149,7 +139,6 @@ public class DailyReportController implements SceneSwitch {
         preparedStatement.close();
         connection.close();
     }
-
 }
 
 

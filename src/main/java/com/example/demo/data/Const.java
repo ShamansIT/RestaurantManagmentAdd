@@ -20,7 +20,6 @@ public class Const {
     public static final String USER_PPS = "user_pps";
     public static final String USER_ISMANAGER = "user_ismanager";
 
-
     public static final String ORDER_NAME = "`demodata`.`orders`";
     public static final String ORDER_ID = "`orders_id`";
     public static final String ORDER_NUMBER = "orders_number";
@@ -32,17 +31,14 @@ public class Const {
     public static final String ORDER_SERVICE = "`orders_service`";
     public static final String ORDER_QUERY = "SELECT * FROM `demodata`.`orders`";
 
-
     public static final String DISH_ID = "dish_id";
     public static final String DISH_NAME = "dish_name";
     public static final String DISH_PRICE = "dish_price";
     public static final String DISH_GROUP = "dish_group";
     public static final String DISH_DESCRIPTION = "dish_description";
 
-
     public static final String REPORT_NAME = "demodata.report";
     public static final String REPORT_ID = "`report_id`";
-    public static final String REPORT_NUMBER = "report_number";
     public static final String REPORT_TABLE = "`report_table`";
     public static final String REPORT_DISH = "`report_dish`";
     public static final String REPORT_PRICE = "`report_price`";
@@ -50,19 +46,5 @@ public class Const {
     public static final String REPORT_COUNT = "`report_total`";
     public static final String REPORT_SERVICE = "`report_service`";
     public static final String REPORT_QUERY = "SELECT * FROM `demodata`.`report`";
-
-    public static final String TRANSFER_ORDER_ID = "`transfer_order_id`";
-    public static final String TRANSFER_TABLE = "`transfer_table`";
-    public static final String TRANSFER_TOTAL_ORDER = "`transfer_total_order`";
-    public static final String TRANSFER_NUMBER = "`transfer_number`";
-    public static final String TRANSFER_IS_SERVICE = "`transfer_is_service`";
-    public static final String TRANSFER_ORDER_TEXT = "`transfer_order_text`";
-    public static final String TRANSFER_NAME = "`demodata`.`transfer`";
-    public static final String TRANSFER_QUERY = "SELECT * FROM `demodata`.`transfer`";
-
-    public static final String TRACK_ARRAY = "`track_array`";
-    public static final String TRACK_NAME = "`demodata`.`track`";
-    public static final String TRACK_QUERY = "SELECT * FROM `demodata`.`track`";
-
 
 }
