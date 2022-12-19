@@ -123,7 +123,7 @@
                         <Font name="Trebuchet MS Bold" size="18.0" />
                     </font>
                 </ToggleButton>
-                <Button fx:id="clearList" layoutX="21.0" layoutY="558.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="CLAER LIST" textAlignment="CENTER" textFill="WHITE">
+                <Button fx:id="clearList" layoutX="21.0" layoutY="558.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="347.0" styleClass="buttonOrange" text="CLAER ORDER" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Trebuchet MS Bold" size="18.0" />
                     </font>

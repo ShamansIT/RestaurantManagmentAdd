@@ -1,14 +1,23 @@
 package com.example.demo.controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import com.example.demo.data.Const;
+import com.example.demo.data.DataBaseProcessor;
+import com.example.demo.exeption.ModelException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PaymentController implements SceneSwitch {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ResourceBundle;
+
+public class PaymentController extends DishHeadController implements SceneSwitch {
 
     @FXML
     private ResourceBundle resources;
@@ -41,86 +50,217 @@ public class PaymentController implements SceneSwitch {
     private AnchorPane fieldCash;
 
     @FXML
-    private AnchorPane fieldCashSum;
-
-    @FXML
     private TextField fieldCcvPayment;
 
     @FXML
     private TextField fieldDataExpPayment;
 
     @FXML
-    private TextField fieldPayPayment;
-
-    @FXML
-    private TextField fieldPayPlusTipsPayment;
-
-    @FXML
     private AnchorPane fieldTextCard;
-
-    @FXML
-    private AnchorPane fieldCardTotal;
-
-    @FXML
-    private AnchorPane fieldCardTotalSum;
 
     @FXML
     private Text numberTablePayment;
 
     @FXML
-    private Text textTotalPayment;
+    private Text orderFieldText;
 
     @FXML
-    private Text textTotalPayment1;
+    private Text textTotalPayment;
 
     private void cardVisible(){
+        payByCash = false;
         fieldCardNumberPayment.setVisible(true);
         fieldTextCard.setVisible(true);
         fieldCardNumberPayment.setVisible(true);
         fieldDataExpPayment.setVisible(true);
         fieldCcvPayment.setVisible(true);
-        fieldPayPayment.setVisible(true);
-        fieldPayPlusTipsPayment.setVisible(true);
-        fieldCardTotal.setVisible(true);
-        fieldCardTotalSum.setVisible(true);
-        fieldCash.setVisible(false);
-        fieldCashSum.setVisible(false);
     }
+
     private void cashVisible(){
-        fieldCash.setVisible(true);
-        fieldCashSum.setVisible(true);
+        payByCash = true;
         fieldCardNumberPayment.setVisible(false);
         fieldTextCard.setVisible(false);
         fieldCardNumberPayment.setVisible(false);
         fieldDataExpPayment.setVisible(false);
         fieldCcvPayment.setVisible(false);
-        fieldPayPayment.setVisible(false);
-        fieldPayPlusTipsPayment.setVisible(false);
-        fieldCardTotal.setVisible(false);
-        fieldCardTotalSum.setVisible(false);
     }
 
+    private String orderReport = "";
+    private String orderTotal = "";
+    private boolean payByCash = true;
 
+    @Override
+    public String toString() {
+        return "PaymentController{" +
+                "orderReport='" + orderReport + '\'' +
+                ", orderTotal='" + orderTotal + '\'' +
+                '}';
+    }
 
+    public void loadCloseTable(int table) throws SQLException { //
+        DecimalFormat dF = new DecimalFormat( "####.##" );
+        StringBuilder orderText = new StringBuilder("- - - - - - - - - - - - >>>   ORDER REPORT   <<< - - - - - - - - - - - -");
+        String dishName = "";
+        double price = 0;
+        int amount = 0;
+        double total = 0;
+        boolean isService = false;
+        String orderTotalText = "";
+        String buffer = "";
+        double serviceSingle = 0;
+        double serviceDaily = 0;
 
+        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
+        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
+        String select = Const.ORDER_QUERY + " WHERE " + Const.ORDER_TABLE +  " = "+ table;
+        PreparedStatement preparedStatement = connection.prepareStatement(select);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()) {
+            dishName = resultSet.getString(3);
+            price = resultSet.getDouble(4);
+            amount = resultSet.getInt(5);
+            total = resultSet.getDouble(6);
+            isService = Boolean.parseBoolean(resultSet.getString(7));
+
+            if(amount!=0){
+                buffer = "\n" + dishName + "  - >  " +  dF.format(price) + " €" + " x "+ amount + " qt.  - - - - -  "
+                        + dF.format(total)+ " €";
+                orderTotal += total;
+                orderText.append(buffer);
+                buffer = "";
+            }
+            else {
+                if(isService) {
+                    double service = 0.1;
+                    serviceSingle = total * service;
+                    serviceDaily += serviceSingle;
+                    buffer = " \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+                            + "\nOrder price: " + dF.format(total) + " €\t\t\t"
+                            + "Service 10%: " + dF.format(serviceSingle) + " €";
+
+                    orderText.append(buffer);
+                    buffer = "";
+                }
+                else {
+                    double service = 0;
+                    serviceSingle = total * service;
+                    serviceDaily += serviceSingle;
+                    buffer = " \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
+                            + "\nOrder price: " + dF.format(total) + " €\t\t\t"
+                            + "Service 10%: " + "NONE" + "\t";
+                    orderText.append(buffer);
+                    buffer = "";
+                }
+            }
+        }
+        numberTablePayment.setText(String.valueOf(table));
+        numberTablePayment.setText(String.valueOf(table));
+        textTotalPayment.setText(("TOTAL: " + dF.format(total+serviceSingle) + " €"));
+        orderFieldText.setText(String.valueOf(orderText));
+        preparedStatement.close();
+        connection.close();
+    }
+    private void showError(String error){
+        errorPaymentField.setVisible(true);
+        errorPaymentText.setText(error);
+        errorPaymentText.setVisible(true);
+    }
+    private void hideError(){
+        errorPaymentField.setVisible(false);
+        errorPaymentText.setVisible(false);
+    }
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
 
+        System.out.println(getTableNumber());
+
+        buttonPaymentCash.setStyle(	"-fx-background-color:#3782bc;");
+        loadCloseTable(getTableNumber());
 
         buttonPaymentCash.setOnAction(actionEvent -> {
-
+            payByCash = true;
+            buttonPaymentCash.setStyle(	"-fx-background-color:#3782bc;");
+            buttonPaymentCard.setStyle(	"-fx-background-color:#FF6600;");
             cashVisible();
         });
 
         buttonPaymentCard.setOnAction(actionEvent -> {
-
+            payByCash = false;
+            buttonPaymentCard.setStyle(	"-fx-background-color:#3782bc;");
+            buttonPaymentCash.setStyle(	"-fx-background-color:#FF6600;");
             cardVisible();
         });
 
+
+        buttonPayPayment.setOnAction(actionEvent -> {
+            if(payByCash){
+                System.out.println("Payment table " + getTableNumber() + " for the amount " + orderTotal + "€ ACCEPT");
+            }
+            else {
+                if(fieldCardNumberPayment.getText().length() !=16 || fieldCardNumberPayment.getText().length() == 0){
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException e) {
+                        showError("ERROR LENGTH CARD NUMBER");
+                        throw new RuntimeException(e);}
+                }
+                try {
+                   Long.parseLong(fieldCardNumberPayment.getText());
+                } catch (NumberFormatException e) {
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException ex) {
+                        showError("INVALID INPUT CARD NUMBER");
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+                if(fieldDataExpPayment.getText().length() !=4 || fieldDataExpPayment.getText().length() == 0){
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException e) {
+                        showError("ERROR LENGTH DATE EXP.");
+                        throw new RuntimeException(e);}
+                }
+                try {
+                    Integer.parseInt(fieldDataExpPayment.getText());
+                } catch (NumberFormatException e) {
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException ex) {
+                        showError("INVALID INPUT DATE EXP.");
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+                if(fieldCcvPayment.getText().length() !=3 || fieldCcvPayment.getText().length() == 0){
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException e) {
+                        showError("ERROR LENGTH CCV");
+                        throw new RuntimeException(e);}
+                }
+                try {
+                    Integer.parseInt(fieldCcvPayment.getText());
+                } catch (NumberFormatException e) {
+                    try {
+                        throw new ModelException(ModelException.INCORRECT_PIN);
+                    } catch (ModelException ex) {
+                        showError("INVALID INPUT CCV");
+                        throw new RuntimeException(ex);
+                    }
+                }
+            System.out.println("Payment table " + getTableNumber() + " for the amount " + orderTotal + "€ ACCEPT");
+            }
+
+            SwitchButtonSceneToMenu(buttonPayPayment);
+        });
+
         buttonCancelPayment.setOnAction(actionEvent -> SwitchButtonSceneToMenu(buttonCancelPayment));
-        buttonPayPayment.setOnAction(actionEvent -> SwitchButtonSceneToMenu(buttonPayPayment));
     }
+
 
 }
 

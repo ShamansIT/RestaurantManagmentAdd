@@ -344,12 +344,12 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         buttonCheckOrderField.setVisible(false);
     }
 
-    public void conditionTable(int table, boolean station, ToggleButton toggleButton){
+    private void conditionTable(int table, boolean station, ToggleButton toggleButton){
         setTableNumber(table);
         if(station){toggleButton.setStyle(orangeButtonStyle());} else{toggleButton.setStyle(darkBlueButtonStyle());}
     }
 
-    public void setConditionTable(int table){
+    private void setConditionTable(int table){
         if(table == 11){table11 = false;}
         if(table == 12){table12 = false;}
         if(table == 13){table13 = false;}
@@ -363,8 +363,37 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         if(table == 39){table39 = false;}
     }
 
+    private void tableDisable(int table){
+        toggleTable11.setDisable(true); if(table == 11){toggleTable11.setDisable(false);}
+        toggleTable12.setDisable(true); if(table == 12){toggleTable12.setDisable(false);}
+        toggleTable13.setDisable(true); if(table == 13){toggleTable13.setDisable(false);}
+        toggleTable14.setDisable(true); if(table == 14){toggleTable14.setDisable(false);}
+        toggleTable15.setDisable(true); if(table == 15){toggleTable15.setDisable(false);}
+        toggleTable16.setDisable(true); if(table == 16){toggleTable16.setDisable(false);}
+        toggleTable20.setDisable(true); if(table == 20){toggleTable20.setDisable(false);}
+        toggleTable36.setDisable(true); if(table == 36){toggleTable36.setDisable(false);}
+        toggleTable37.setDisable(true); if(table == 37){toggleTable37.setDisable(false);}
+        toggleTable38.setDisable(true); if(table == 38){toggleTable38.setDisable(false);}
+        toggleTable39.setDisable(true); if(table == 39){toggleTable39.setDisable(false);}
+    }
+
+    private void tableEnabled(){
+        toggleTable11.setDisable(false);
+        toggleTable12.setDisable(false);
+        toggleTable13.setDisable(false);
+        toggleTable14.setDisable(false);
+        toggleTable15.setDisable(false);
+        toggleTable16.setDisable(false);
+        toggleTable20.setDisable(false);
+        toggleTable36.setDisable(false);
+        toggleTable37.setDisable(false);
+        toggleTable38.setDisable(false);
+        toggleTable39.setDisable(false);
+    }
+
     @FXML
     void initialize() {
+
         ToggleGroup toggleTable = new ToggleGroup();
         toggleTable11.setToggleGroup(toggleTable);
         toggleTable12.setToggleGroup(toggleTable);
@@ -378,17 +407,17 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         toggleTable38.setToggleGroup(toggleTable);
         toggleTable39.setToggleGroup(toggleTable);
 
-        toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11);});
-        toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12);});
-        toggleTable13.setOnAction(actionEvent ->{refreshTable(); conditionTable(13, table13,toggleTable13);});
-        toggleTable14.setOnAction(actionEvent ->{refreshTable(); conditionTable(14, table14,toggleTable14);});
-        toggleTable15.setOnAction(actionEvent ->{refreshTable(); conditionTable(15, table15,toggleTable15);});
-        toggleTable16.setOnAction(actionEvent ->{refreshTable(); conditionTable(16, table16,toggleTable16);});
-        toggleTable20.setOnAction(actionEvent ->{refreshTable(); conditionTable(20, table20,toggleTable20);});
-        toggleTable36.setOnAction(actionEvent ->{refreshTable(); conditionTable(36, table36,toggleTable36);});
-        toggleTable37.setOnAction(actionEvent ->{refreshTable(); conditionTable(37, table37,toggleTable37);});
-        toggleTable38.setOnAction(actionEvent ->{refreshTable(); conditionTable(38, table38,toggleTable38);});
-        toggleTable39.setOnAction(actionEvent ->{refreshTable(); conditionTable(39, table39,toggleTable39);});
+        toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11); tableDisable(11);});
+        toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12); tableDisable(12);});
+        toggleTable13.setOnAction(actionEvent ->{refreshTable(); conditionTable(13, table13,toggleTable13); tableDisable(13);});
+        toggleTable14.setOnAction(actionEvent ->{refreshTable(); conditionTable(14, table14,toggleTable14); tableDisable(14);});
+        toggleTable15.setOnAction(actionEvent ->{refreshTable(); conditionTable(15, table15,toggleTable15); tableDisable(15);});
+        toggleTable16.setOnAction(actionEvent ->{refreshTable(); conditionTable(16, table16,toggleTable16); tableDisable(16);});
+        toggleTable20.setOnAction(actionEvent ->{refreshTable(); conditionTable(20, table20,toggleTable20); tableDisable(20);});
+        toggleTable36.setOnAction(actionEvent ->{refreshTable(); conditionTable(36, table36,toggleTable36); tableDisable(36);});
+        toggleTable37.setOnAction(actionEvent ->{refreshTable(); conditionTable(37, table37,toggleTable37); tableDisable(37);});
+        toggleTable38.setOnAction(actionEvent ->{refreshTable(); conditionTable(38, table38,toggleTable38); tableDisable(38);});
+        toggleTable39.setOnAction(actionEvent ->{refreshTable(); conditionTable(39, table39,toggleTable39); tableDisable(39);});
 
         ToggleGroup addDishGroup = new ToggleGroup();
         addDish1.setToggleGroup(addDishGroup);
@@ -446,6 +475,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         });
 
         clearList.setOnAction(actionEvent -> {
+            tableEnabled();
             setOrderWindowText("");
             setTotalPrice(0);
             textTotalPrice.setText("");
@@ -486,6 +516,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
                 checkLessFivePerson.setSelected(false);
                 refreshTable();
                 setTableNumber(0);
+                tableEnabled();
             }
           }
         });
@@ -500,7 +531,9 @@ public class MenuController extends DishHeadController implements SceneSwitch {
             menuPreviewOrder.setText(setPreviewOrderText());
         });
 
-        buttonCloseTable.setOnAction(actionEvent -> SwitchButtonSceneCloseTable(buttonCloseTable));
+        buttonCloseTable.setOnAction(actionEvent -> {
+            SwitchButtonSceneCloseTable(buttonCloseTable);
+        });
         buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
         switchToBreakfast.setOnAction(actionEvent -> {
             setButtonIdentity("breakfast");

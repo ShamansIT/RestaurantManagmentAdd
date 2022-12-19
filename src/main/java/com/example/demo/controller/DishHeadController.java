@@ -168,26 +168,6 @@ public class DishHeadController implements SceneSwitch {
         connection.close();
     }
 
-    public void loadCloseTable(int dishNum, String groupDish) throws SQLException {
-        String dishName = "";
-        double dishPrice = 0;
-        DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
-        Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
-        String select = "SELECT * FROM demodata.dish WHERE id = "+ dishNum +
-                " AND typedish = " + "\'"+ groupDish + "\'";
-        PreparedStatement preparedStatement = connection.prepareStatement(select);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        while(resultSet.next()) {
-            dishName = resultSet.getString(2);
-            dishPrice = resultSet.getDouble(3);
-        }
-        setName(dishName);
-        setPrice(dishPrice);
-        preparedStatement.close();
-        connection.close();
-    }
-
     ArrayList<String> orderString= new ArrayList<>();
     public void prepareOrderStringToList(){
         String format = prepareOrderListToExport();
@@ -271,5 +251,8 @@ public class DishHeadController implements SceneSwitch {
         }
         connection.close();
     }
+
+
+
 
 }

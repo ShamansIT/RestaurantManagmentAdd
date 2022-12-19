@@ -180,3 +180,15 @@
 //            throw new RuntimeException(e);
 //        }
 //    }
+
+
+                DateFormat dataformat = new SimpleDateFormat("MM/yy");
+                if(fieldDataExpPayment.getText().length() !=4 || fieldDataExpPayment.getText().length() == 0
+                        ||  dataformat.fieldDataExpPayment.getText() <){
+                try {
+                    Date.parse(fieldDataExpPayment.getText());
+                }  catch (DateTimeException e) {
+                        showError("ERROR DATE EXP.");
+                        throw new RuntimeException(e);}
+                }
+

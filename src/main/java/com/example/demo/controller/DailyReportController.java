@@ -29,17 +29,12 @@ public class DailyReportController implements SceneSwitch {
 
     @FXML
     private Text textDailyTotal;
+
     private String dailyReport = "";
     private String dailyTotal = "";
 
-    public String getDailyTotal() {
-        return dailyTotal;
-    }
     public void setDailyTotal(String dailyTotal) {
         this.dailyTotal = dailyTotal;
-    }
-    public String getDailyReport() {
-        return dailyReport;
     }
     public void setDailyReport(String dailyReport) {
         this.dailyReport = dailyReport;
