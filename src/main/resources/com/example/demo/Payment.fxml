@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -92,6 +93,61 @@
                   </Text>
                </children>
             </AnchorPane>
+            <ToggleButton fx:id="toggleTable11" layoutX="486.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="11" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable12" layoutX="539.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="12" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable13" layoutX="591.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="13" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable14" layoutX="486.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="14" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable15" layoutX="539.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="15" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable16" layoutX="591.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="16" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable20" layoutX="486.0" layoutY="213.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="153.0" styleClass="buttonGreen" text="20" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable36" layoutX="486.0" layoutY="265.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="36" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable37" layoutX="565.0" layoutY="265.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="37" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable38" layoutX="486.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="38" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable39" layoutX="565.0" layoutY="318.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="39" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>

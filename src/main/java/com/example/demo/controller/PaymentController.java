@@ -6,9 +6,9 @@ import com.example.demo.exeption.ModelException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,6 +67,39 @@ public class PaymentController extends DishHeadController implements SceneSwitch
     @FXML
     private Text textTotalPayment;
 
+    @FXML
+    private ToggleButton toggleTable11;
+
+    @FXML
+    private ToggleButton toggleTable12;
+
+    @FXML
+    private ToggleButton toggleTable13;
+
+    @FXML
+    private ToggleButton toggleTable14;
+
+    @FXML
+    private ToggleButton toggleTable15;
+
+    @FXML
+    private ToggleButton toggleTable16;
+
+    @FXML
+    private ToggleButton toggleTable20;
+
+    @FXML
+    private ToggleButton toggleTable36;
+
+    @FXML
+    private ToggleButton toggleTable37;
+
+    @FXML
+    private ToggleButton toggleTable38;
+
+    @FXML
+    private ToggleButton toggleTable39;
+
     private void cardVisible(){
         payByCash = false;
         fieldCardNumberPayment.setVisible(true);
@@ -101,14 +134,12 @@ public class PaymentController extends DishHeadController implements SceneSwitch
         DecimalFormat dF = new DecimalFormat( "####.##" );
         StringBuilder orderText = new StringBuilder("- - - - - - - - - - - - >>>   ORDER REPORT   <<< - - - - - - - - - - - -");
         String dishName = "";
-        double price = 0;
-        int amount = 0;
+        double price;
+        int amount;
         double total = 0;
-        boolean isService = false;
-        String orderTotalText = "";
-        String buffer = "";
+        boolean isService;
+        String buffer;
         double serviceSingle = 0;
-        double serviceDaily = 0;
 
         DataBaseProcessor dataBaseProcessor = new DataBaseProcessor();
         Connection connection = dataBaseProcessor.getConnection(Const.URL, Const.USERNAME,Const.PASSWORD);
@@ -134,7 +165,6 @@ public class PaymentController extends DishHeadController implements SceneSwitch
                 if(isService) {
                     double service = 0.1;
                     serviceSingle = total * service;
-                    serviceDaily += serviceSingle;
                     buffer = " \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
                             + "\nOrder price: " + dF.format(total) + " €\t\t\t"
                             + "Service 10%: " + dF.format(serviceSingle) + " €";
@@ -145,7 +175,6 @@ public class PaymentController extends DishHeadController implements SceneSwitch
                 else {
                     double service = 0;
                     serviceSingle = total * service;
-                    serviceDaily += serviceSingle;
                     buffer = " \n- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n"
                             + "\nOrder price: " + dF.format(total) + " €\t\t\t"
                             + "Service 10%: " + "NONE" + "\t";
@@ -171,13 +200,40 @@ public class PaymentController extends DishHeadController implements SceneSwitch
         errorPaymentText.setVisible(false);
     }
 
-    @FXML
-    void initialize() throws SQLException {
+    private String orangeStyle(){
+        return  "-fx-background-color:#FF6600;";
+    }
 
-        System.out.println(getTableNumber());
+    private String greenStyle(){
+        return "-fx-background-color: linear-gradient(#76994E, #4D7025);";
+    }
+
+    private void pickTable(int table){
+        if(table == 11){ toggleTable11.setStyle(orangeStyle()); } else { toggleTable11.setStyle(greenStyle()); }
+        if(table == 12){ toggleTable12.setStyle(orangeStyle()); } else { toggleTable12.setStyle(greenStyle()); }
+    }
+
+    private void setTable(int table){
+        { try { loadCloseTable(table); }
+        catch (SQLException e) { throw new RuntimeException(e); } pickTable(table);}
+    }
+
+    @FXML
+    void initialize() {
+
+        toggleTable11.setOnAction(actionEvent -> setTable(11));
+        toggleTable12.setOnAction(actionEvent -> setTable(12));
+        toggleTable13.setOnAction(actionEvent -> setTable(13));
+        toggleTable14.setOnAction(actionEvent -> setTable(14));
+        toggleTable15.setOnAction(actionEvent -> setTable(15));
+        toggleTable16.setOnAction(actionEvent -> setTable(16));
+        toggleTable20.setOnAction(actionEvent -> setTable(20));
+        toggleTable36.setOnAction(actionEvent -> setTable(36));
+        toggleTable37.setOnAction(actionEvent -> setTable(37));
+        toggleTable38.setOnAction(actionEvent -> setTable(38));
+        toggleTable39.setOnAction(actionEvent -> setTable(39));
 
         buttonPaymentCash.setStyle(	"-fx-background-color:#3782bc;");
-        loadCloseTable(getTableNumber());
 
         buttonPaymentCash.setOnAction(actionEvent -> {
             payByCash = true;
@@ -192,7 +248,6 @@ public class PaymentController extends DishHeadController implements SceneSwitch
             buttonPaymentCash.setStyle(	"-fx-background-color:#FF6600;");
             cardVisible();
         });
-
 
         buttonPayPayment.setOnAction(actionEvent -> {
             if(payByCash){

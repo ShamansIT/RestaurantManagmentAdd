@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,33 +13,22 @@
    <children>
       <AnchorPane layoutX="266.0" layoutY="64.0" prefHeight="622.0" prefWidth="661.0" styleClass="colorBackCenter">
          <children>
-            <AnchorPane disable="true" layoutX="22.0" layoutY="68.0" prefHeight="231.0" prefWidth="443.0" styleClass="gradientDarkBackgroundText" />
-            <AnchorPane layoutX="22.0" layoutY="25.0" prefHeight="43.0" prefWidth="443.0" styleClass="gradientDarkBackgroundText">
+            <AnchorPane disable="true" layoutX="23.0" layoutY="68.0" prefHeight="276.0" prefWidth="443.0" styleClass="gradientDarkBackgroundText">
                <children>
-                  <Text fill="WHITE" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER INFORMATION TABLE" textAlignment="CENTER">
+                  <Text fx:id="orderFieldText" fill="WHITE" layoutX="9.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="426.4927978515625">
+                     <font>
+                        <Font name="Trebuchet MS" size="15.0" />
+                     </font>
+                  </Text>
+               </children></AnchorPane>
+            <AnchorPane layoutX="23.0" layoutY="25.0" prefHeight="43.0" prefWidth="443.0" styleClass="gradientDarkBackgroundText">
+               <children>
+                  <Text fill="WHITE" layoutX="40.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER INFORMATION TABLE" textAlignment="CENTER">
                      <font>
                         <Font name="Trebuchet MS Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="numberTablePayment" fill="WHITE" layoutX="365.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER">
-                     <font>
-                        <Font name="Trebuchet MS Bold" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="fieldCash" layoutX="486.0" layoutY="199.0" prefHeight="43.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText">
-               <children>
-                  <Text fill="WHITE" layoutX="39.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL" textAlignment="CENTER">
-                     <font>
-                        <Font name="Trebuchet MS Bold" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="fieldCashSum" layoutX="486.0" layoutY="249.0" prefHeight="50.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText">
-               <children>
-                  <Text fx:id="textTotalPayment" fill="WHITE" layoutX="27.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000.00" textAlignment="CENTER" wrappingWidth="99.46875">
+                  <Text fx:id="numberTablePayment" fill="WHITE" layoutX="375.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11" textAlignment="CENTER">
                      <font>
                         <Font name="Trebuchet MS Bold" size="24.0" />
                      </font>
@@ -50,34 +40,114 @@
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonPaymentCard" layoutX="486.0" layoutY="317.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CARD" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonPaymentCard" layoutX="486.0" layoutY="401.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CARD" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="buttonCancelPayment" layoutX="22.0" layoutY="553.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="buttonCancelPayment" layoutX="23.0" layoutY="553.0" minHeight="-Infinity" minWidth="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="153.0" styleClass="buttonOrange" text="CANCEL" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Button>
-            <AnchorPane fx:id="fieldCardTotal" layoutX="486.0" layoutY="435.0" prefHeight="43.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText" visible="false">
+            <AnchorPane fx:id="fieldTextCard" layoutX="22.0" layoutY="405.0" prefHeight="132.0" prefWidth="153.0" styleClass="gradientGreyField" visible="false">
                <children>
-                  <Text fill="WHITE" layoutX="39.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL" textAlignment="CENTER">
+                  <Text fill="#0f5169" layoutX="8.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#0f5169" layoutX="8.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE EXP." textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#0f5169" layoutX="8.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCV" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+                     <font>
+                        <Font name="Trebuchet MS Bold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="fieldCardNumberPayment" layoutX="193.0" layoutY="408.0" prefHeight="35.0" prefWidth="272.0" promptText="16 DIGITS ONLY" styleClass="textFild" visible="false">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="fieldDataExpPayment" layoutX="193.0" layoutY="451.0" prefHeight="35.0" prefWidth="160.0" promptText="MM/YY" styleClass="textFild" visible="false">
+               <font>
+                  <Font name="Trebuchet MS" size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="fieldCcvPayment" layoutX="193.0" layoutY="497.0" prefHeight="35.0" prefWidth="160.0" promptText="3 DIGITS ONLY" styleClass="textFild" visible="false">
+               <font>
+                  <Font name="Trebuchet MS" size="18.0" />
+               </font>
+            </TextField>
+            <AnchorPane fx:id="fieldCash" layoutX="23.0" layoutY="342.0" prefHeight="43.0" prefWidth="443.0" styleClass="gradientDarkBackgroundText">
+               <children>
+                  <Text fx:id="textTotalPayment" fill="WHITE" layoutX="105.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000.00" textAlignment="RIGHT" wrappingWidth="323.46875">
                      <font>
                         <Font name="Trebuchet MS Bold" size="24.0" />
                      </font>
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="fieldCardTotalSum" layoutX="486.0" layoutY="485.0" prefHeight="50.0" prefWidth="153.0" styleClass="gradientDarkBackgroundText" visible="false">
-               <children>
-                  <Text fx:id="textTotalPayment1" fill="WHITE" layoutX="27.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000.00" textAlignment="CENTER" wrappingWidth="99.46875">
-                     <font>
-                        <Font name="Trebuchet MS Bold" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
+            <ToggleButton fx:id="toggleTable11" layoutX="486.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="11" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable12" layoutX="539.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="12" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable13" layoutX="591.0" layoutY="107.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="13" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable14" layoutX="486.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="14" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable15" layoutX="539.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="15" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable16" layoutX="591.0" layoutY="160.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="47.0" styleClass="buttonGreen" text="16" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable20" layoutX="486.0" layoutY="213.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="153.0" styleClass="buttonGreen" text="20" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable36" layoutX="486.0" layoutY="265.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="36" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable37" layoutX="565.0" layoutY="265.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="37" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable38" layoutX="486.0" layoutY="317.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="38" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="toggleTable39" layoutX="565.0" layoutY="318.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="73.0" styleClass="buttonGreen" text="39" textAlignment="CENTER">
+               <font>
+                  <Font name="Trebuchet MS Bold" size="14.0" />
+               </font>
+            </ToggleButton>
          </children></AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="497.0" layoutY="4.0">
          <image>
@@ -89,68 +159,14 @@
             <Font name="Trebuchet MS Bold" size="18.0" />
          </font>
       </Button>
-      <AnchorPane fx:id="fieldTextCard" layoutX="288.0" layoutY="381.0" prefHeight="219.0" prefWidth="153.0" styleClass="gradientGreyField" visible="false">
+      <AnchorPane fx:id="errorPaymentField" layoutX="451.0" layoutY="622.0" prefHeight="41.0" prefWidth="291.0" styleClass="gradientGreyField" visible="false">
          <children>
-            <Text fill="#0f5169" layoutX="8.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARD NUMBER" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="#0f5169" layoutX="8.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE EXP." textAlignment="RIGHT" wrappingWidth="129.9349365234375">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="#0f5169" layoutX="8.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CCV" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="#0f5169" layoutX="8.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAY " textAlignment="RIGHT" wrappingWidth="129.9349365234375">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-            <Text fill="#0f5169" layoutX="8.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PAY + TIPS" textAlignment="RIGHT" wrappingWidth="129.9349365234375">
+            <Text fx:id="errorPaymentText" fill="#0f5169" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="291.3333333333335">
                <font>
                   <Font name="Trebuchet MS Bold" size="18.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
-      <TextField fx:id="fieldCardNumberPayment" layoutX="459.0" layoutY="381.0" prefHeight="35.0" prefWidth="272.0" promptText="16 DIGITS ONLY" styleClass="textFild" visible="false">
-         <font>
-            <Font name="Trebuchet MS Bold" size="18.0" />
-         </font>
-      </TextField>
-      <AnchorPane fx:id="errorPaymentField" layoutX="454.0" layoutY="615.0" prefHeight="41.0" prefWidth="291.0" styleClass="gradientGreyField" visible="false">
-         <children>
-            <Text fx:id="errorPaymentText" fill="#0f5169" layoutX="32.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error enter. Please try again" textAlignment="CENTER">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="18.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <TextField fx:id="fieldDataExpPayment" layoutX="459.0" layoutY="424.0" prefHeight="35.0" prefWidth="160.0" promptText="MM/YY" styleClass="textFild" visible="false">
-         <font>
-            <Font name="Trebuchet MS" size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="fieldCcvPayment" layoutX="459.0" layoutY="470.0" prefHeight="35.0" prefWidth="160.0" promptText="3 DIGITS ONLY" styleClass="textFild" visible="false">
-         <font>
-            <Font name="Trebuchet MS" size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="fieldPayPayment" layoutX="459.0" layoutY="513.0" prefHeight="35.0" prefWidth="160.0" promptText="PAY " styleClass="textFild" visible="false">
-         <font>
-            <Font name="Trebuchet MS" size="18.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="fieldPayPlusTipsPayment" layoutX="459.0" layoutY="559.0" prefHeight="35.0" prefWidth="160.0" promptText="PAY + TIPS" styleClass="textFild" visible="false">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </TextField>
    </children>
 </AnchorPane>

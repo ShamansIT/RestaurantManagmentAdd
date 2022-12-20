@@ -394,19 +394,6 @@ public class MenuController extends DishHeadController implements SceneSwitch {
     @FXML
     void initialize() {
 
-        ToggleGroup toggleTable = new ToggleGroup();
-        toggleTable11.setToggleGroup(toggleTable);
-        toggleTable12.setToggleGroup(toggleTable);
-        toggleTable13.setToggleGroup(toggleTable);
-        toggleTable14.setToggleGroup(toggleTable);
-        toggleTable15.setToggleGroup(toggleTable);
-        toggleTable16.setToggleGroup(toggleTable);
-        toggleTable20.setToggleGroup(toggleTable);
-        toggleTable36.setToggleGroup(toggleTable);
-        toggleTable37.setToggleGroup(toggleTable);
-        toggleTable38.setToggleGroup(toggleTable);
-        toggleTable39.setToggleGroup(toggleTable);
-
         toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11); tableDisable(11);});
         toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12); tableDisable(12);});
         toggleTable13.setOnAction(actionEvent ->{refreshTable(); conditionTable(13, table13,toggleTable13); tableDisable(13);});
