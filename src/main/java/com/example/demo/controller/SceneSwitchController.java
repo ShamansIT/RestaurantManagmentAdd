@@ -10,9 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-
 public class SceneSwitchController {
-
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -52,6 +50,7 @@ public class SceneSwitchController {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchToSceneManager(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull
                 (RestaurantMainServesApplication.class.getResource("Manager.fxml")));

@@ -13,7 +13,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class PinController implements SceneSwitch{
+public class PinController{
 
     @FXML
     private AnchorPane panelBack;
@@ -68,12 +68,6 @@ public class PinController implements SceneSwitch{
 
     @FXML
     private Text textErrorPinAuthorization;
-
-    @FXML
-    private Text textPinAuthorization;
-
-    @FXML
-    private AnchorPane textPinFieldAuthorization;
 
     private void showError(){
         textErrorFiledPinAuthorization.setVisible(true);

@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ManagementController implements SceneSwitch {
+public class ManagementController{
 
     @FXML
     private ResourceBundle resources;
@@ -25,8 +25,8 @@ public class ManagementController implements SceneSwitch {
 
     @FXML
     void initialize() {
-
         SceneSwitchController switchController = new SceneSwitchController();
+
         buttonCloseManagement.setOnAction(actionEvent -> {
             try {
                 switchController.switchToSceneMenu(actionEvent);

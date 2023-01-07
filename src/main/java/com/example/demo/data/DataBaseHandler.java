@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import static com.example.demo.data.Const.*;
 
 public class DataBaseHandler {
 

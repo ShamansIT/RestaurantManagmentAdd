@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class DailyReportController implements SceneSwitch {
+public class DailyReportController{
 
     @FXML
     private ResourceBundle resources;
@@ -46,13 +47,6 @@ public class DailyReportController implements SceneSwitch {
                 ", dailyTotal='" + dailyTotal + '\'' +
                 '}';
     }
-
-    @FXML
-    void initialize() throws SQLException {
-
-       loadDailyReport();
-       buttonDailyReportClose.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonDailyReportClose));
-    }
     public void loadDailyReport() throws SQLException {
         DecimalFormat dF = new DecimalFormat( "####.##" );
         int id = 0;
@@ -84,38 +78,45 @@ public class DailyReportController implements SceneSwitch {
             amount = resultSet.getInt(5);
             total = resultSet.getDouble(6);
             isService = Boolean.parseBoolean(resultSet.getString(7));
-        {
-        if (amount!=0){
-            buffer = "\n" + dishName + " - > " +  dF.format(price) + " €\t" + " x "+ amount + " qt.  - - - - -  "
-                    + dF.format(total)+ " €";
-            totalDaily += total;
-            orderText.append(buffer);
-            buffer = "";
-        }
-        else {
-            if(isService) {
-                double service = 0.1;
-                serviceSingle = total * service;
-                totalDaily += total;
-                serviceDaily += serviceSingle;
-                buffer = "\n\nID[" + id + "] Table № " + table + "\tOrder price: " + dF.format(total) + " €\t"
-                        + "Service 10%: " + dF.format(serviceSingle) + " €\t"
-                        + "Total price: " + dF.format(total+serviceSingle) + "€\n"
-                        + "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n";
-                orderText.append(buffer);
-                buffer = "";
-            }
-                else {
-                    double service = 0;
-                    serviceSingle = total * service;
+            {
+                if (amount!=0){
+                    buffer = "\n" + dishName + " - > "
+                            +  dF.format(price) + " €\t"
+                            + " x "+ amount
+                            + " qt.  - - - - -  "
+                            + dF.format(total)+ " €";
                     totalDaily += total;
-                    serviceDaily += serviceSingle;
-                    buffer = "\n\nID[" + id + "] Table№ " + table + "Order price: " + dF.format(total) + " €\t"
-                            + "Service 10%: " + "NONE" + "\t"
-                            + "Total price: " + dF.format(total+serviceSingle) + "€\n"
-                            + "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n";
                     orderText.append(buffer);
                     buffer = "";
+                }
+                else {
+                    if(isService) {
+                        double service = 0.1;
+                        serviceSingle = total * service;
+                        totalDaily += total;
+                        serviceDaily += serviceSingle;
+                        buffer = "\n\nID[" + id + "] Table № " + table
+                                + "\tOrder price: " + dF.format(total) + " €\t"
+                                + "Service 10%: " + dF.format(serviceSingle) + " €\t"
+                                + "Total price: " + dF.format(total+serviceSingle) + "€\n"
+                                + "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
+                                + "- - - - - - - - - - - - - - - - - - \n";
+                        orderText.append(buffer);
+                        buffer = "";
+                    }
+                    else {
+                        double service = 0;
+                        serviceSingle = total * service;
+                        totalDaily += total;
+                        serviceDaily += serviceSingle;
+                        buffer = "\n\nID[" + id + "] Table№ " + table
+                                + "Order price: " + dF.format(total) + " €\t"
+                                + "Service 10%: " + "NONE" + "\t"
+                                + "Total price: " + dF.format(total+serviceSingle) + "€\n"
+                                + "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
+                                + "- - - - - - - - - - - - - - - - - - \n";
+                        orderText.append(buffer);
+                        buffer = "";
                     }
                 }
             }
@@ -134,6 +135,24 @@ public class DailyReportController implements SceneSwitch {
         preparedStatement.close();
         connection.close();
     }
+
+    @FXML
+    void initialize() throws SQLException {
+       SceneSwitchController switchController = new SceneSwitchController();
+
+       loadDailyReport();
+
+        buttonDailyReportClose.setOnAction(actionEvent ->  {
+            try {
+                switchController.switchToSceneManager(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+
+    }
+
 }
 
 

@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +19,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class PaymentController extends DishHeadController implements SceneSwitch {
+public class PaymentController extends DishHeadController{
 
     @FXML
     private ResourceBundle resources;
@@ -220,6 +222,7 @@ public class PaymentController extends DishHeadController implements SceneSwitch
 
     @FXML
     void initialize() {
+        SceneSwitchController switchController = new SceneSwitchController();
 
         toggleTable11.setOnAction(actionEvent -> setTable(11));
         toggleTable12.setOnAction(actionEvent -> setTable(12));
@@ -310,12 +313,21 @@ public class PaymentController extends DishHeadController implements SceneSwitch
             System.out.println("Payment table " + getTableNumber() + " for the amount " + orderTotal + "€ ACCEPT");
             }
 
-            SwitchButtonSceneToMenu(buttonPayPayment);
+            try {
+                switchController.switchToSceneMenu(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
-        buttonCancelPayment.setOnAction(actionEvent -> SwitchButtonSceneToMenu(buttonCancelPayment));
+        buttonCancelPayment.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenu(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
-
-
 }
 

@@ -86,9 +86,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="textPinFieldAuthorization" layoutY="52.0" prefHeight="77.0" prefWidth="297.0" styleClass="gradientGreyField">
+            <AnchorPane layoutY="52.0" prefHeight="77.0" prefWidth="297.0" styleClass="gradientGreyField">
                <children>
-                  <Text id="textPinOneAuthorization" fx:id="textPinAuthorization" fill="#0f5169" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter 4 digit authorisation PIN-number" textAlignment="CENTER" wrappingWidth="216.791015625">
+                  <Text id="textPinOneAuthorization" fill="#0f5169" layoutX="40.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter 4 digit authorisation PIN-number" textAlignment="CENTER" wrappingWidth="216.791015625">
                      <font>
                         <Font name="Trebuchet MS Bold" size="18.0" />
                      </font>

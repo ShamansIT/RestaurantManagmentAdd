@@ -6,12 +6,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class MenuController extends DishHeadController implements SceneSwitch {
+public class MenuController extends DishHeadController{
 
     @FXML
     private ResourceBundle resources;
@@ -393,6 +395,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
 
     @FXML
     void initialize() {
+        SceneSwitchController switchController = new SceneSwitchController();
 
         toggleTable11.setOnAction(actionEvent ->{refreshTable(); conditionTable(11, table11,toggleTable11); tableDisable(11);});
         toggleTable12.setOnAction(actionEvent ->{refreshTable(); conditionTable(12, table12,toggleTable12); tableDisable(12);});
@@ -519,9 +522,21 @@ public class MenuController extends DishHeadController implements SceneSwitch {
         });
 
         buttonCloseTable.setOnAction(actionEvent -> {
-            SwitchButtonSceneCloseTable(buttonCloseTable);
+            try {
+                switchController.switchToScenePayment(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
-        buttonManager.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonManager));
+
+        buttonManager.setOnAction(actionEvent ->{
+            try {
+                switchController.switchToSceneManager(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         switchToBreakfast.setOnAction(actionEvent -> {
             setButtonIdentity("breakfast");
             menuNavigationDefaultStyle();
@@ -538,6 +553,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
             } catch (SQLException e) { throw new RuntimeException(e); }
 
         });
+
         switchToDinner.setOnAction(actionEvent -> {
             setButtonIdentity("dinner");
             menuNavigationDefaultStyle();
@@ -545,6 +561,7 @@ public class MenuController extends DishHeadController implements SceneSwitch {
             try { restartButtonName(); restartButtonVisible();
             } catch (SQLException e) { throw new RuntimeException(e); }
         });
+
         switchToDrinks.setOnAction(actionEvent -> {
             setButtonIdentity("drinks");
             menuNavigationDefaultStyle();

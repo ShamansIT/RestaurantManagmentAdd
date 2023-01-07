@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.ResourceBundle;
-import com.example.demo.data.DataBaseHandler;
 import com.example.demo.exeption.ModelException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class CreateEmployeeController implements SceneSwitch {
+public class CreateEmployeeController{
 
     @FXML
     private ResourceBundle resources;
@@ -86,7 +86,7 @@ public class CreateEmployeeController implements SceneSwitch {
 
     @FXML
     void initialize() throws SQLException {
-        DataBaseHandler dataBaseHandler = new DataBaseHandler();
+        SceneSwitchController switchController = new SceneSwitchController();
 
         panelBack.addEventHandler(MouseEvent.MOUSE_MOVED, actionEvent -> hideError());
 
@@ -96,7 +96,7 @@ public class CreateEmployeeController implements SceneSwitch {
         radioButtonMale.setUserData("male");
         radioButtonFemale.setUserData("female");
 
-        buttonCreate.setOnAction(event -> {
+        buttonCreate.setOnAction(actionEvent -> {
             try {
                 Integer.parseInt(fieldPin.getText());
             } catch (NumberFormatException e) {
@@ -190,12 +190,22 @@ public class CreateEmployeeController implements SceneSwitch {
                     throw new RuntimeException(e);
                 }
             }
+
+            try {
+                switchController.switchToSceneMenu(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
 
-        buttonCreate.setOnAction(actionEvent -> SwitchButtonSceneManager(buttonCreate));
-        //set export to SQL table
-        buttonCancelCreateEmployee.setOnAction(actionEvent -> SwitchButtonSceneManager( buttonCancelCreateEmployee));
+        buttonCancelCreateEmployee.setOnAction(actionEvent -> {
+            try {
+                switchController.switchToSceneMenu(actionEvent);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
     }
 

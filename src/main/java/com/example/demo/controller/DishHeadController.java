@@ -2,12 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.data.Const;
 import com.example.demo.data.DataBaseProcessor;
-import com.example.demo.data.DataBaseService;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.*;
 
-public class DishHeadController implements SceneSwitch {
+public class DishHeadController{
 
     private double price;
     private String name;
@@ -251,8 +250,4 @@ public class DishHeadController implements SceneSwitch {
         }
         connection.close();
     }
-
-
-
-
 }
